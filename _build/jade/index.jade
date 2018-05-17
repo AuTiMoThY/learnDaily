@@ -255,6 +255,16 @@ block page_script
 	script.
 		$(function() {
 			
+			// 日誌狀態（篩選下拉選單）
+			// 點擊項目後做動作
+			$("input[name='diaryState']").click(function(event) {
+				var checkedVal = $(".diaryState input:checked").map(function(){
+					return $(this).val();
+				}).get().join();
+				console.log(checkedVal);
+			});
+
+
 		});
 	// =========================================================================
 

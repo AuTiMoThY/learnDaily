@@ -306,10 +306,22 @@ var learnDiaryUI = (function(window,jQuery){
     	});
     }
 
-    function applyBlur(){
-        TweenMax.set(['.content_main'], {webkitFilter:"blur(" + blurElement.a + "px)",filter:"blur(" + blurElement.a + "px)"});  
-    };
+    function blur_content(el){
+    	var blurElement = {a:0};//start the blur at 0 pixels
 
+    	TweenMax.to(blurElement, 1, {a:3, onUpdate:applyBlur});
+    	function applyBlur(){
+    	    TweenMax.set(el, {webkitFilter:"blur(" + blurElement.a + "px)",filter:"blur(" + blurElement.a + "px)"});
+    	};
+    }
+    function clarify_content(el){
+    	var blurElement = {a:3};//start the blur at 0 pixels
+
+    	TweenMax.to(blurElement, 1, {a:0, onUpdate:applyBlur});
+    	function applyBlur(){
+    	    TweenMax.set(el, {webkitFilter:"blur(" + blurElement.a + "px)",filter:"blur(" + blurElement.a + "px)"});
+    	};
+    }
 	return {
 		init: function(){
 			this.progressBar();
@@ -385,40 +397,21 @@ var learnDiaryUI = (function(window,jQuery){
 		 * >> okadminUI.advSearchCtrl 搜尋框開關
 		 */
 		advSearchCtrl: function(){
-			function blur_list(el){
-				
-			}
+
 			isClick($(".btn-adv_search"), $(".page_wrap"), "js-show-adv_search");
 			$(".mask_div").click(function(event) {
 				$(".page_wrap.js-show-adv_search").removeClass('js-show-adv_search');
+				clarify_content(['.diary_list']);
 
-				var blurElement = {a:3};//start the blur at 0 pixels
-
-				TweenMax.to(blurElement, 1, {a:0, onUpdate:applyBlur});
-				function applyBlur(){
-				    TweenMax.set(['.diary_list'], {webkitFilter:"blur(" + blurElement.a + "px)",filter:"blur(" + blurElement.a + "px)"});  
-				};
 			});
 
 
 			$(".btn-adv_search").click(function(event) {
 				if ($(".page_wrap").hasClass('js-show-adv_search')) {
-					var blurElement = {a:0};//start the blur at 0 pixels
-
-					TweenMax.to(blurElement, 1, {a:3, onUpdate:applyBlur});
-					function applyBlur(){
-					    TweenMax.set(['.diary_list'], {webkitFilter:"blur(" + blurElement.a + "px)",filter:"blur(" + blurElement.a + "px)"});  
-					};
-
+					blur_content(['.diary_list']);
 				}
 				else{
-					var blurElement = {a:3};//start the blur at 0 pixels
-
-					TweenMax.to(blurElement, 1, {a:0, onUpdate:applyBlur});
-					//here you pass the filter to the DOM element
-					function applyBlur(){
-					    TweenMax.set(['.diary_list'], {webkitFilter:"blur(" + blurElement.a + "px)",filter:"blur(" + blurElement.a + "px)"});  
-					};
+					clarify_content(['.diary_list']);
 				}
 			});
 
@@ -498,18 +491,6 @@ $(function() {
 			$("#"+obj.id).parent().addClass('input--filled')
 		}
 	});
-
-
-
-
-    // 日誌狀態（篩選下拉選單）
-    // 點擊項目後做動作
-    $("input[name='diaryState']").click(function(event) {
-    	var checkedVal = $(".diaryState input:checked").map(function(){
-    		return $(this).val();
-    	}).get().join();
-    	console.log(checkedVal);
-    });
 
 
 
