@@ -1,0 +1,25 @@
+.input {
+	margin: 1.5rem 0 0;
+}
+
+label.input__label {
+	margin-bottom: 0;
+	font-size: 1rem;
+}
+
+.input__label--yoshiko {
+	-webkit-transform: translate3d(0, 2.1em, 0);
+	transform: translate3d(0, 2.1em, 0);
+}
+
+.input__field--yoshiko:focus + .input__field--yoshiko, .input--filled .input__field--yoshiko {
+	background-color: #fff;
+	border-color: transparent;
+}
+
+.input__label-content--yoshiko::after {
+	height: auto;
+	color: theme-color("primary1");
+	transform: matrix(1,0,0,1,-16,0);
+}
+

@@ -1,0 +1,113 @@
+.aside {
+
+	&-ctrl {
+		@include absolute(0, $L:0, $B:0);
+		margin: auto;
+		@include wh(50, 45);
+		// padding: 10px;
+		// height: 100%;
+	}
+}
+
+
+.oksidebar {
+	padding: 1em 0;
+	&-list {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 0;
+
+		&.list-second-level {
+			height: 0;
+			background-color: gray("300");
+			overflow: hidden;
+
+			.inner-link {
+				&:hover {
+					color: theme-color("primary1");
+					background-color: gray("100");
+				}
+			}
+		}
+	}
+
+	&-item {
+		position: relative;
+
+		> .inner-link {
+
+			&:hover {
+				@extend %navActive;
+			}
+		}
+
+		&.has-sub {
+			> .inner-link {
+				&:after {
+					@include psudoClass;
+					@include absolute(0, 1em, 0);
+					margin: auto;
+					@include wh(6);
+					border-bottom: 1px solid #424242;
+					border-right: 1px solid #424242;
+					transform: rotate(-45deg);
+
+					transition: all 0.3s ease-in-out;
+				}
+
+				&:hover {
+					&:after {
+						border-color: theme-color("light");
+					}
+				}
+			}
+		}
+
+		&.js-open {
+			> .inner-link {
+				@extend %navActive;
+				&:after {
+					transform: rotate(-45deg + 90);
+					border-color: theme-color("light");
+				}
+			}
+		}
+
+		.inner-link {
+			position: relative;
+			display: block;
+			padding: 0.8em 1em;
+			background-color: transparent;
+			border-radius: 2px;
+			color: #424242;
+			font-weight: 400;
+			text-decoration: none;
+
+			transition: all 0.3s ease-in-out;
+
+			.list-second-level & {
+				padding: 0.6em 1em 0.6em 2.6em;
+			}
+
+			.fa {
+				margin-right: 0.6em;
+			}
+		}
+	}
+
+	&-txt {
+		padding-left: 0.4rem;
+
+		.list-second-level & {
+			display: block;
+			@include text-truncate;
+		}
+	}
+}
+
+
+
+%navActive {
+	color: theme-color("light");
+	background-color: theme-color("primary1");
+}

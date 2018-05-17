@@ -1,0 +1,30 @@
+.adv_search {
+
+	&-box {
+		@include absolute(#{$content_title_h}px, 1rem);
+		z-index: 3;
+		width: 400px;
+		padding: 1em;
+		background-color: #fff;
+		box-shadow: $z-depth-4;
+
+		transform: translateY(-100%);
+		opacity: 0;
+		transition: all 0.3s $easeInOutCubic3;
+
+		.js-show-adv_search & {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+}
+
+.adv_search_form {
+	.form-group {
+		margin-bottom: 0.6rem;
+	}
+	.input {
+		width: 100%;
+		max-width: 100%;
+	}
+}

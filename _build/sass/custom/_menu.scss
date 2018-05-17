@@ -1,0 +1,71 @@
+/*------------------------------------------------------------------------*\
+		>>	page_menu  側邊欄
+\*------------------------------------------------------------------------*/
+.page_menu {
+
+	a {
+		display: block;
+		color: #7baedc;
+		@include remCalc(font-size, 14);
+		text-align: center;
+	}
+
+	.icon {
+		position: relative;
+		font-size: 2em;
+
+		color: currentColor;
+		svg {
+			width: 90%;
+			height: 1em;
+			fill: currentColor;
+		}
+	}
+}
+
+
+
+/*------------------------------------------------------------------------*\
+		>>	okmenu
+\*------------------------------------------------------------------------*/
+.okmenu {
+
+	&-list {
+		list-style: none;
+		padding-left: 0;
+		margin-bottom: 0;
+	}
+
+	&-item {
+		position: relative;
+		float: left;
+		display: flex;
+		align-items: center;
+		height: 100%;
+
+		.inner {
+			display: block;
+			padding: 0.4em;
+		}
+		.fa {
+			margin-right: 0.4rem;
+		}
+	}
+}
+
+
+.notice {
+	position: relative;
+	margin: auto;
+	@include circle(40);
+	background-color: #fff;
+
+	color: theme-color("primary1");
+
+	svg {
+		@include absolute(0, 0, 0, 0);
+		margin: auto;
+	}
+}
+
+

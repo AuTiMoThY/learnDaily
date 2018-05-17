@@ -1,0 +1,15 @@
+.okuser {
+	&-photo {
+		overflow: hidden;
+		box-shadow: 1px 1px 3px rgba(black, 0.5);
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	&-name {
+		padding-left: 0.8em;
+	}
+}

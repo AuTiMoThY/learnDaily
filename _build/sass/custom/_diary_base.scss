@@ -1,0 +1,26 @@
+.diary {
+	&-date {
+		@include remCalc(font-size, 16);
+		font-family: Verdana,Geneva,sans-serif;
+		color: theme-color("primary1");
+
+		// transition: $transition-hoverable;
+	}
+
+	&-category {
+		color: $grey-darken-3;
+		@include remCalc(font-size, 14);
+	}
+
+	&-pic {
+		.pic {
+			@include bgRWD(null, 210, 118);
+		}
+	}
+
+	&-brief {
+		letter-spacing: 1px;
+		line-height: 1.5;
+		color: #595757;
+	}
+}

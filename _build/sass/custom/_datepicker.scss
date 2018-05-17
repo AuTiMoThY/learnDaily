@@ -1,0 +1,89 @@
+.ui-datepicker {
+	position: absolute;
+	z-index: 10;
+	min-width: 200px;
+	background-color: #fff;
+
+	&-header {
+		position: relative;
+		padding: 0.8em;
+		background-color: theme-color("primary-dark");
+	}
+	&-title {
+		text-align: center;
+	}
+	&-month, &-year {
+		display: inline-block;
+		vertical-align: middle;
+
+		border: none;
+		margin: 0 0.2em;
+	}
+
+	&-prev {
+		display: block;
+		.ui-icon {
+			@extend %arrowIcon;
+		}
+	}
+	&-next {
+		display: block;
+		.ui-icon {
+			@extend %arrowIcon;
+			transform: rotate(180deg);
+			right: 0.8em;
+		}
+	}
+
+	&-calendar {
+		width: 100%;
+		color: $grey-base;
+		text-align: center;
+
+		th {
+			padding: 0.5em 0;
+		}
+
+		td {
+			padding: 0.3em 0;
+		}
+
+		.ui-state-default {
+			display: block;
+			position: relative;
+			margin: auto;
+			@include circle(26px);
+			background-color: transparent;
+
+			color: $grey-darken-4;
+
+			&.ui-state-active {
+				background-color: theme-color("primary1");
+				color: #fff;
+			}
+		}
+	}
+}
+
+.ui-datepicker-other-month {
+	.ui-state-default {
+		color: $grey-base;
+	}
+}
+
+
+%arrowIcon {
+	@include absolute(0, $B:0);
+	margin: auto;
+	@include circle(20);
+	background-color: #fff;
+
+	&:before {
+		@include psudoClass;
+		@include wh(7);
+		border: 2px solid #424242;
+		border-top: none;
+		border-right: none;
+		transform: rotate(45deg) translate(10px, 0px);
+	}
+}

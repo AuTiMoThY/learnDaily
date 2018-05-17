@@ -1,0 +1,50 @@
+extends ../jade_inc/layout.jade
+block vars
+	-var page_class = "index_page"
+
+block title
+	title 學習日誌
+
+block content
+	main.content_wrapper
+		.container-fluid
+			header.content_title.justify-content-between
+				span.current_page 新增日誌
+				.helpers
+					a.btn.btn-tb.btn-goback.align-self-end(href="./")
+						.btn-icon.d-inline-block
+							<i class="fas fa-arrow-left"></i>
+						| 返回列表
+
+			.content_container
+				.diary_cnt_wrap.p-5
+					.diary_form
+						form(action="")
+							.form-row
+								.form-group.col
+									.row
+										label.col-md-auto.col-form-label(for="diaryDate") 選擇日期
+										.col-6.control-field
+											input.form-control(type="text", name="", id="diaryDate")
+								.form-group.col
+									.row
+										label.col-md-auto.col-form-label(for="diaryCategory") 選擇類別
+										.col-6.control-field
+											input.form-control(type="text", name="", id="diaryCategory")
+							.form-row
+								.form-group.col
+									.row
+										label.col-12.col-form-label(for="diaryContent") 日誌內容
+										.col-12.control-field
+											textarea#diaryContent.form-control(name="")
+
+
+block page_script
+	// =========================================================================
+	// 頁面單獨ＪＳ  START
+	script.
+		$(function() {
+			$(".diaryDate")
+		});
+	// =========================================================================
+

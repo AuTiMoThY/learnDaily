@@ -1,0 +1,36 @@
+.login_page {
+	&.login_page {
+		height: 100%;
+		background-color: theme-color("primary1");
+	}
+}
+
+
+.login_wrapper {
+	// @include absolute(50%, $L:50%);
+	// transform: translate(-50%, -50%);
+	// height: auto;
+	// min-height: 1px;
+	text-align: center;
+
+	.logo {
+		// margin-bottom: 2rem;
+	}
+
+	.forget_pw {
+		text-decoration: underline;
+		color: $grey-darken-1;
+		font-size: 0.8em;
+
+		&:hover {
+			color: #595757;
+		}
+	}
+}
+
+.login_frm {
+	width: 400px;
+	background-color: #fff;
+	padding: 1rem 0;
+	margin: auto;
+}

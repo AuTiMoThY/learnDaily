@@ -1,0 +1,66 @@
+.mod-dropdown {
+	position: relative;
+	z-index: 10;
+	&-wrapper {
+		position: relative;
+		width: 190px;
+		height: 40px;
+		box-shadow: 0 0 3px rgba(#000, 0.2);
+		border-radius: 5px;
+	}
+
+	&-ctrl {
+		position: relative;
+		z-index: 2;
+		padding: 0.5em;
+		background-color: #fff;
+		cursor: pointer;
+
+		&:after {
+			@include psudoClass;
+			@include absolute(0, 0.5em, 0);
+			margin: auto;
+			@include triangle(bottom, theme-color("df-grey"), 8px);
+		}
+	}
+	&-list {
+		margin-bottom: 0;
+		overflow: hidden;
+		max-height: 0;
+		width: 100%;
+		box-shadow: 0 0 3px rgba(#000, 0.2);
+		border-radius: 5px;
+		background-color: #fff;
+		transition: all 0.3s $easeInOutCubic3;
+		@include absolute(0, $L:0);
+
+		.js-open & {
+			top: 0;
+			padding-top: 40px;
+			max-height: 300px;
+		}
+	}
+
+	&-item {
+		input {
+			display: none;
+
+			&:checked {
+				~ label {
+					background-color: theme-color("primary1");
+					color: #fff;
+				}
+			}
+		}
+		label {
+			position: relative;
+			width: 100%;
+			background-color: transparent;
+			padding: 0.5em;
+			margin-bottom: 0;
+			cursor: pointer;
+
+			transition: $btn-transition;
+		}
+	}
+}

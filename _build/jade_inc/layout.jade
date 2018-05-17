@@ -1,0 +1,62 @@
+doctype html
+html(class="no-js", lang="zh")
+	-var login = 0
+	block vars
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		block title
+			title Website Title
+		meta(name="keywords", content="")
+		meta(name="description", content="")
+		meta(name="Copyright", content="")
+		meta(name="robots", content="index,follow")
+		meta(name="viewport", content="width=device-width, user-scalable=no")
+
+		// 讓手機部判斷它是電話號碼變顏色
+		meta(name="format-detection", content="telephone=no")
+
+		//- // reset
+		//- link(rel="stylesheet", href="dist/css/reset.css")
+
+		// Font Awesome
+		link(rel="stylesheet", href="dist/fontawesome/css/fa-svg-with-js.css")
+		script(src="dist/fontawesome/js/fontawesome-all.js")
+		// marka css (icon transformation)
+		link(rel="stylesheet", href="dist/plugin/marka/marka.css")
+		block pluginStyle
+
+		// style
+		link(rel="stylesheet", href="dist/css/set2.css")
+		link(rel="stylesheet", href="dist/css/style.css")
+
+		// js
+		script(src="dist/js/libs/modernizr-custom.min.js")
+		script(src="dist/js/ModernizrAu.js")
+
+	body(class="#{login}")
+		// =========================================================================
+		// SVG sprites  START
+		.symbols_svg.hide
+			include ../symbol/svg/symbols.svg
+		// SVG sprites  END  !!
+		// =========================================================================
+		.page_wrap.cf(class="#{page_class}")
+			if login == 1
+				block content
+			if login == 0
+				include ../jade_inc/header.jade
+				.page_container
+
+					include ../jade_inc/menu.jade
+					include ../jade_inc/aside.jade
+					// =========================================================================
+					// 頁面內容  START
+					// =========================================================================
+					block content
+					// =========================================================================
+					// 頁面內容  END  !!
+					// =========================================================================
+				include ../jade_inc/footer.jade
+		include ../jade_inc/scriptfoot.jade
+		block page_script

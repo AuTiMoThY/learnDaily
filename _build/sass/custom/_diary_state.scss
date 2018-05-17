@@ -1,0 +1,32 @@
+.diary_item {
+	&.state-temporary {
+		.diary_item_block {
+			background-color: $deep-orange-lighten-5;
+			&:before {
+				opacity: 1;
+			}
+		}
+
+	}
+
+	.svg-state-temporary {
+		fill: $orange-darken-4;
+	}
+
+}
+
+
+
+
+.diary_item_block {
+
+	&:before {
+		@include psudoClass;
+		@include absolute(0, $L:0);
+		@include wh(8px, 100%);
+		background-color: $orange-base;
+		border-top-left-radius: $border-radius-base;
+		border-bottom-left-radius: $border-radius-base;
+		opacity: 0;
+	}
+}

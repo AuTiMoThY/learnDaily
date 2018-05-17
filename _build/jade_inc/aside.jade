@@ -1,0 +1,32 @@
+aside.page_sidebar
+	//- .page_sidebar-hd
+	.page_sidebar-bd
+		.user_info
+			.user_info-hd
+				.user_info-top.d-flex.align-items-center
+					.user_info-photo
+						.pic.okuser-photo
+							img(src="dist/images/temp/user_photo-s.jpg", alt="")
+					.user_info-name 潘心心
+				.user_info-base
+					.user_info-job.user_info-txt 部門：資訊科技部-系統開發組
+					.user_info-seniority.user_info-txt 年資：10年5個月
+			.user_info-bd.user_statistics
+				.row.no-gutters
+					p#monthWirte.month 當月寫了多少篇：
+						span.number
+							span.big.js-number
+							| /6
+					.month-bar(data-number="2")
+						#progressBar.js-progressBar
+				.row.no-gutters
+					p.total 總計共寫了
+						span.big 90
+						| 篇
+				.row.no-gutters
+					p.share 分享篇數
+						span.big 10
+						| 篇
+			.calendar_wrap
+				#calendar
+				button.btn.btn-tb.btn-primary.m-auto.d-block.today 返回今日

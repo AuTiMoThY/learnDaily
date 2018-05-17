@@ -1,0 +1,145 @@
+.diary_list {
+	position: relative;
+	width: 100%;
+
+	&-timeline {
+		@include absolute(0, $L:50%);
+		transform: translateX(-50%);
+		z-index: 1;
+		@include wh(2, 100%);
+		background-color: theme-color("primary1");
+	}
+}
+
+
+.diary_item {
+	position: relative;
+	z-index: 2;
+
+	// width: 100%;
+
+	@include oftype(even){
+		// width: 100%;
+		left: 50%;
+
+		.diary-date:after {
+			right: inherit;
+			left: -10px;
+		}
+
+		.diary-state {
+			padding-right: 1em;
+			.icon:after {
+				clear: both;
+			}
+			svg {
+				float: right;
+			}
+		}
+	};
+
+	@include oftype(odd){
+		.inner {
+			flex-direction: row-reverse;
+		}
+
+		.diary-state {
+			padding-left: 1em;
+		}
+	};
+
+	&:not(:first-of-type){
+		margin-top: -1rem;
+	}
+
+	.inner {
+		width: 50%;
+
+		&:hover {
+			.diary_item_block {
+				box-shadow: $z-depth-1-half;
+			}
+
+		}
+
+	}
+
+	.inner-s {
+		flex: 0 0 125px;
+	}
+
+	.inner-l {
+		// padding-right: 0.5rem;
+	}
+
+	.diary-date {
+		position: relative;
+		text-align: center;
+
+		&:after {
+			@include psudoClass;
+			@include absolute(3px, -10px);
+			@include circle(20);
+			background-color: theme-color("primary1");
+		}
+
+	}
+
+
+
+	.icon {
+		@include wh(100%, 30);
+		display: block;
+		margin-bottom: 2px;
+		svg {
+			@include wh(30, 100%);
+		}
+	}
+}
+
+.diary_item_block {
+	position: relative;
+	background-color: #fff;
+	box-shadow: $boxShadow-weak;
+	border-radius: $border-radius-base;
+
+	max-height: 135px;
+
+	transition: $transition-hoverable;
+
+	&:before {
+		@include psudoClass;
+		@include absolute(0, $L:0);
+		@include wh(8px, 100%);
+		background-color: $orange-base;
+		border-top-left-radius: $border-radius-base;
+		border-bottom-left-radius: $border-radius-base;
+		opacity: 0;
+	}
+
+
+
+	.diary-category {
+
+		// @include absolute();
+	}
+
+	.diary-pic {
+		max-width: 210px;
+		flex: 0 0 40%;
+		align-self: center;
+
+		@include media-down(1330px){
+			flex: 0 0 45%;
+		};
+
+		@include media-breakpoint-down(md){
+			display: none;
+		};
+
+	}
+
+	.diary-brief {
+		@include text_ellipsis(3, 1.5);
+	}
+}

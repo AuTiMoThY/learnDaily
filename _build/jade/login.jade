@@ -1,0 +1,52 @@
+extends ../jade_inc/layout.jade
+block vars
+	-var page_class = "login_page"
+	-var login = 1
+
+block title
+	title 學習日誌
+
+block content
+	main.login_wrapper
+		.inner-table
+			.inner-tablecell
+				.logo.mb-5
+					.logo-lg.pic
+						img(src="dist/images/logo.png", alt="")
+				.login_frm
+					form#loginForm(action="")
+						.form-group
+							span.input.input--yoshiko.control-field
+								| <input class="input__field input__field--yoshiko form-control" type="text" name="m_id" id="m_id" required />
+								| <label class="input__label input__label--yoshiko" for="m_id">
+								| 	<span class="input__label-content input__label-content--yoshiko" data-content="帳號">請輸入帳號</span>
+								| </label>
+						.form-group
+							span.input.input--yoshiko.control-field
+								| <input class="input__field input__field--yoshiko form-control" type="password" name="m_password" id="m_password" required />
+								| <label class="input__label input__label--yoshiko" for="m_password">
+								| 	<span class="input__label-content input__label-content--yoshiko" data-content="密碼">請輸入密碼</span>
+								| </label>
+						.form-group
+							button#loginBtn.btn.btn-primary
+								| 登入
+							br
+							a(href="").forget_pw.mt-3.d-block 忘記密碼?
+
+block page_script
+	// =========================================================================
+	// 頁面單獨ＪＳ  START
+	script.
+		$(function() {
+			okadminUI.formCheck().init();
+			var form = $("#loginForm");
+
+			form.validate({
+				submitHandler: function () {
+					//  提交表單
+					window.location.href="index.html"
+				}
+			});
+		});
+	// =========================================================================
+

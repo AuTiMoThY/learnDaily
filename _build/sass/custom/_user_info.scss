@@ -1,0 +1,118 @@
+.user_info {
+	height: 100%;
+	background-color: #065297;
+	padding: 0 1em;
+	color: #fff;
+	letter-spacing: 1px;
+
+	&-hd {
+		position: relative;
+		padding: 1em 0;
+		// background-color: md-color("indeigo", "lighten-5");
+
+		&:after {
+			@include psudoClass;
+			@include absolute($B:0);
+			@include wh(100%, 1);
+			background-color: theme-color("primary-dark");
+		}
+	}
+
+	&-top {
+		margin-bottom: 0.8em;
+	}
+	&-bd {
+		padding: 1em 0;
+		// background-color: md-color("grey", "lighten-3");
+	}
+
+	&-base {
+		// padding-left: 0.8em;
+	}
+
+	&-photo {
+		.pic {
+			@include circle(60);
+			overflow: hidden;
+		}
+	}
+
+	&-name {
+		padding-left: 1.2em;
+	}
+
+	&-txt {
+		padding-left: 14 * 3px + 3;
+		@include remCalc(font-size, 14);
+		text-indent: -14 * 3px - 3;
+		letter-spacing: 1px;
+	}
+
+	&-job {
+	}
+	&-seniority {
+	}
+}
+
+
+.user_statistics {
+	p {
+		@include remCalc(font-size, 14);
+		margin-bottom: 0;
+		letter-spacing: 1px;
+		color: #aeb7ca;
+		.big {
+			padding: 0 0.3rem;
+			font-size: 1.5em;
+			color: #ffead8;
+		}
+	}
+	.row {
+		margin-bottom: 0.45em;
+	}
+	.month {
+		margin-bottom: 0.3em;
+	}
+	.month-bar {
+		position: relative;
+		@include wh(100%, 20);
+		background-color: #00305f;
+		padding: 1px;
+
+		.js-progressBar {
+			background-color: #ecc700;
+			height: 100%;
+		}
+	}
+}
+
+
+.user {
+
+	&-ctrl {
+
+	}
+	&-photo {
+		@include circle(40);
+		overflow: hidden;
+		// display: inline;
+		margin-right: 10px;
+
+		@extend %no-flexbox;
+	}
+
+	&-name {
+		vertical-align: middle;
+		// display: inline;
+
+		@extend %no-flexbox;
+	}
+}
+
+%no-flexbox {
+	.no-flexbox & {
+		@extend .d-inline-block;
+		@extend .align-middle;
+	}
+
+}

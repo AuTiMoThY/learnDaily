@@ -1,0 +1,260 @@
+extends ../jade_inc/layout.jade
+block vars
+	-var page_class = "index_page"
+
+block title
+	title 學習日誌
+
+block content
+	main.content_wrapper
+		.container-fluid
+			header.content_title.justify-content-between.align-items-center
+				a.btn.btn-add.btn-sm(href="diary_add.html")
+					.btn-icon.d-inline-block
+						<i class="fas fa-pencil-alt"></i>
+					| 新增日誌
+				.search.d-flex.align-items-center
+					.quick_search.mr-3
+						.diaryState.mod-dropdown.btn-sm
+							.mod-dropdown-wrapper
+								.mod-dropdown-ctrl 日誌狀態
+								ul.mod-dropdown-list.cf.lis-n
+									li.mod-dropdown-item
+										input#diaryState1(type="radio", name="diaryState" value="暫存中")
+										label(for="diaryState1") 暫存中
+									li.mod-dropdown-item
+										input#diaryState2(type="radio", name="diaryState" value="已送出")
+										label(for="diaryState2") 已送出
+									li.mod-dropdown-item
+										input#diaryState3(type="radio", name="diaryState" value="有回饋")
+										label(for="diaryState3") 有回饋
+									li.mod-dropdown-item
+										input#diaryState4(type="radio", name="diaryState" value="被分享")
+										label(for="diaryState4") 被分享
+					.adv_search
+						button.btn-adv_search
+							| 進階搜尋
+							<i class="fas fa-search"></i>
+			// ==================================================================
+			// 搜尋框  ＳＴＡＲＴ
+			.adv_search-box
+				.adv_search_form
+					form(action="")
+						.form-row
+							.form-group.col
+								span.input.input--yoshiko.control-field
+									| <input class="input__field input__field--yoshiko form-control datepicker" type="text" name="date_start" id="date_start" />
+									| <label class="input__label input__label--yoshiko" for="date_start">
+									| 	<span class="input__label-content input__label-content--yoshiko" data-content="開始日期">開始日期</span>
+									| </label>
+							.form-group.col
+								span.input.input--yoshiko.control-field
+									| <input class="input__field input__field--yoshiko form-control datepicker" type="text" name="date_end" id="date_end" />
+									| <label class="input__label input__label--yoshiko" for="date_end">
+									| 	<span class="input__label-content input__label-content--yoshiko" data-content="結束日期">結束日期</span>
+									| </label>
+						.form-row
+							.form-group.col
+								span.input.input--yoshiko.control-field
+									| <select class="input__field input__field--yoshiko form-control" name="diary_category" id="diary_category">
+									|	<option value=""></option>
+									|	<option value="1">生活學習</option>
+									|	<option value="2">人際關係</option>
+									|	<option value="3">類別三</option>
+									|	<option value="4">類別四</option>
+									| </select>
+									| <label class="input__label input__label--yoshiko" for="diary_category">
+									| 	<span class="input__label-content input__label-content--yoshiko" data-content="日誌類別">日誌類別</span>
+									| </label>
+							.form-group.col
+								span.input.input--yoshiko.control-field
+									| <input class="input__field input__field--yoshiko form-control" type="text" name="who_feedback" id="who_feedback" />
+									| <label class="input__label input__label--yoshiko" for="who_feedback">
+									| 	<span class="input__label-content input__label-content--yoshiko" data-content="誰回饋...">誰回饋...</span>
+									| </label>
+						.form-row
+							.form-group.col
+								span.input.input--yoshiko.control-field
+									| <input class="input__field input__field--yoshiko form-control" type="text" name="keyword" id="keyword" />
+									| <label class="input__label input__label--yoshiko" for="keyword">
+									| 	<span class="input__label-content input__label-content--yoshiko" data-content="內容關鍵字">內容關鍵字</span>
+									| </label>
+						.form-row
+							button(type="submit").btn.blue.ml-auto.mr-auto
+								| <i class="fas fa-search"></i> 查詢
+			// 搜尋框  ＥＮＤ  ！！
+			// ==================================================================
+			.mask_div
+			.content_main
+				.diary_list.pt-4.pb-4
+					.diary_list-timeline
+					ul.cf.lis-n
+						// ==================================================================
+						// 示意
+						// 文章暫存
+						// data-state="temporary"
+						// 有圖片
+						li#diary_tw000223_2018051101.diary_item(data-state="temporary")
+							a(href="").inner.d-flex
+								.inner-s
+									.diary-date 2018-05-11
+									.diary-state
+								.inner-l
+									.diary_item_block.p-2.pl-3.d-flex
+										.diary-txt.pr-2
+											.diary-category.mb-1 生活學習
+											.diary-brief
+												// 文章，取前150個字元
+												| 滾滾長江東逝水，浪花淘盡英雄。ㄒ
+												| 是非成敗轉頭空。
+												| 青山依舊在，幾度夕陽紅。
+												| 白髮漁樵江渚上，慣看秋月春風。
+												| 一壺濁酒喜相逢。
+												| 古今多少事，都付笑談中。
+										.diary-pic
+											.pic
+												img(src="dist/images/temp/pic1.jpg", alt="")
+						// ==================================================================
+						// 示意
+						// 文章送出（無回饋、無提報通過）
+						// data-state=""
+						// 沒有圖片
+						li#diary_tw000223_2018051001.diary_item(data-state="")
+							a(href="").inner.d-flex
+								.inner-s
+									.diary-date 2018-05-11
+									.diary-state
+								.inner-l
+									.diary_item_block.p-2.pl-3.d-flex
+										.diary-txt.pr-2
+											.diary-category.mb-1 生活學習
+											.diary-brief
+												| 滾滾長江東逝水，浪花淘盡英雄。ㄒ
+												| 是非成敗轉頭空。
+												| 青山依舊在，幾度夕陽紅。
+												| 白髮漁樵江渚上，慣看秋月春風。
+												| 一壺濁酒喜相逢。
+												| 古今多少事，都付笑談中。
+
+						// ==================================================================
+						// 示意
+						// 文章送出（有回饋、有提報通過）
+						// data-state="feedback,heart"
+						// 沒有圖片
+						li#diary_tw000223_2018051101.diary_item(data-state="feedback,heart")
+							a(href="").inner.d-flex
+								.inner-s
+									.diary-date 2018-05-11
+									.diary-state
+								.inner-l
+									.diary_item_block.p-2.pl-3.d-flex
+										.diary-txt.pr-2
+											.diary-category.mb-1 生活學習
+											.diary-brief
+												| 滾滾長江東逝水，浪花淘盡英雄。ㄒ
+												| 是非成敗轉頭空。
+												| 青山依舊在，幾度夕陽紅。
+												| 白髮漁樵江渚上，慣看秋月春風。
+												| 一壺濁酒喜相逢。
+												| 古今多少事，都付笑談中。
+
+						// ==================================================================
+						// 示意
+						// 文章送出（有回饋、有提報通過）
+						// data-state="feedback,heart"
+						// 有圖片
+						li#diary_tw000223_2018051101.diary_item(data-state="feedback,heart")
+							a(href="").inner.d-flex
+								.inner-s
+									.diary-date 2018-05-11
+									.diary-state
+								.inner-l
+									.diary_item_block.p-2.pl-3.d-flex
+										.diary-txt.pr-2
+											.diary-category.mb-1 生活學習
+											.diary-brief
+												| 滾滾長江東逝水，浪花淘盡英雄。ㄒ
+												| 是非成敗轉頭空。
+												| 青山依舊在，幾度夕陽紅。
+												| 白髮漁樵江渚上，慣看秋月春風。
+												| 一壺濁酒喜相逢。
+												| 古今多少事，都付笑談中。
+										.diary-pic
+											.pic
+												img(src="dist/images/temp/pic1.jpg", alt="")
+
+						// ==================================================================
+						// 示意
+						// 文章送出（有回饋、無提報通過）
+						// data-state="feedback"
+						// 有圖片
+						li#diary_tw000223_2018051101.diary_item(data-state="feedback")
+							a(href="").inner.d-flex
+								.inner-s
+									.diary-date 2018-05-11
+									.diary-state
+								.inner-l
+									.diary_item_block.p-2.pl-3.d-flex
+										.diary-txt.pr-2
+											.diary-category.mb-1 生活學習
+											.diary-brief
+												| 滾滾長江東逝水，浪花淘盡英雄。ㄒ
+												| 是非成敗轉頭空。
+												| 青山依舊在，幾度夕陽紅。
+												| 白髮漁樵江渚上，慣看秋月春風。
+												| 一壺濁酒喜相逢。
+												| 古今多少事，都付笑談中。
+										.diary-pic
+											.pic
+												img(src="dist/images/temp/pic1.jpg", alt="")
+
+						li#diary_tw000223_2018051101.diary_item(data-state="temporary")
+							a(href="").inner.d-flex
+								.inner-s
+									.diary-date 2018-05-11
+									.diary-state
+								.inner-l
+									.diary_item_block.p-2.pl-3.d-flex
+										.diary-txt.pr-2
+											.diary-category.mb-1 生活學習
+											.diary-brief
+												| 滾滾長江東逝水，浪花淘盡英雄。ㄒ
+												| 是非成敗轉頭空。
+												| 青山依舊在，幾度夕陽紅。
+												| 白髮漁樵江渚上，慣看秋月春風。
+												| 一壺濁酒喜相逢。
+												| 古今多少事，都付笑談中。
+										.diary-pic
+											.pic
+												img(src="dist/images/temp/pic1.jpg", alt="")
+
+						li#diary_tw000223_2018051101.diary_item(data-state="temporary")
+							a(href="").inner.d-flex
+								.inner-s
+									.diary-date 2018-05-11
+									.diary-state
+								.inner-l
+									.diary_item_block.p-2.pl-3.d-flex
+										.diary-txt.pr-2
+											.diary-category.mb-1 生活學習
+											.diary-brief
+												| 滾滾長江東逝水，浪花淘盡英雄。ㄒ
+												| 是非成敗轉頭空。
+												| 青山依舊在，幾度夕陽紅。
+												| 白髮漁樵江渚上，慣看秋月春風。
+												| 一壺濁酒喜相逢。
+												| 古今多少事，都付笑談中。
+										.diary-pic
+											.pic
+												img(src="dist/images/temp/pic1.jpg", alt="")
+
+
+block page_script
+	// =========================================================================
+	// 頁面單獨ＪＳ  START
+	script.
+		$(function() {
+			
+		});
+	// =========================================================================
+

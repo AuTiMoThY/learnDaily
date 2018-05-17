@@ -1,0 +1,20 @@
+.diary_list {}
+
+.js-show-adv_search {
+	.btn-adv_search {}
+	.adv_search-box {}
+	.content_main {
+		// -webkit-filter: blur(3px);
+		// filter: blur(3px);
+	}
+	.mask_div {
+		z-index: 2;
+	}
+}
+
+.mask_div {
+	@include wh;
+	@include absolute(0, $L:0);
+	z-index: -1;
+	background-color: rgba(#000, 0.5);
+}

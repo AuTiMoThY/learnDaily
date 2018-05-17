@@ -1,0 +1,258 @@
+@charset "UTF-8";
+
+/*========================================================================*\
+		>>	layout
+\*========================================================================*/
+
+html, body {
+	height: 100%;
+	// min-width: $cnt_width;
+}
+
+.page_wrap {
+	position: relative;
+	min-height: 100%;
+
+	&.login_page {
+		background-color: theme-color("primary1");
+	}
+}
+
+
+.page_sidebar {
+	@include fixed(0, $L:#{$menu_w}px);
+	z-index: 9;
+	width: #{$aside_w}px;
+	// min-height: 100%;
+	height: 100%;
+	overflow-y: auto;
+	padding-top: #{$header_h}px;
+	background-color: white;
+	box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+
+	transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+	.js-closeAside & {
+		width: #{$aside_w-close}px;
+	}
+
+	&-hd {
+		// min-height: #{$header_h}px;
+		// background-color: theme-color("primary1");
+	}
+
+	&-bd {
+		min-height: 100%;
+		height: 100%;
+		// padding: 1em 0;
+		overflow-y: auto;
+	}
+}
+
+.page_menu {
+	@include fixed(0, $L:0);
+	z-index: 10;
+	width: #{$menu_w}px;
+	height: 100%;
+	padding-top: #{$header_h}px;
+	background-color: theme-color("primary1");
+	box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+
+	&-item {
+		padding: 0.4em 0;
+	}
+
+	a {
+		display: block;
+		color: #7baedc;
+		@include remCalc(font-size, 14);
+		text-align: center;
+	}
+
+	.icon {
+		position: relative;
+		font-size: 2em;
+		svg {
+			width: 90%;
+			height: 1em;
+			fill: currentColor;
+		}
+	}
+}
+
+
+.page_container {
+	// width: 100%;
+	min-height: 100%;
+	padding-top: #{$header_h}px;
+	padding-left: #{$aside_w+$menu_w}px;
+	background-color: gray("200");
+
+	transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+	.js-closeAside & {
+		padding-left: #{$aside_w-close}px;
+	}
+}
+
+
+.page_header {
+	@include fixed(0, $L:0);
+	z-index: 11;
+	width: 100%;
+	height: #{$header_h}px;
+	// padding-left: #{$aside_w+$menu_w}px;
+	background-color: theme-color("primary1");
+	// @include background-image(linear-gradient(theme-color("primary1"), theme-color("primary2")));
+	box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.08);
+
+	display: flex;
+
+	&-container {
+		position: relative;
+		height: 100%;
+
+		flex: 0 1 100%;
+	}
+
+	.logo {
+		position: relative;
+		display: block;
+		// @include absolute(0, $L:0);
+		// width: #{$aside_w+$menu_w}px;
+		height: #{$header_h}px;
+		background-color: theme-color("primary1");
+		// @include background-image(linear-gradient(theme-color("primary1"), theme-color("primary2")));
+
+		transition: all 0.3s ease-in-out;
+
+		flex: 0 0 #{$aside_w+$menu_w}px;
+
+		&:hover {
+			// @include background-image(linear-gradient(darken(theme-color("primary1"), 5%), darken(theme-color("primary2"), 5%)));
+			background-color: theme-color("primary-dark");
+		}
+
+		&-lg {
+			@include absolute(0, 0, 0, 0);
+			margin: auto;
+			@include wh(145, 25);
+		}
+	}
+
+	.okmenu {
+		height: 100%;
+
+		&-list {
+			height: 100%;
+		}
+	}
+
+	.okdropdown {
+		height: 100%;
+
+		&-ctrl {
+			padding: 0 10px;
+			border: none;
+			&:after {
+				display: none;
+			}
+		}
+	}
+
+	.okuser-photo {
+		@include circle(40);
+	}
+}
+
+.page_title {
+	margin-bottom: 0;
+	color: gray("600");
+	@include remCalc(font-size, 18);
+}
+
+
+main {
+	min-height: 100%;
+	// min-width: 1280px;
+	height: 100%;
+	overflow: hidden;
+}
+
+.content_wrapper {
+	position: relative;
+	// background-color: gray("200");
+}
+
+.content_title {
+	position: relative;
+	z-index: 10;
+	height: #{$content_title_h}px;
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+	padding: 0.25em $breadcrumb-padding-x;
+
+	// margin-left: ($grid-gutter-width / -2);
+	// margin-right: ($grid-gutter-width / -2);
+	@extend .row;
+
+	.current_page {
+		color: theme-color(df-grey);
+		@include remCalc(font-size, 18px);
+		line-height: 47px;
+	}
+}
+
+.content_container {
+	// padding: 1.25rem 1rem;
+	padding: 1.25rem 0;
+}
+
+.content_main {
+	position: relative;
+	z-index: 1;
+
+	-webkit-filter: blur(0px);
+	filter: blur(0px);
+	transition: all 0.3s linear;
+
+}
+
+
+.lis-n {
+	list-style: none;
+	padding: 0;
+}
+
+.inner {
+	&-table {
+		display: table;
+		@include wh;
+		vertical-align: middle;
+	}
+	&-tablecell {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+.inner-link {
+
+	&:hover {
+		
+	}
+}
+
+code {
+    padding: .2rem .4rem;
+    // font-size: 90%;
+    color: #bd4147;
+    background-color: #f7f7f9;
+    border-radius: .25rem;
+}

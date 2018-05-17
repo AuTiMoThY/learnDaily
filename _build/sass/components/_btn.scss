@@ -1,0 +1,41 @@
+.btn {
+
+	&-icon {
+		margin-right: $btn-icon-margin;
+	}
+
+	&-add {
+		background-color: #ecc700;
+		color: $grey-darken-3;
+		.btn-icon {
+			fill: $grey-darken-3;
+		}
+	}
+
+	&-goback {
+		color: $grey-darken-2;
+		background-color: $grey-lighten-3;
+	}
+
+	&-adv_search {
+		background-color: transparent;
+		border: none;
+		padding: 0.5em;
+		color: theme-color("df-grey");
+
+		cursor: pointer;
+
+		transition: $btn-transition;
+		&:focus {
+			outline: 0;
+		}
+
+		&:hover {
+			background-color: $grey-lighten-2;
+		}
+
+		.js-show-adv_search & {
+			background-color: $grey-lighten-2;
+		}
+	}
+}
