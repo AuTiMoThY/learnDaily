@@ -11783,28 +11783,16 @@ html, body {
   background-color: #005bac;
   box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
 }
-.page_menu ul {
-  list-style: none;
-  padding-left: 0;
+@media (max-width: 767.98px) {
+  .page_menu {
+    width: 100%;
+  }
 }
 .page_menu-item {
   padding: 0.4em 0;
 }
 .page_menu a {
   display: block;
-  color: #7baedc;
-  font-size: 14px;
-  font-size: 0.875rem;
-  text-align: center;
-}
-.page_menu .icon {
-  position: relative;
-  font-size: 2em;
-}
-.page_menu .icon svg {
-  width: 90%;
-  height: 1em;
-  fill: currentColor;
 }
 
 .page_container {
@@ -12059,7 +12047,6 @@ label.input__label {
 }
 
 .ui-datepicker {
-  position: absolute;
   z-index: 10;
   min-width: 200px;
   background-color: #fff;
@@ -12342,21 +12329,30 @@ label.input__label {
 		>>	page_menu  側邊欄
 \*------------------------------------------------------------------------*/
 .page_menu a {
-  display: block;
+  padding: 0.2em 0;
   color: #7baedc;
   font-size: 14px;
   font-size: 0.875rem;
   text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+.page_menu a .txt {
+  margin-top: -5px;
 }
 .page_menu .icon {
   position: relative;
-  font-size: 2em;
+  font-size: 2.0em;
   color: currentColor;
 }
 .page_menu .icon svg {
   width: 90%;
   height: 1em;
   fill: currentColor;
+}
+
+.page_menu-item.active a, .page_menu a:hover {
+  background-color: #e3f2fd;
+  color: #003667;
 }
 
 /*------------------------------------------------------------------------*\

@@ -1,6 +1,7 @@
 doctype html
 html(class="no-js", lang="zh")
 	-var login = 0
+	-var current_active = ""
 	block vars
 	head
 		meta(charset="utf-8")
@@ -34,14 +35,14 @@ html(class="no-js", lang="zh")
 		script(src="dist/js/libs/modernizr-custom.min.js")
 		script(src="dist/js/ModernizrAu.js")
 
-	body(class="#{login}")
+	body
 		// =========================================================================
 		// SVG sprites  START
 		.symbols_svg.hide
 			include ../symbol/svg/symbols.svg
 		// SVG sprites  END  !!
 		// =========================================================================
-		.page_wrap.cf(class="#{page_class}")
+		.page_wrap.cf(class="#{page_class}", data-current="#{current_active}")
 			if login == 1
 				block content
 			if login == 0

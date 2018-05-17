@@ -3,24 +3,49 @@
 \*------------------------------------------------------------------------*/
 .page_menu {
 
+	&-item {
+		&.active a  {
+			@extend %active;
+		}
+	}
+
 	a {
-		display: block;
+		padding: 0.2em 0;
 		color: #7baedc;
 		@include remCalc(font-size, 14);
 		text-align: center;
+
+		transition: $transition-basic;
+
+		.txt {
+			margin-top: -5px;
+		}
+
+		&:hover {
+			@extend %active;
+		}
+
 	}
 
 	.icon {
 		position: relative;
-		font-size: 2em;
+		font-size: 2.0em;
 
 		color: currentColor;
+		// transition: $transition-basic;
 		svg {
 			width: 90%;
 			height: 1em;
 			fill: currentColor;
+			// transition: $transition-basic;
 		}
 	}
+}
+
+
+%active{
+	background-color: $blue-lighten-5;
+	color: #003667;
 }
 
 

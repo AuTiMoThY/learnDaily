@@ -85,9 +85,10 @@ var okadminUI = (function(window,jQuery){
 		init: function(){
 			// console.log(setup());
 			// this.asideCtrl();
-			this.hasSubList($(".oksidebar-item"));
+			// this.hasSubList($(".oksidebar-item"));
 			this.dropdown();
 			this.InputEffects();
+			this.navCurrentActive($(".page_menu-item"))
 		},
 
 		resizeScreen: function(){
@@ -99,6 +100,23 @@ var okadminUI = (function(window,jQuery){
 
 			$(".content_wrapper").css({
 				'min-height': setHeight
+			});
+		},
+
+
+		/**
+		 * ---------------------------------------------------------------------------------
+		 * >> okadminUI.navCurrentActive  導覽列當前頁面高亮
+		 */
+		navCurrentActive: function(itemEl){
+			itemEl.each(function(index, el) {
+				var current = $(".page_wrap").data('current');
+				console.log(current);
+				console.log($(el).data('menu'));
+				if ($(el).data('menu') == current) {
+					console.log(index);
+					$(el).eq(index).addClass("active");
+				}
 			});
 		},
 

@@ -23,7 +23,7 @@
     <script src="dist/js/libs/modernizr-custom.min.js"></script>
     <script src="dist/js/ModernizrAu.js"></script>
   </head>
-  <body class="0">
+  <body>
     <!-- =========================================================================-->
     <!-- SVG sprites  START-->
     <div class="symbols_svg hide"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
@@ -53,7 +53,7 @@
     </div>
     <!-- SVG sprites  END  !!-->
     <!-- =========================================================================-->
-    <div class="page_wrap cf index_page">
+    <div data-current="index" class="page_wrap cf index_page">
       <header class="page_header"><a href="./" class="logo">
           <div class="logo-lg pic"><img src="dist/images/logo.png" alt=""></div></a>
         <div class="page_header-container cf">
@@ -80,28 +80,28 @@
       </header>
       <div class="page_container">
         <nav class="page_menu">
-          <ul class="cf">
-            <li class="page_menu-item"><a href="">
+          <ul class="cf lis-n">
+            <li data-menu="index" class="page_menu-item"><a href="">
                 <div class="icon"><i class="fas fa-home"></i></div>
                 <div class="txt">首頁</div></a></li>
-            <li class="page_menu-item"><a href="">
+            <li data-menu="diary" class="page_menu-item"><a href="">
                 <div class="icon"><i class="fas fa-file-alt"></i></div>
                 <div class="txt">日誌</div></a></li>
-            <li class="page_menu-item"><a href="">
+            <li data-menu="feedback" class="page_menu-item"><a href="">
                 <div class="icon">
                   <svg class="icons-feelback">
                     <use xlink:href="#svg-feelback"></use>
                   </svg>
                 </div>
                 <div class="txt">回饋</div></a></li>
-            <li class="page_menu-item"><a href="">
+            <li data-menu="vote" class="page_menu-item"><a href="">
                 <div class="icon">
                   <svg class="icons-vote">
                     <use xlink:href="#svg-vote"></use>
                   </svg>
                 </div>
                 <div class="txt">票選</div></a></li>
-            <li class="page_menu-item"><a href="">
+            <li data-menu="config" class="page_menu-item"><a href="">
                 <div class="icon"><i class="fas fa-cog"></i></div>
                 <div class="txt">管理</div></a></li>
           </ul>

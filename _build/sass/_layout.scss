@@ -58,11 +58,9 @@ html, body {
 	background-color: theme-color("primary1");
 	box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
 
-
-	ul {
-		list-style: none;
-		padding-left: 0;
-	}
+	@include media-breakpoint-down(sm){
+		width: 100%;
+	};
 
 	&-item {
 		padding: 0.4em 0;
@@ -70,19 +68,6 @@ html, body {
 
 	a {
 		display: block;
-		color: #7baedc;
-		@include remCalc(font-size, 14);
-		text-align: center;
-	}
-
-	.icon {
-		position: relative;
-		font-size: 2em;
-		svg {
-			width: 90%;
-			height: 1em;
-			fill: currentColor;
-		}
 	}
 }
 
