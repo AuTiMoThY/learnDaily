@@ -1,0 +1,145 @@
+$field_heught: 36px;
+
+select.dummy {
+	height: $field_heught;
+}
+
+.angel-selects {
+	position: relative;
+	// width: 110px;
+	min-height: 100%;
+	min-height: $field_heught;
+	// border-radius: 3px;
+	// border: 1px solid theme-color("df-grey");
+
+
+	&:after {
+		@include psudoClass;
+		@include absolute(0, 15px, 0);
+		margin: auto;
+		@include triBtm(theme-color("df-grey"), 6px, 6px);
+		transition: all 0.3s ease-in-out;
+	}
+
+	&.js-open {
+		&:after {
+			transform: rotate(-180deg);
+		}
+	}
+
+	.error & {
+		border-color: theme-color("ok-error");
+	}
+
+	&-hidden {
+		display: none;
+		visibility: hidden;
+	}
+
+	&-styled {
+		@include wh;
+		// padding: 0 15px;
+		line-height: 1.5;
+		color: $grey-base;
+		// @include remCalc(font-size, 14);
+
+		cursor: pointer;
+
+		&.js-hasSelected {
+			color: theme-color("df-grey");
+			// color: #161616;
+		}
+
+		&:empty {
+			min-height: 24px;
+		}
+
+	}
+
+	&-list {
+		// display: none;
+		z-index: 20;
+
+		// z-index: -1;
+		// opacity: 0;
+
+		@include absolute($field_heught + 10, $L:0);
+		width: 100%;
+		// margin-top: 10px;
+
+		border-radius: 3px;
+		background-color: #fff;
+		box-shadow: 0 2px 4px 0 rgba(153, 153, 153, 0.5);
+
+		max-height: 0;
+		overflow: hidden;
+
+		transition: max-height 0.5s ease-in-out;
+
+		// ul {
+		// 	width: 100%;
+		// 	border-radius: 3px;
+		// 	background-color: #fff;
+		// 	box-shadow: 0 2px 4px 0 rgba(153, 153, 153, 0.5);
+
+		// 	max-height: 0;
+		// 	overflow: hidden;
+
+		// 	transition: max-height 0.5s ease-in-out;
+		// }
+
+		.js-open & {
+			// display: block;
+			// z-index: 10;
+			// opacity: 1;
+
+			// ul {
+			// 	max-height: 200px;
+			// 	overflow-y: auto;
+			// }
+
+			max-height: 320px;
+			overflow-y: auto;
+		}
+
+		&.dir_up {
+			top: inherit;
+			bottom: 60px
+		}
+	}
+
+	&-item {
+		width: 100%;
+		padding: 10px 15px;
+		cursor: pointer;
+
+		color: theme-color("df-grey");
+		// @include remCalc(font-size, 14);
+
+		&:hover {
+			background-color: rgba(0, 91, 172, 0.1);
+		}
+
+		&.js-selected {
+			background-color: theme-color("primary1");
+			color: #fff;
+		}
+
+		&:empty {
+			padding: 0;
+		}
+	}
+}
+
+
+.extra-wrapper {
+	position: relative;
+
+	&:after {
+		@include psudoClass;
+		@include absolute(0, 15px, 0);
+		margin: auto;
+		@include triBtm(theme-color("df-grey"), 6px, 6px);
+		transition: all 0.3s ease-in-out;
+	}
+}

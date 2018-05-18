@@ -1,6 +1,7 @@
 extends ../jade_inc/layout.jade
 block vars
 	-var page_class = "index_page"
+	-var current_active = "diary"
 
 block title
 	title 學習日誌
@@ -25,18 +26,30 @@ block content
 									.row
 										label.col-md-auto.col-form-label(for="diaryDate") 選擇日期
 										.col-6.control-field
-											input.form-control(type="text", name="", id="diaryDate")
+											input.form-control.datepicker(type="text", name="", id="diaryDate")
 								.form-group.col
 									.row
 										label.col-md-auto.col-form-label(for="diaryCategory") 選擇類別
 										.col-6.control-field
-											input.form-control(type="text", name="", id="diaryCategory")
+											| <select class="form-control" name="diary_category" id="diary_category">
+											|	<option value="">請選擇類別</option>
+											|	<option value="1">生活學習</option>
+											|	<option value="2">人際關係</option>
+											|	<option value="3">類別三</option>
+											|	<option value="4">類別四</option>
+											| </select>
 							.form-row
 								.form-group.col
 									.row
 										label.col-12.col-form-label(for="diaryContent") 日誌內容
 										.col-12.control-field
 											textarea#diaryContent.form-control(name="")
+							.form-row
+								.form-group.col
+									.row
+										label.col-12.col-form-label(for="upload_pic") 上傳圖片
+										.col-6.control-field
+											input.form-control(type="file", name="", id="upload_pic")
 
 
 block page_script

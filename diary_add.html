@@ -53,7 +53,7 @@
     </div>
     <!-- SVG sprites  END  !!-->
     <!-- =========================================================================-->
-    <div data-current="" class="page_wrap cf index_page">
+    <div data-current="diary" class="page_wrap cf index_page">
       <header class="page_header"><a href="./" class="logo">
           <div class="logo-lg pic"><img src="dist/images/logo.png" alt=""></div></a>
         <div class="page_header-container cf">
@@ -81,27 +81,27 @@
       <div class="page_container">
         <nav class="page_menu">
           <ul class="cf lis-n">
-            <li data-menu="index" class="page_menu-item"><a href="">
+            <li data-menu="index" class="page_menu-item"><a href="./">
                 <div class="icon"><i class="fas fa-home"></i></div>
                 <div class="txt">首頁</div></a></li>
-            <li data-menu="diary" class="page_menu-item"><a href="">
+            <li data-menu="diary" class="page_menu-item"><a href="diary_add.html">
                 <div class="icon"><i class="fas fa-file-alt"></i></div>
                 <div class="txt">日誌</div></a></li>
-            <li data-menu="feedback" class="page_menu-item"><a href="">
+            <li data-menu="feedback" class="page_menu-item"><a href="feedback.html">
                 <div class="icon">
                   <svg class="icons-feelback">
                     <use xlink:href="#svg-feelback"></use>
                   </svg>
                 </div>
                 <div class="txt">回饋</div></a></li>
-            <li data-menu="vote" class="page_menu-item"><a href="">
+            <li data-menu="vote" class="page_menu-item"><a href="vote.html">
                 <div class="icon">
                   <svg class="icons-vote">
                     <use xlink:href="#svg-vote"></use>
                   </svg>
                 </div>
                 <div class="txt">票選</div></a></li>
-            <li data-menu="config" class="page_menu-item"><a href="">
+            <li data-menu="config" class="page_menu-item"><a href="config.html">
                 <div class="icon"><i class="fas fa-cog"></i></div>
                 <div class="txt">管理</div></a></li>
           </ul>
@@ -160,7 +160,7 @@
                         <div class="row">
                           <label for="diaryDate" class="col-md-auto col-form-label">選擇日期</label>
                           <div class="col-6 control-field">
-                            <input type="text" name="" id="diaryDate" class="form-control">
+                            <input type="text" name="" id="diaryDate" class="form-control datepicker">
                           </div>
                         </div>
                       </div>
@@ -168,7 +168,13 @@
                         <div class="row">
                           <label for="diaryCategory" class="col-md-auto col-form-label">選擇類別</label>
                           <div class="col-6 control-field">
-                            <input type="text" name="" id="diaryCategory" class="form-control">
+                            <select class="form-control" name="diary_category" id="diary_category">
+                            	<option value="">請選擇類別</option>
+                            	<option value="1">生活學習</option>
+                            	<option value="2">人際關係</option>
+                            	<option value="3">類別三</option>
+                            	<option value="4">類別四</option>
+                            </select>
                           </div>
                         </div>
                       </div>

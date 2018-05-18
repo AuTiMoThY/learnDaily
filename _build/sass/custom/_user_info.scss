@@ -1,9 +1,10 @@
 .user_info {
 	height: 100%;
 	background-color: #065297;
-	padding: 0 1em;
+	padding: 0 1rem 1.5rem;
 	color: #fff;
 	letter-spacing: 1px;
+	overflow-y: auto;
 
 	&-hd {
 		position: relative;

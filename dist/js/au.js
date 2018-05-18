@@ -7,15 +7,18 @@
 * TOC
 *
 * okadminUI
+* - okadminUI.navCurrentActive  導覽列當前頁面高亮
 * - okadminUI.InputEffects  輸入框效果
 * - okadminUI.formCheck  表單驗證
 * okadminUI.hasSubList  側邊欄 判斷是否有子選單
 * - okadminUI.ctrlSubList  側邊欄 子選單開關
 * - okadminUI.dropdown
+* - okadminUI.selectStyled  <select> 美化
 * learnDiaryUI
 * - okadminUI.progressBar 進度條
 * - okadminUI.diaryState 日誌狀態
 * - okadminUI.modDropdown 下拉選單
+* - okadminUI.advSearchCtrl 搜尋框開關
 */
 
 var viewPortWidthHeight = function () {
@@ -63,10 +66,10 @@ var okadminUI = (function(window,jQuery){
     var _this = this;
 
     var setup = function(){
-    	var setup = {
-    		$asideCtrl: $(".aside-ctrl")
-    	}
-    	return setup;
+    	return {
+    		$asideCtrl: $(".aside-ctrl"),
+
+    	};
     };
 
     var subList = {
@@ -88,7 +91,8 @@ var okadminUI = (function(window,jQuery){
 			// this.hasSubList($(".oksidebar-item"));
 			this.dropdown();
 			this.InputEffects();
-			this.navCurrentActive($(".page_menu-item"))
+			this.selectStyled().init();
+			this.navCurrentActive($(".page_menu-item"));
 		},
 
 		resizeScreen: function(){
@@ -115,7 +119,7 @@ var okadminUI = (function(window,jQuery){
 				console.log($(el).data('menu'));
 				if ($(el).data('menu') == current) {
 					console.log(index);
-					$(el).eq(index).addClass("active");
+					$(itemEl).eq(index).addClass("active");
 				}
 			});
 		},
@@ -126,6 +130,7 @@ var okadminUI = (function(window,jQuery){
 		 * >> okadminUI.InputEffects  輸入框效果
 		 */
 		InputEffects: function(){
+			console.log('okadminUI.InputEffects  START');
 			$( 'input.input__field').each(function(index, el) {
 				if ($.trim($(el).val()) != "") {
 					$(this).parent().addClass('input--filled')
@@ -148,6 +153,8 @@ var okadminUI = (function(window,jQuery){
 					}
 				});
 			});
+
+
 		},
 
 
@@ -288,11 +295,129 @@ var okadminUI = (function(window,jQuery){
 			$(document).click(function(event) {
 				$(".okdropdown.js-open").removeClass('js-open');
 			});
-		}
+		},
 		/**
 		 * okadminUI.dropdown  END  !!
 		 * ---------------------------------------------------------------------------------
 		 */
+
+		/**
+		 * -------------------------------------------------------------------------------------
+		 * >> okadminUI.selectStyled  <select> 美化
+		 */
+		selectStyled:function() {
+			var config = function(){
+				return {
+					el: {
+						wrap: "angel-selects",
+						hidden: "angel-selects-hidden",
+						styled: "angel-selects-styled",
+						list: "angel-selects-list",
+						item: "angel-selects-item",
+					},
+					open_class: 'js-open',
+					selected_class: 'js-selected',
+					hasSelected_class: 'js-hasSelected'
+				}
+			}
+			return{
+
+				init: function () {
+					console.log('okadminUI.selectStyled START');
+					// if (!$.browser.mobile) {
+						this.styled();
+					// } else {
+					// 	$("select").each(function (index, el) {
+					// 		$(this).wrap('<div class="extra-wrapper"></div>');
+					// 	});
+					// 	$("select").change(function (event) {
+					// 		$(this).addClass('js-hasSelected')
+					// 	});
+					// }
+				},
+
+
+				styled: function () {
+					var _ = config();
+					$('select.form-control').each(function () {
+						var $this = $(this), numberOfOptions = $(this).children('option').length;
+						var $thisParent = $(this).parents('.control-field');
+
+						$this.removeClass('form-control').addClass(_.el.hidden);
+						$this.wrap('<div class="'+_.el.wrap+' form-control"></div>');
+						$this.after('<div class='+_.el.styled+'></div>');
+
+						var $styledSelect = $this.next('div.'+_.el.styled);
+						$styledSelect.text($this.children('option').eq(0).text());
+
+
+						if ($this.hasClass('dir_up')) {
+							var $list = $('<ul />', {
+								'class': _.el.list+' lis-n dir_up cf'
+							}).insertAfter($styledSelect);
+						} else {
+							var $list = $('<ul />', {
+								'class': _.el.list+' lis-n cf'
+							}).insertAfter($styledSelect);
+						}
+						for (var i = 0; i < numberOfOptions; i++) {
+							$('<li />', {
+								'class': _.el.item,
+								text: $this.children('option').eq(i).text(),
+								rel: $this.children('option').eq(i).val()
+							}).appendTo($list);
+						}
+
+						var $listItems = $list.children('li');
+
+						if ($this.hasClass('input__field--yoshiko')) {
+							$styledSelect.click(function(event) {
+								$(this).parents(".input--yoshiko").addClass('input--filled');
+							});
+							$listItems.click(function(event) {
+								if ($(this).attr('rel') == '') {
+									$(this).parents(".input--yoshiko").removeClass('input--filled');
+								}
+							});
+						}
+
+						$styledSelect.click(function (e) {
+							e.stopPropagation();
+							$('.js-open div.'+_.el.styled).not(this).each(function () {
+								$(this).parent().removeClass(_.open_class);
+							});
+							$(this).parent().toggleClass(_.open_class);
+						});
+
+						$listItems.click(function (e) {
+							e.stopPropagation();
+							$styledSelect.text($(this).text()).parent().removeClass(_.open_class);
+							if ($(this).attr('rel') == '') {
+								$styledSelect.removeClass(_.hasSelected_class);
+							}
+							else {
+								$styledSelect.addClass(_.hasSelected_class);
+							}
+
+							$listItems.removeClass(_.selected_class);
+							$(this).addClass(_.selected_class);
+
+							$this.val($(this).attr('rel'));
+							console.log($this.val());
+
+							if ($thisParent.hasClass('error')) {
+								$thisParent.removeClass('error').find('label.error').remove();
+							}
+						});
+
+						$(document).click(function () {
+							$styledSelect.parent().removeClass(_.open_class);
+						});
+
+					});
+				}
+			}
+		},
 	}
 
 
@@ -333,7 +458,7 @@ var learnDiaryUI = (function(window,jQuery){
     	};
     }
     function clarify_content(el){
-    	var blurElement = {a:3};//start the blur at 0 pixels
+    	var blurElement = {a:3};//start the blur at 3 pixels
 
     	TweenMax.to(blurElement, 1, {a:0, onUpdate:applyBlur});
     	function applyBlur(){
@@ -447,6 +572,11 @@ $(window).resize(function (event) {
 
 });
 
+
+/**
+ * ---------------------------------------------------------------------------------
+ * > doc ready
+ */
 $(function() {
 	okadminUI.resizeScreen();
 	okadminUI.init();
@@ -498,9 +628,11 @@ $(function() {
 		nextText: "",
 		// showButtonPanel: true,
 		dateFormat: "yy-mm-dd",
-		beforeShow: function() {
+		beforeShow: function(e, o) {
+			console.log(o);
 		    setTimeout(function(){
-		        $('.ui-datepicker').css('z-index', 10);
+
+		        $(o.dpDiv).css({'z-index': 10, 'min-width': '250px'});
 		    }, 0);
 		},
 		onSelect: function(e, obj){
