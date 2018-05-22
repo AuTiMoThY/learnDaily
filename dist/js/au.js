@@ -17,10 +17,11 @@
 * - okadminUI.selectStyled  <select> 美化
 * - okadminUI.notice 通知彈出框
 * learnDiaryUI
-* - okadminUI.progressBar 進度條
-* - okadminUI.diaryState 日誌狀態
-* - okadminUI.modDropdown 下拉選單
-* - okadminUI.advSearchCtrl 搜尋框開關
+* - learnDiaryUI.progressBar 進度條
+* - learnDiaryUI.diaryState 日誌狀態
+* - learnDiaryUI.modDropdown 下拉選單
+* - learnDiaryUI.advSearchCtrl 搜尋框開關
+* - learnDiaryUI.reply
 * doc ready
 */
 
@@ -564,7 +565,7 @@ var learnDiaryUI = (function(window,jQuery){
 		},
 		/**
 		 * ---------------------------------------------------------------------------------
-		 * >> okadminUI.progressBar 進度條
+		 * >> learnDiaryUI.progressBar 進度條
 		 */
 		progressBar: function() {
 			var $progressBar = $("#progressBar");
@@ -582,7 +583,7 @@ var learnDiaryUI = (function(window,jQuery){
 
 		/**
 		 * ---------------------------------------------------------------------------------
-		 * >> okadminUI.diaryState 日誌狀態
+		 * >> learnDiaryUI.diaryState 日誌狀態
 		 */
 		diaryState: function(el){
 			var state = $(el).data('state');
@@ -604,7 +605,7 @@ var learnDiaryUI = (function(window,jQuery){
 
 		/**
 		 * ---------------------------------------------------------------------------------
-		 * >> okadminUI.modDropdown 下拉選單
+		 * >> learnDiaryUI.modDropdown 下拉選單
 		 */
 		modDropdown: function() {
 			$(".mod-dropdown-ctrl").each(function(index, el) {
@@ -628,7 +629,7 @@ var learnDiaryUI = (function(window,jQuery){
 
 		/**
 		 * ---------------------------------------------------------------------------------
-		 * >> okadminUI.advSearchCtrl 搜尋框開關
+		 * >> learnDiaryUI.advSearchCtrl 搜尋框開關
 		 */
 		advSearchCtrl: function(){
 
@@ -648,7 +649,34 @@ var learnDiaryUI = (function(window,jQuery){
 					clarify_content(['.diary_list']);
 				}
 			});
+		},
+
+		/**
+		 * ---------------------------------------------------------------------------------
+		 * >> learnDiaryUI.reply
+		 */
+		reply: function(el, action){
+			var thisId = $(el).parents(".diary_footer-section").attr('id');
+			var $btn = $(el);
+
+			if (action == "open") {
+				$btn.hide();
+				$("#"+ thisId).addClass('js-openReply');
+			}
+			else if (action == "cancel") {
+				$("#"+ thisId).removeClass('js-openReply');
+				$("#"+ thisId).find('textarea.form-control').val('');
+				setTimeout(function(){
+
+					$("#"+ thisId).find(".btn-reply").show();
+				}, 300);
+			}
+			else if (action == "close") {
+				$("#"+ thisId).removeClass('js-openReply');
+			}
 		}
+
+
 	}
 
 
@@ -738,6 +766,9 @@ $(function() {
 			$("#"+obj.id).parent().addClass('input--filled')
 		}
 	});
+
+
+
 
 
 

@@ -1,0 +1,22 @@
+.feedback {
+	&-txt {}
+	&-date {
+		color: $grey-darken-3;
+		@include remCalc(font-size, 14);
+	}
+	&-cnt {
+		color: $grey-darken-3;
+		letter-spacing: 1px;
+	}
+}
+
+.reply {
+	&-date {
+		color: $grey-darken-3;
+		@include remCalc(font-size, 14);
+	}
+	&-cnt {
+		color: $grey-darken-3;
+		letter-spacing: 1px;
+	}
+}

@@ -79,6 +79,7 @@
 		@include wh(100%, 20);
 		background-color: #00305f;
 		padding: 1px;
+		overflow: hidden;
 
 		.js-progressBar {
 			background-color: #ecc700;

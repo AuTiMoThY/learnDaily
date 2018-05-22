@@ -1,0 +1,83 @@
+.diary_footer {
+	&-tab {
+
+		ul {
+			border-bottom: 1px solid $grey-lighten-2;
+		}
+
+		&-item {
+			// display: block;
+			float: left;
+			position: relative;
+
+			color: theme-color("df-grey");
+			&:after {
+				@include psudoClass;
+				@include absolute($B:0, $L:0);
+				z-index: 1;
+				width: 100%;
+				height: 40px;
+				background-color: $grey-lighten-2;
+				transition: all 0.3s ease-in-out;
+
+			}
+
+			&.active {
+				color: #fff;
+
+				&:after {
+					height: 50px;
+				}
+			}
+
+			&.feedback.active {
+				&:after {
+					background-color: theme-color("primary1");
+				}
+			}
+
+			.inner {
+				display: block;
+				position: relative;
+				z-index: 2;
+				height: 40px;
+				line-height: 40px;
+				padding: 0 2rem;
+			}
+		}
+	}
+	&-container {
+		padding-top: 1rem;
+	}
+
+	&-section {
+		padding: 1rem;
+		border-radius: 5px;
+		box-shadow: $z-depth-1;
+
+		&:not(:first-of-type) {
+			margin-top: 2rem;
+		}
+
+		.inner {
+			&-l {
+				flex: 0 0 130px;
+			}
+			&-r {}
+		}
+
+		.okuser-photo {
+			@include circle(50);
+		}
+
+		.reply_container {
+			.inner {
+				&-l {
+					flex: 0 0 60px;
+				}
+				&-r {}
+			}
+
+		}
+	}
+}

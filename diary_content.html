@@ -147,94 +147,137 @@
         <!-- =========================================================================-->
         <main class="content_wrapper">
           <div class="container-fluid">
-            <header class="content_title justify-content-between"><span class="current_page">新增日誌</span>
+            <header class="content_title justify-content-between"><a href="diary_add.html" class="btn btn-add btn-sm">
+                <div class="btn-icon d-inline-block"><i class="fas fa-pencil-alt"></i></div>新增日誌</a>
               <div class="helpers"><a href="./" class="btn btn-tb btn-goback align-self-end">
                   <div class="btn-icon d-inline-block"><i class="fas fa-arrow-left"></i></div>返回列表</a></div>
             </header>
             <div class="content_container">
               <div class="diary_cnt_wrap p-5">
-                <div class="diary_form">
-                  <form id="diaryForm" action="">
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <div class="row">
-                          <label for="diaryDate" class="col-md-auto col-form-label">選擇日期</label>
-                          <div class="col-6 control-field">
-                            <input type="text" name="diaryDate" id="diaryDate" required value="2018-05-22" class="form-control datepicker">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group col">
-                        <div class="row">
-                          <label for="diaryCategory" class="col-md-auto col-form-label">選擇類別</label>
-                          <div class="col-6 control-field">
-                            <select class="form-control" name="diaryCategory" id="diaryCategory" required>
-                            	<option value="">請選擇類別</option>
-                            	<option value="1" selected="selected">生活學習</option>
-                            	<option value="2">人際關係</option>
-                            	<option value="3">類別三</option>
-                            	<option value="4">類別四</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
+                <section class="diary_cnt_container">
+                  <article class="diary_cnt">
+                    <div class="diary-date">2018-05-22</div>
+                    <div class="diary-category">生活學習</div>
+                    <div class="diary-txt pt-2">
+                      滾滾長江東逝水，浪花淘盡英雄。ㄒ
+                      是非成敗轉頭空。
+                      青山依舊在，幾度夕陽紅。
+                      白髮漁樵江渚上，慣看秋月春風。
+                      一壺濁酒喜相逢。
+                      古今多少事，都付笑談中。
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <div class="row">
-                          <label for="diaryContent" class="col-12 col-form-label">日誌內容</label>
-                          <div class="col-12 control-field">
-                            <textarea id="diaryContent" name="diaryContent" required class="form-control">
-                              滾滾長江東逝水，浪花淘盡英雄。ㄒ
-                              是非成敗轉頭空。
-                              青山依舊在，幾度夕陽紅。
-                              白髮漁樵江渚上，慣看秋月春風。
-                              一壺濁酒喜相逢。
-                              古今多少事，都付笑談中。
-                            </textarea>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="diary-pic pt-2">
+                      <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <div class="row">
-                          <label class="col-md-auto col-form-label">上傳圖片</label>
-                          <div class="col-md control-field file_upload">
-                            <label for="uploadPic" class="form-control file_upload-label"><i class="fas fa-upload"></i>選擇檔案</label>
-                            <input type="file" name="" id="uploadPic" class="form-control file_upload-input">
-                            <div class="file_upload-preview pic mt-2 text-center"></div>
-                          </div>
+                  </article>
+                </section>
+                <section class="diary_footer mt-5">
+                  <div class="diary_footer-tab">
+                    <ul class="cf lis-n">
+                      <li class="diary_footer-tab-item feedback active"><span class="inner">回饋</span></li>
+                    </ul>
+                  </div>
+                  <div class="diary_footer-container">
+                    <!-- id規則參考-->
+                    <!-- diary_[員工編號]_[yyyymmdd][0~9][0~9]_f[0~9][0~9]-->
+                    <section id="diary_tw000223_2018052201_f01" class="diary_footer-section">
+                      <div class="inner d-sm-flex align-items-start">
+                        <div class="inner-l d-flex align-items-center">
+                          <div class="pic okuser-photo"><img src="dist/images/photo.jpg" alt=""></div>
+                          <div class="okuser-name">張阿志</div>
                         </div>
-                      </div>
-                      <div class="form-group col">
-                        <div class="row">
-                          <label for="share_target" class="col-md-auto col-form-label">分享對象</label>
-                          <div class="col-md">
-                            <div class="control-field">
-                              <select id="share_target" name="" multiple="multiple" class="form-control not-styled">
-                                <option value="0" selected="selected" data-photo="dist/images/photo.jpg" class="not-show">主管</option>
-                              </select>
+                        <div class="inner-r">
+                          <div class="feedback-txt">
+                            <div class="feedback-date mb-2">2018-05-22</div>
+                            <div class="feedback-cnt">詞的開首兩句令人想到杜甫的“無邊落木蕭蕭下，不盡長江滾滾來”和蘇軾的“大江東去，浪淘盡，千古風流人物”，以一去不返的江水比喻歷史的進程，用後浪推前浪來比喻英雄叱吒風雲的豐功偉績。然而這一切終將被歷史的長河帶走。“是非成敗轉頭空”是對上兩句歷史現象的總結，從中也可看出作者曠達超脫的人生觀。“青山依舊在，幾度夕陽紅”，青山和夕陽象徵着自然界和宇宙的亙古悠長，儘管歷代興亡盛衰、循環往復，但青山和夕陽都不會隨之改變，一種人生易逝的悲傷...</div>
+                          </div>
+                          <div class="feedback-ft">
+                            <button type="button" onClick="learnDiaryUI.reply(this, 'open')" class="btn btn-light btn-reply">回覆</button>
+                            <div class="reply_form">
+                              <form action="" method="POST">
+                                <div class="form-group">
+                                  <div class="control-field">
+                                    <textarea name="replyCnt" required class="form-control"></textarea>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="form-btns">
+                                    <button type="button" onClick="learnDiaryUI.reply(this, 'cancel')" class="btn btn-grey btn-cancel">取消</button>
+                                    <button type="submit" class="btn blue btn-submit">送出</button>
+                                  </div>
+                                </div>
+                              </form>
                             </div>
-                            <div class="share_target-list">
-                              <ul class="cf lis-n"></ul>
+                            <div class="reply_container">
+                              <div class="inner d-md-flex">
+                                <div class="inner-l">
+                                  <div class="pic okuser-photo">
+                                    <!-- 載入自己的照片--><img src="dist/images/photo.jpg" alt="">
+                                  </div>
+                                </div>
+                                <div class="inner-r">
+                                  <div class="reply-date mb-2"></div>
+                                  <div class="reply-cnt"></div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <div class="row">
-                          <div class="form-btns">
-                            <button id="temporaryBtn" type="button" class="btn btn-success">儲存</button>
-                            <button id="submitBtn" type="submit" class="btn blue">送出</button>
+                    </section>
+                    <!-- 有回覆內容時，顯示回覆內容-->
+                    <section id="diary_tw000223_2018052201_f02" class="diary_footer-section">
+                      <div class="inner d-sm-flex align-items-start">
+                        <div class="inner-l d-flex align-items-center">
+                          <div class="pic okuser-photo"><img src="dist/images/photo.jpg" alt=""></div>
+                          <div class="okuser-name">張阿志</div>
+                        </div>
+                        <div class="inner-r">
+                          <div class="feedback-txt">
+                            <div class="feedback-date mb-2">2018-05-22</div>
+                            <div class="feedback-cnt">一名男子日前到夜市買油條當晚餐，但旁邊站著一位3歲男童，竟偷咬一口油條，沒想到男童家長卻回他：「一口油條又不會少塊肉！」讓他氣到拿剩下的油條猛K男童頭部。<br>男童雖然沒受傷，但被突如其來的舉動嚇到狂哭，因此男童家長報警，做筆錄時，男童家長表示：「不敢相信有人拿油條打我兒子！」男子也堅決不道歉。<br>男童家長更要求5000元賠償和解，不然就要提告，但他認為男童並沒有受傷，向對方表示：「如果小孩有受傷，可以拿出驗傷單或醫療收據，我實付金額！」但家長仍不斷跳針要5000元和解金，還揚言「告到死」，讓他聽了傻眼喵咪</div>
+                          </div>
+                          <div class="feedback-ft">
+                            <div class="reply_container">
+                              <div class="inner d-md-flex">
+                                <div class="inner-l">
+                                  <div class="pic okuser-photo">
+                                    <!-- 載入自己的照片--><img src="dist/images/photo.jpg" alt="">
+                                  </div>
+                                </div>
+                                <div class="inner-r">
+                                  <div class="reply-date mb-2">2018-05-22</div>
+                                  <div class="reply-cnt">
+                                    稍不留神，桌面就會亂七八糟
+                                    一般來說，辦公桌會堆滿文件、物品，變得凌亂，我認為是因為下面幾種心態造成的：
+                                    以為辦公桌周圍的東西，都屬於自己所有。
+                                    文件、物品不在自己身邊，就無法安心工作。
+                                    因為文件、物品都還沒整理，就下意識的認為身邊所有東西，都是自己需要的。
+                                    獨自歸納、製作完成的文件，即使用的是公司的金錢和時間，卻不認為是公司全體員工共有的資產。
+                                    討厭別人打開自己的辦公桌抽屜。
+                                    覺得要離開座位去拿常用的文件很麻煩。
+                                    如同我在前面說的，對上班族來說，辦公桌就是工作的出發點。如果桌上堆滿了文件、物品，找個東西還得耗費時間翻箱倒櫃，工作的品質勢必低落。
+                                    工作能力強的人，桌子周遭一定整理得乾乾淨淨。在顧客的眼裡，這種人「工作迅速又確實」。
+                                    會整理自己腦袋的人，自然會把整理的本事，反映在辦公桌上；反之亦然，會整理辦公桌、整頓工作環境的人，自然就會整理自己的腦袋。
+                                    整理是工作的基本動作，只要養成習慣，種種好處自然會反映在工作成果上，而且會進一步感染整個職場，讓所有同仁都順利使用共有的資訊和物品。
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </form>
-                </div>
+                    </section>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
@@ -264,146 +307,52 @@
     <script>
       $(function() {
       	okadminUI.formCheck().init();
+      	$(".btn-submit").click(function(event) {
+      		var $this =  $(event.target);
+      		var thisId = $this.parents(".diary_footer-section").attr('id');
+      		var form = $("#"+thisId).find('form');
+      		// 表單驗證
+      		$(form).validate({
+      			submitHandler: function (form) {
+      				console.log(form);
+      				//  提交表單
+      				var today = new Date();
+      				var todayStr = today.getFullYear()+ "-" + (today.getMonth()+1) + "-" + today.getDate();
+      				var replyCnt = $("#"+thisId).find('textarea.form-control').val();
       
+      				$("#"+thisId).find('.reply-date').text(todayStr);
+      				$("#"+thisId).find('.reply-cnt').text(replyCnt);
+      				$("#"+thisId).addClass('has-Cnt');
       
-      	// 上傳圖片
-      	$("#uploadPic").change(function(event) {
-      		okadminUI.previewPhoto(this);
-      		console.log(uploadFileVal);
-      	});
+      				console.log(thisId);
       
+      				learnDiaryUI.reply($this, 'close');
       
-      	// member.json :所有使用者的清單
-      	// data:
-      	// member_id
-      	// name
-      	// ext
-      	// email
-      	// photo
-      	$.ajax({
-      		url: 'member.json',
-      		dataType: 'json',
-      		// data: {param1: 'value1'},
-      	})
-      	.done(function(data) {
-      		// 撈完資料後，建立option選項
-      		for (var i = 0; i < data.length; i++) {
-      			var opt_html= "";
-      			opt_html += "<option value='"+data[i]["member_id"]+"' data-photo='"+data[i]["photo"]+"'>";
-      			opt_html += 	data[i]["ext"]+" "+data[i]["name"];
-      			opt_html += "</option>";
-      		    $("#share_target").append(opt_html);
-      		}
-      		// <select>轉變為其他格式 (表面上)
-      		$("#share_target").multipleSelect({
-      			isOpen: false,
-      			width: "100%",
-      		    filter: true,
-      		    selectAll: false,
-      		    // single: true,
-      		    onClick: function(e){
-      		    	$("#share_target").multipleSelect({
-      		    		isOpen: false,
-      		    	});
-      		    	console.log(e);
-      
-      		    }
-      		});
-      
-      	})
-      	.fail(function() {
-      		console.log("error");
-      	})
-      	.always(function() {
-      		// console.log("complete");
-      	});
-      
-      
-      	var ShareList = function(){
-      		return {
-      			'val': '',
-      			'text': ''
-      		}
-      	};
-      
-      
-      	$("#share_target").change(function(event) {
-      		addToShareList();
-      
-      		console.log("change   "+$("#share_target").val());
-      		// console.log(ShareListVal);
-      	});
-      
-      	// 加入分享對象
-      	function addToShareList(){
-      
-      		ShareList.val = $("#share_target").multipleSelect("getSelects");
-      		ShareList.text = $("#share_target").multipleSelect("getSelects", "text");
-      		// console.log(ShareList.val);
-      		// console.log(ShareList.text);
-      		var name = [], photo = [];
-      		var selected_len = $("#share_target :selected").length;
-      		$("#share_target :selected").each(function(index, el) {
-      			photo.push($(this).data('photo'))
-      		});
-      		console.log(photo);
-      
-      
-      		$(".share_target-list ul").html('');
-      		var html = "";
-      		for (var i = 0; i < selected_len; i++) {
-      			html += "<li class=\"share_target-item\" data-id=\""+ShareList.val[i]+"\">";
-      			html += "	<span class=\"pic okuser-photo\"><img src=\""+photo[i]+"\" alt=\"\"></span>";
-      			html += "	<span class=\"okuser-name\">"+ShareList.text[i]+"</span>";
-      			html += "	<button type=\"button\" class=\"btn-removeTarget\" onClick=\"removeTarget(this);\"><i class=\"fas fa-user-times\"></i></button>";
-      			html += "</li>";
-      
-      		}
-      		$(".share_target-list ul").append(html);
-      
-      		$(".share_target-item").append($('<button/>', {'type': 'button', 'class': 'btn-removeTarget'}).on({'click': function(e) {removeTarget(e); } }))
-      
-      		return ShareList;
-      	}
-      
-      	// 移除分享對象
-      	function removeTarget(e){
-      		var target_id = $(e.target).parents("li").data('id');
-      		console.log(target_id);
-      
-      		$(".ms-drop").find('input').each(function(index, el) {
-      			if ($(el).val() == target_id) {
-      				$(this).prop('checked', false);
-      				$('#share_target').multipleSelect('update');
+      				// 用ＡＪＡＸ，將回覆內容傳回後台
+      				$.ajax({
+      					// url: '/path/to/file.aspx',
+      					type: 'POST',
+      					// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+      					data: {'today': todayStr, 'replyCnt':replyCnt},
+      				})
+      				.done(function() {
+      					console.log("success");
+      				})
+      				.fail(function() {
+      					console.log("error");
+      				})
+      				.always(function() {
+      					// console.log("complete");
+      				});
       			}
       		});
-      
-      		// console.log("change   "+$("#share_target").val());
-      	}
-      
-      	// 點擊“儲存”按鈕，先執行okadminUI.notice()
-      	$("#temporaryBtn").click(function(event) {
-      		console.log($("#diaryDate").val());
-      		console.log($("#diaryCategory").val());
-      		console.log($.trim($("#diaryContent").val()));
-      		console.log(uploadFileVal);
-      		console.log(ShareList.val);
-      		console.log(ShareList.text);
-      		okadminUI.notice("已成功暫存。");
+      		// $(form).submit();
       	});
       
-      	var form = $("#diaryForm");
-      	// 表單驗證
-      	form.validate({
-      		submitHandler: function () {
-      			//  提交表單
-      			console.log($("#diaryDate").val());
-      			console.log($("#diaryCategory").val());
-      			console.log($.trim($("#diaryContent").val()));
-      			console.log(uploadFileVal);
-      			console.log(ShareList.val);
-      			console.log(ShareList.text);
-      			//- window.location.href="index.html";
+      	// 如有回覆內容，加上"has-Cnt" class
+      	$(".reply-cnt").each(function(index, el) {
+      		if (!$(el).is(':empty')) {
+      			$(this).parents('.diary_footer-section').addClass('has-Cnt')
       		}
       	});
       });

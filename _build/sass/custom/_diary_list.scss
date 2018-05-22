@@ -69,6 +69,7 @@
 	}
 
 	.inner-l {
+		flex: 0 1 100%;
 		// padding-right: 0.5rem;
 	}
 
@@ -122,6 +123,10 @@
 	.diary-category {
 
 		// @include absolute();
+	}
+
+	.diary-txt {
+		flex: auto;
 	}
 
 	.diary-pic {

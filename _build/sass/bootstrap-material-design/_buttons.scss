@@ -44,7 +44,7 @@
     }
   }
   &.btn-sm {
-    @include button-size($btn-padding-y-small, $btn-padding-x-small, $btn-font-size-medium);
+    @include button-size($btn-padding-y-small, $btn-padding-x-small, $btn-font-size-basic);
     .btn-icon {
       font-size: $btn-icon-small;
     }
