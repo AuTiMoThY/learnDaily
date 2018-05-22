@@ -1,0 +1,44 @@
+.file_upload {
+	&-label {
+		display: block;
+		margin-bottom: 0;
+		// padding: $input-padding-y $input-padding-x;
+		text-align: center;
+		border-radius: 5px;
+		cursor: pointer;
+
+		border: none;
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
+		// &:hover {
+		// 	border: none;
+		// 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+		// }
+
+		// &:focus {
+		// 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.10);
+		// }
+
+		// &:hover {
+		// 	box-shadow:0 0 5px darken(theme-color("primary1"), 5%);
+		// }
+
+		.svg-inline--fa {
+			margin-right: 0.3rem;
+		}
+
+	}
+	&-input {
+		display: none;
+	}
+
+	&-preview {
+		max-width: 100%;
+		border-radius: 5px;
+
+
+		&:not(:empty) {
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+		}
+	}
+}

@@ -137,7 +137,7 @@
               </div>
               <div class="calendar_wrap">
                 <div id="calendar"></div>
-                <button class="btn btn-tb btn-primary m-auto d-block today">返回今日</button>
+                <button class="btn btn-tb btn-primary m-auto today">返回今日</button>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@
                   <!-- 文章暫存-->
                   <!-- data-state="temporary"-->
                   <!-- 有圖片-->
-                  <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="" class="inner d-flex">
+                  <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="diary_edit.html" class="inner d-flex">
                       <div class="inner-s">
                         <div class="diary-date">2018-05-11</div>
                         <div class="diary-state"></div>
@@ -372,7 +372,7 @@
                           </div>
                         </div>
                       </div></a></li>
-                  <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="" class="inner d-flex">
+                  <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="diary_edit.html" class="inner d-flex">
                       <div class="inner-s">
                         <div class="diary-date">2018-05-11</div>
                         <div class="diary-state"></div>
@@ -395,7 +395,7 @@
                           </div>
                         </div>
                       </div></a></li>
-                  <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="" class="inner d-flex">
+                  <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="diary_edit.html" class="inner d-flex">
                       <div class="inner-s">
                         <div class="diary-date">2018-05-11</div>
                         <div class="diary-state"></div>
@@ -431,6 +431,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="dist/js/libs/jquery.min.js"><\/script>')</script>
     <script src="dist/js/libs/plugin_mix.js"></script>
+    <script src="dist/plugin/jquery-ui.js"></script>
     <!-- 動態效果-->
     <script src="dist/plugin/greensock/TweenMax.min.js"></script>
     <script src="dist/plugin/marka/marka.js"></script>
@@ -438,7 +439,7 @@
     <script src="dist/plugin/jquery-validation/jquery.validate.js"></script>
     <script src="dist/plugin/jquery-validation/additional-methods.js"></script>
     <script src="dist/plugin/jquery-validation/localization/messages_zh_TW.js"></script>
-    <script src="dist/plugin/jquery-ui.js"></script>
+    <script src="dist/plugin/multiple-select.js"></script>
     <script src="dist/js/popper.min.js"></script>
     <script src="dist/js/tooltip.js"></script>
     <script src="dist/js/au.js"></script>
@@ -446,7 +447,6 @@
     <!-- 頁面單獨ＪＳ  START-->
     <script>
       $(function() {
-      	
       	// 日誌狀態（篩選下拉選單）
       	// 點擊項目後做動作
       	$("input[name='diaryState']").click(function(event) {

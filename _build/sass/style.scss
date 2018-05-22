@@ -121,6 +121,7 @@
 @import "common/_clearfix";
 @import "common/_pic";
 @import "common/_shadow";
+@import "common/_font";
 
 
 /*------------------------------------------------------------------------*\
@@ -134,7 +135,8 @@
 @import "components/_btn";
 @import "components/_dropdown";
 @import "components/_mod-dropdown";
-@import "components/_angel-selects";
+@import "components/_multiple_select";
+@import "components/_notice";
 
 /*------------------------------------------------------------------------*\
 /*------------------------------------------------------------------------*\
@@ -143,6 +145,8 @@
 \*========================================================================*/
 @import "bootstrap/forms";
 @import "components/_frm";
+@import "components/_angel-selects";
+@import "components/_file_upload";
 
 
 /*------------------------------------------------------------------------*\

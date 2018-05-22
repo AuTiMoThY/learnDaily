@@ -4,3 +4,27 @@
 		resize: none;
 	}
 }
+
+.share_target {
+	&-list {
+		height: 250px;
+		padding-top: 1rem;
+	}
+
+	&-item {
+		position: relative;
+		padding: 0.5rem 1rem;
+		border-bottom: 1px solid #eee;
+		.okuser-photo {
+			display: inline-block;
+			vertical-align: middle;
+			@include circle(30);
+		}
+
+		&:first-of-type {
+			.btn-removeTarget {
+				display: none;
+			}
+		}
+	}
+}

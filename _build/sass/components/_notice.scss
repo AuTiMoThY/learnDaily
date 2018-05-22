@@ -1,0 +1,15 @@
+.notice_wrap {
+	@include fixed(30px, -100%);
+	z-index: 90;
+	padding: 0.8rem 2rem;
+	background-color: $pink-accent-3;
+
+	color: $pink-lighten-5;
+}
+
+.notice {
+	&-icon {
+		// display: inline-block;
+		margin-right: 0.3rem;
+	}
+}

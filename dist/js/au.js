@@ -10,16 +10,21 @@
 * - okadminUI.navCurrentActive  導覽列當前頁面高亮
 * - okadminUI.InputEffects  輸入框效果
 * - okadminUI.formCheck  表單驗證
+* - okadminUI.previewPhoto  圖片上傳之預覽
 * okadminUI.hasSubList  側邊欄 判斷是否有子選單
 * - okadminUI.ctrlSubList  側邊欄 子選單開關
 * - okadminUI.dropdown
 * - okadminUI.selectStyled  <select> 美化
+* - okadminUI.notice 通知彈出框
 * learnDiaryUI
 * - okadminUI.progressBar 進度條
 * - okadminUI.diaryState 日誌狀態
 * - okadminUI.modDropdown 下拉選單
 * - okadminUI.advSearchCtrl 搜尋框開關
+* doc ready
 */
+
+var uploadFileVal = "";
 
 var viewPortWidthHeight = function () {
 
@@ -53,6 +58,7 @@ Waves.attach('.user .okdropdown-ctrl', ['waves-light']);
 // Waves.attach('.pagination .page-item .page-link', ['waves-effect']);
 Waves.attach('.oksidebar-list .inner-link', ['waves-light']);
 Waves.init();
+
 
 
 /**
@@ -115,10 +121,10 @@ var okadminUI = (function(window,jQuery){
 		navCurrentActive: function(itemEl){
 			itemEl.each(function(index, el) {
 				var current = $(".page_wrap").data('current');
-				console.log(current);
-				console.log($(el).data('menu'));
+				// console.log(current);
+				// console.log($(el).data('menu'));
 				if ($(el).data('menu') == current) {
-					console.log(index);
+					// console.log(index);
 					$(itemEl).eq(index).addClass("active");
 				}
 			});
@@ -197,6 +203,45 @@ var okadminUI = (function(window,jQuery){
 					});
 				}
 			}
+
+		},
+
+
+		/**
+		 * ---------------------------------------------------------------------------------
+		 * >> okadminUI.previewPhoto  圖片上傳之預覽
+		 */
+		previewPhoto: function(input){
+			/**
+			 * 	reference
+			 * 	- http://jsfiddle.net/Fractaliste/LvsYc/1669/
+			 * 	- https://codepen.io/matt-west/pen/CfilG?editors=0010
+			 */
+			 console.log(input);
+			var imageType = /image.*/;
+		    if (input.files && input.files[0]) {
+		    	if (input.files[0].type.match(imageType)) {
+		    		var reader = new FileReader();
+		    		reader.onload = function (e) {
+		    			$('.file_upload-preview').html("");
+		    			var img = new Image();
+		    			img.src = e.target.result;
+		    			img.className = "animated fadeIn";
+		    		    $('.file_upload-preview').append(img);
+		    		}
+		    		reader.readAsDataURL(input.files[0]);
+		    		uploadFileVal =  $(input).val();
+		    		// console.log(uploadFileVal);
+		    		return uploadFileVal;
+		    	}
+		    	else {
+		    		var html = "";
+		    		html += "<div class='frm_error-txt'>";
+		    		html += "	不支援此檔案格式，僅支援.jpg、.jpeg、.png。";
+		    		html += "</div>";
+		    		$('.file_upload-preview').html(html);
+		    	}
+		    }
 
 		},
 
@@ -339,7 +384,7 @@ var okadminUI = (function(window,jQuery){
 
 				styled: function () {
 					var _ = config();
-					$('select.form-control').each(function () {
+					$('select.form-control:not(.not-styled)').each(function () {
 						var $this = $(this), numberOfOptions = $(this).children('option').length;
 						var $thisParent = $(this).parents('.control-field');
 
@@ -349,6 +394,9 @@ var okadminUI = (function(window,jQuery){
 
 						var $styledSelect = $this.next('div.'+_.el.styled);
 						$styledSelect.text($this.children('option').eq(0).text());
+
+						var selectedIndex = $this.find(":selected").index();
+						var selectedText = $this.find(":selected").text();
 
 
 						if ($this.hasClass('dir_up')) {
@@ -363,9 +411,11 @@ var okadminUI = (function(window,jQuery){
 						for (var i = 0; i < numberOfOptions; i++) {
 							$('<li />', {
 								'class': _.el.item,
-								text: $this.children('option').eq(i).text(),
-								rel: $this.children('option').eq(i).val()
+								'text': $this.children('option').eq(i).text(),
+								'rel': $this.children('option').eq(i).val()
 							}).appendTo($list);
+
+							// if ($this.children('option').eq(i).) {}
 						}
 
 						var $listItems = $list.children('li');
@@ -379,6 +429,13 @@ var okadminUI = (function(window,jQuery){
 									$(this).parents(".input--yoshiko").removeClass('input--filled');
 								}
 							});
+						}
+
+						if ($this.find('option').get(selectedIndex) != null) {
+						    $this.find('option').get(selectedIndex).selected = true;
+
+						    $listItems.eq(selectedIndex).addClass(_.selected_class);
+						    $styledSelect.addClass(_.hasSelected_class).text(selectedText);
 						}
 
 						$styledSelect.click(function (e) {
@@ -418,6 +475,40 @@ var okadminUI = (function(window,jQuery){
 				}
 			}
 		},
+
+		/**
+		 * -------------------------------------------------------------------------------------
+		 * >> okadminUI.notice 通知彈出框
+		 */
+		notice: function(noticeCnt){
+			var noticeEl = $('<div/>', {'class':'notice_wrap'});
+			$("body").append(noticeEl);
+
+			var cntEl = "";
+			cntEl += "<span class=\"notice-icon\"><i class=\"fas fa-exclamation-circle\"></i></span>";
+			cntEl += "<span class=\"notice-txt\">"+noticeCnt+"</span>";
+			noticeEl.append(cntEl);
+
+			TweenMax.fromTo(noticeEl, 1, {
+				delay: 300,
+				right: '-100%'
+			},{
+				right: '0',
+				onComplete: function(){
+					setTimeout(function(){
+						TweenMax.fromTo(noticeEl, 3, {
+							right: '0'
+						},{
+							right: '-100%',
+							onComplete: function(){
+								noticeEl.remove();
+							}
+						});
+					}, 3000)
+				}
+			});
+
+		}
 	}
 
 
@@ -557,9 +648,6 @@ var learnDiaryUI = (function(window,jQuery){
 					clarify_content(['.diary_list']);
 				}
 			});
-
-
-
 		}
 	}
 
@@ -605,7 +693,16 @@ $(function() {
 		// showButtonPanel: true,
 		dateFormat: "yy-mm-dd",
 		onSelect: function(e, obj){
-			console.log(e);
+			var Today = new Date();
+			var TodayStr = Today.getFullYear()+ "-" + (Today.getMonth()+1) + "-" + Today.getDate();
+			console.log(TodayStr);
+			if (e != TodayStr) {
+				console.log('qw');
+				$("button.today").addClass('js-show');
+			}
+			else {
+				$("button.today").removeClass('js-show');
+			}
 		}
 	});
 	// 點選“返回今日”
@@ -644,8 +741,6 @@ $(function() {
 
 
 
-
-
-
 });
+
 

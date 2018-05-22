@@ -1,0 +1,82 @@
+.ms-parent {
+	position: relative;
+	// height: 36px;
+
+	&.form-control {
+		padding: 0;
+	}
+}
+
+.ms-choice {
+	// @include absolute(0, $L:0);
+	background-color: transparent;
+	border: none;
+	@include wh;
+	padding: $input-padding-y $input-padding-x;
+	color: transparent;
+}
+
+.ms-drop {
+	display: none;
+	@include absolute(0, $L:0);
+	z-index: 10;
+	@include wh;
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+		overflow-y: auto;
+		margin-top: 1rem;
+		box-shadow: $z-depth-4;
+		border-radius: 5px;
+		background-color: #fff;
+	}
+
+	li {
+		&:hover {
+			background-color: #eee;
+		}
+
+		&.selected {
+			display: none;
+		}
+	}
+
+
+
+	label {
+		display: block;
+		margin-bottom: 0;
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+
+		input {
+			display: none;
+		}
+	}
+
+
+	.not-show {
+		display: none;
+	}
+
+	.okuser-photo {
+		display: inline-block;
+		vertical-align: middle;
+		@include circle(30);
+	}
+}
+
+.ms-search {
+	@include wh;
+	input {
+		@include wh;
+		border: none;
+		padding: $input-padding-y $input-padding-x;
+		border-radius: 5px;
+	}
+}
+
+.ms-no-results {
+	padding: 1em;
+}

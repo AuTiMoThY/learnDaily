@@ -1,4 +1,10 @@
 .btn {
+	&.today {
+		display: none;
+		&.js-show {
+			display: block;
+		}
+	}
 
 	&-icon {
 		margin-right: $btn-icon-margin;
@@ -37,5 +43,15 @@
 		.js-show-adv_search & {
 			background-color: $grey-lighten-2;
 		}
+	}
+
+	&-removeTarget {
+		@include absolute(0, 1rem, 0);
+		margin: auto;
+		@include wh(45);
+		color: $red-base;
+		cursor: pointer;
+		border: none;
+		background-color: transparent;
 	}
 }

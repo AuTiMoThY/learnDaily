@@ -26,14 +26,14 @@ block content
 									.row
 										label.col-md-auto.col-form-label(for="diaryDate") 選擇日期
 										.col-6.control-field
-											input.form-control.datepicker(type="text", name="diaryDate", id="diaryDate", required)
+											input.form-control.datepicker(type="text", name="diaryDate", id="diaryDate", required, value="2018-05-22")
 								.form-group.col
 									.row
 										label.col-md-auto.col-form-label(for="diaryCategory") 選擇類別
 										.col-6.control-field
 											| <select class="form-control" name="diaryCategory" id="diaryCategory" required>
 											|	<option value="">請選擇類別</option>
-											|	<option value="1">生活學習</option>
+											|	<option value="1" selected="selected">生活學習</option>
 											|	<option value="2">人際關係</option>
 											|	<option value="3">類別三</option>
 											|	<option value="4">類別四</option>
@@ -43,7 +43,13 @@ block content
 									.row
 										label.col-12.col-form-label(for="diaryContent") 日誌內容
 										.col-12.control-field
-											textarea#diaryContent.form-control(name="diaryContent", required)
+											textarea#diaryContent.form-control(name="diaryContent", required).
+												滾滾長江東逝水，浪花淘盡英雄。ㄒ
+												是非成敗轉頭空。
+												青山依舊在，幾度夕陽紅。
+												白髮漁樵江渚上，慣看秋月春風。
+												一壺濁酒喜相逢。
+												古今多少事，都付笑談中。
 							.form-row
 								.form-group.col
 									.row
@@ -75,7 +81,7 @@ block page_script
 		$(function() {
 			okadminUI.formCheck().init();
 
-			//- var uploadFileVal = '';
+
 			// 上傳圖片
 			$("#uploadPic").change(function(event) {
 				okadminUI.previewPhoto(this);
@@ -116,6 +122,7 @@ block page_script
 				    		isOpen: false,
 				    	});
 				    	console.log(e);
+
 				    }
 				});
 
@@ -139,7 +146,8 @@ block page_script
 			$("#share_target").change(function(event) {
 				addToShareList();
 
-				console.log("select change   "+$("#share_target").val());
+				console.log("change   "+$("#share_target").val());
+				// console.log(ShareListVal);
 			});
 
 			// 加入分享對象
@@ -154,7 +162,7 @@ block page_script
 				$("#share_target :selected").each(function(index, el) {
 					photo.push($(this).data('photo'))
 				});
-				//- console.log(photo);
+				console.log(photo);
 
 
 				$(".share_target-list ul").html('');
@@ -197,7 +205,7 @@ block page_script
 				console.log(uploadFileVal);
 				console.log(ShareList.val);
 				console.log(ShareList.text);
-				okadminUI.notice("已成功暫存。")
+				okadminUI.notice("已成功暫存。");
 			});
 
 			var form = $("#diaryForm");
