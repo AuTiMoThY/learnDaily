@@ -1,0 +1,91 @@
+.feedback_content-bg
+.feedback_content-wrap
+	button.feedback_content-close
+		<i class="icon-close"></i>
+	.feedback_content-container
+		.inner.mcsb
+			article.colleagues_diary-content
+				.inner.d-flex
+					.inner-l
+						.pic.okuser-photo
+							img(src="dist/images/temp/user_photo-s.jpg", alt="")
+						.name
+							.okuser-name 潘心心
+							.okuser-department 資訊科技部-系統開發組
+					.inner-r
+						.diary-date.d-inline-block 2018-03-01
+						.diary-category.d-inline-block 文化傳承
+						p.diary-txt.
+							阿爾紮諾帝國.這是一個國土位于北塞爾福德大陸西北端,處于有著濕潤冬季以及干燥夏季的海洋性溫帶氣候地域的帝政國家.在這個帝國南部的約克夏地區有一個叫做費吉托的都市.說到費吉托最大且唯一的特征,那就是設立有阿爾紮諾帝國魔法學院,是北塞爾福德大陸屈指可數的究學都市這一點了.和魔法學院一起同時被創建,和魔法學院一起發展起來的,就是這座都市費吉托.排列的建築全都有著以尖銳屋頂為特征的傳統風格,讓整個街景形成一幅莊重且優雅的格局.另一方面,出于魔法學院對魔法素材和物品的龐大需求量,這里和其他地方的交易往來也十分興盛,而且由于人員的出入十分頻繁,這里一直都是走在國內流行的最前端——所以這也是一座同時充斥著新舊事物氣息
+			section.diary_footer.mt-5.colleagues_diary-operate
+				.diary_footer-tab.colleagues_diary-operate-tab
+					ul.tabs.cf.lis-n
+						li.tabs_item.diary_footer-tab-item.colleagues_diary-operate-tab-item.upper
+							a(href="#upper").inner 提報
+						li.tabs_item.diary_footer-tab-item.colleagues_diary-operate-tab-item.feedback
+							a(href="#feedback").inner 回饋
+				.tabContainer.diary_footer-container
+					// ==================================================================
+					// 提報 ＳＴＡＲＴ
+					section#upper.tabContainer-content.colleagues_diary-upper
+						.upper_block
+							.upper_block-title 提報原因
+							.upper_block-container
+								.inner
+									.inner-l
+										.pic.okuser-photo
+											// 載入自己的照片
+											img(src="dist/images/photo.jpg", alt="")
+									.inner-r
+										.upper_block-form
+											form(action="", method="POST")
+												.form-group
+													.control-field
+														textarea#upperCnt.form-control(name="upperCnt", required)
+												.form-group
+													.form-btns
+														button.btn.btn-deep-orange.btn-temporary(type="button") 暫存
+														button.btn.blue.btn-submit(type="button") 送出
+										.upper_block-content
+											.upper-date
+											p.upper-cnt
+					// 提報 ＥＮＤ  ！！
+					// ==================================================================
+
+					// ==================================================================
+					// 回饋 ＳＴＡＲＴ
+					section#feedback.tabContainer-content.colleagues_diary-feedback
+						// ==================================================================
+						// 我要回饋區塊 
+						// 如有回饋過此篇，則不需要加“我要回饋區塊”
+						.want_feedback
+							.want_feedback-ctrl.btn(onClick="learnDiaryUI.feedback(this, 'write')")
+								<i class="fas fa-pencil-alt mr-2"></i>
+								| 我要回饋
+							.want_feedback-form
+								form(action="", method="POST")
+									input(type="hidden", id="userPhoto", value="dist/images/photo.jpg")
+									input(type="hidden", id="userName", value="張阿志")
+									.form-group
+										.control-field
+											textarea#feedbackCnt.form-control(name="feedbackCnt", required)
+									.form-group
+										.form-btns
+											button.btn.btn-deep-orange.btn-temporary(type="button") 暫存
+											button.btn.blue.btn-submit(type="button") 送出
+						// ==================================================================
+						// 已有資料的回饋區塊（其他人的回饋）
+						section.feedback_block
+							.inner
+								.inner-l
+									.pic.okuser-photo
+										img(src="dist/images/photo.jpg", alt="")
+									.name
+										.okuser-name 潘心心
+								.inner-r
+									.feedback-date 2018-03-01
+									p.feedback-cnt.
+										阿爾紮諾帝國.這是一個國土位于北塞爾福德大陸西北端,處于有著濕潤冬季以及干燥夏季的海洋性溫帶氣候地域的帝政國家.在這個帝國南部的約克夏地區有一個叫做費吉托的都市.說到費吉托最大且唯一的特征,那就是設立有阿爾紮諾帝國魔法學院,是北塞爾福德大陸屈指可數的究學都市這一點了.和魔法學院一起同時被創建,和魔法學院一起發展起來的,就是這座都市費吉托.排列的建築全都有著以尖銳屋頂為特征的傳統風格,讓整個街景形成一幅莊重且優雅的格局.另一方面,出于魔法學院對魔法素材和物品的龐大需求量,這里和其他地方的交易往來也十分興盛,而且由于人員的出入十分頻繁,這里一直都是走在國內流行的最前端——所以這也是一座同時充斥著新舊事物氣息
+					// 回饋 ＥＮＤ  ！！
+					// ==================================================================
+

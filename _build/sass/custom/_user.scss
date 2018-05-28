@@ -1,9 +1,12 @@
 .okuser {
 	&-photo {
+		position: relative;
 		overflow: hidden;
 		box-shadow: 1px 1px 3px rgba(black, 0.5);
 
 		img {
+			@include absolute(0, 0, 0, 0);
+			margin: auto;
 			max-width: 100%;
 			height: auto;
 		}

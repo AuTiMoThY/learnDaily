@@ -1,0 +1,23 @@
+.feedback_block {
+	box-shadow: $z-depth-1;
+	padding: 1.5rem;
+
+	&:not(:first-of-type) {
+		margin-top: 1.8rem;
+	}
+ 	.inner {
+		display: flex;
+		align-items: flex-start;
+		&-l {
+			flex: 0 0 130px;
+			display: flex;
+			align-items: center;
+		}
+		&-r {}
+	}
+
+	.okuser-photo {
+		@include circle(50);
+
+	}
+}

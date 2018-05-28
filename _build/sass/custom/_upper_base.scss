@@ -1,0 +1,15 @@
+.upper {
+	&-txt {}
+	&-date {
+		color: $grey-darken-3;
+		@include remCalc(font-size, 14);
+	}
+	&-cnt {
+		margin-bottom: 0;
+
+		color: $grey-darken-3;
+		letter-spacing: 1px;
+		text-align: justify;
+	}
+}
+

@@ -16,6 +16,8 @@
     <script src="dist/fontawesome/js/fontawesome-all.js"></script>
     <!-- marka css (icon transformation)-->
     <link rel="stylesheet" href="dist/plugin/marka/marka.css">
+    <!-- custom scrollbar-->
+    <link rel="stylesheet" href="dist/plugin/jquery.mCustomScrollbar.css">
     <!-- style-->
     <link rel="stylesheet" href="dist/css/set2.css">
     <link rel="stylesheet" href="dist/css/style.css">
@@ -248,7 +250,10 @@
     <script src="dist/plugin/jquery-validation/jquery.validate.js"></script>
     <script src="dist/plugin/jquery-validation/additional-methods.js"></script>
     <script src="dist/plugin/jquery-validation/localization/messages_zh_TW.js"></script>
+    <!-- 多選-->
     <script src="dist/plugin/multiple-select.js"></script>
+    <!-- custom scrollbar-->
+    <script src="dist/plugin/jquery.mCustomScrollbar.js"></script>
     <script src="dist/js/popper.min.js"></script>
     <script src="dist/js/tooltip.js"></script>
     <script src="dist/js/au.js"></script>
@@ -257,6 +262,14 @@
     <script>
       $(function() {
       	okadminUI.formCheck().init();
+      
+      
+      
+      	var d = "<option value=''></option>";
+      	d += "<option value='12341234'>12341234</option>";
+      	$("#diaryCategory").empty().append(d);
+      	okadminUI.selectStyled().refresh($("#diaryCategory"));
+      
       
       	//- var uploadFileVal = '';
       	// 上傳圖片
@@ -304,6 +317,19 @@
       
       	})
       	.fail(function() {
+      		$("#share_target").multipleSelect({
+      			isOpen: false,
+      			width: "100%",
+      		    filter: true,
+      		    selectAll: false,
+      		    // single: true,
+      		    onClick: function(e){
+      		    	$("#share_target").multipleSelect({
+      		    		isOpen: false,
+      		    	});
+      		    	console.log(e);
+      		    }
+      		});
       		console.log("error");
       	})
       	.always(function() {

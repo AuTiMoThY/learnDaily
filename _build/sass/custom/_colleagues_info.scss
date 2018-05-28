@@ -1,0 +1,11 @@
+.colleagues_info {
+	&-name {
+		@include remCalc(font-size, 18);
+		color: #595757;
+	}
+
+	&-department {
+		@include remCalc(font-size, 14);
+		color: #8a8585;
+	}
+}

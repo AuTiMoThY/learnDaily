@@ -1,6 +1,6 @@
 /*--------------------------------------*\
 	okbank learn diary
-	V 0.0.0
+	V 0.5.2
 			by okbank AuTiMoThY
 \*--------------------------------------*/
 /*
@@ -16,16 +16,22 @@
 * - okadminUI.dropdown
 * - okadminUI.selectStyled  <select> 美化
 * - okadminUI.notice 通知彈出框
+* - okadminUI.tabs 頁籤
 * learnDiaryUI
 * - learnDiaryUI.progressBar 進度條
 * - learnDiaryUI.diaryState 日誌狀態
 * - learnDiaryUI.modDropdown 下拉選單
 * - learnDiaryUI.advSearchCtrl 搜尋框開關
 * - learnDiaryUI.reply
+* - learnDiaryUI.feedback
+* - learnDiaryUI.feedbackBlock  回饋區塊
 * doc ready
 */
 
 var uploadFileVal = "";
+var checkedVal = "";
+var _Diary_State_Value = "";
+var _Department_Value = "";
 
 var viewPortWidthHeight = function () {
 
@@ -473,6 +479,80 @@ var okadminUI = (function(window,jQuery){
 						});
 
 					});
+				},
+
+				refresh: function(el){
+					console.log('okadminUI.selectStyled().refresh() START');
+					var _ = config();
+					var $this = $(el);
+					var $thisParent = $this.parents('.control-field');
+					var numberOfOptions = $this.children('option').length;
+					var $old_list = $this.parent("."+_.el.wrap).find("."+_.el.list);
+					var $old_styledSelect = $this.next('div.'+_.el.styled);
+
+					$old_list.remove();
+					$old_styledSelect.remove();
+
+					var $styledSelect = $("<div/>", {
+						class: _.el.styled
+					}).insertAfter($this);
+					$styledSelect.text($this.children('option').eq(0).text());
+
+					var $list = $("<ul/>", {
+						class: _.el.list + " lis-n cf"
+					}).insertAfter($styledSelect)
+
+					for (var i = 0; i < numberOfOptions; i++) {
+						$('<li />', {
+							'class': _.el.item,
+							'text': $this.children('option').eq(i).text(),
+							'rel': $this.children('option').eq(i).val()
+						}).appendTo($list);
+						// if ($this.children('option').eq(i).) {}
+					}
+					var $listItems = $list.children('li');
+
+					var selectedIndex = $this.find(":selected").index();
+					var selectedText = $this.find(":selected").text();
+					if ($this.find('option').get(selectedIndex) != null) {
+					    $this.find('option').get(selectedIndex).selected = true;
+
+					    $listItems.eq(selectedIndex).addClass(_.selected_class);
+					    $styledSelect.addClass(_.hasSelected_class).text(selectedText);
+					}
+
+					$styledSelect.click(function (e) {
+						e.stopPropagation();
+						$('.js-open div.'+_.el.styled).not(this).each(function () {
+							$(this).parent().removeClass(_.open_class);
+						});
+						$(this).parent().toggleClass(_.open_class);
+					});
+
+					$listItems.click(function (e) {
+						e.stopPropagation();
+						$styledSelect.text($(this).text()).parent().removeClass(_.open_class);
+						if ($(this).attr('rel') == '') {
+							$styledSelect.removeClass(_.hasSelected_class);
+						}
+						else {
+							$styledSelect.addClass(_.hasSelected_class);
+						}
+
+						$listItems.removeClass(_.selected_class);
+						$(this).addClass(_.selected_class);
+
+						$this.val($(this).attr('rel'));
+						console.log($this.val());
+
+						if ($thisParent.hasClass('error')) {
+							$thisParent.removeClass('error').find('label.error').remove();
+						}
+					});
+
+					$(document).click(function () {
+						$styledSelect.parent().removeClass(_.open_class);
+					});
 				}
 			}
 		},
@@ -508,8 +588,112 @@ var okadminUI = (function(window,jQuery){
 					}, 3000)
 				}
 			});
+		},
 
-		}
+		/**
+		 * -------------------------------------------------------------------------------------
+		 * >> okadminUI.tabs 頁籤
+		 */
+		tabs: function() {
+			var $tabs = $(".tabs"),
+				$tabsItem = $(".tabs_item:not(.link_page)"),
+				$tabContainer = $(".tabContainer"),
+				$tabContent = $(".tabContainer-content"),
+				currentSelector = 'js-active',
+				padding = 32;
+
+			return {
+				init: function(cur){
+					var that = this;
+					if (!$tabsItem.length) {
+						return false;
+					}
+
+					$tabContent.each(function(index, el) {
+						$(el).css({
+							display: 'none',
+							opacity: 0,
+							zIndex: '-1'
+						});
+					});
+
+					that.setHeight(cur);
+					$tabsItem.eq(cur).addClass(currentSelector);
+					$tabContent.eq(cur).css({
+						display: 'block',
+						opacity: '1',
+						zIndex: 10
+					}).addClass('js-show');
+
+					// 如果有 hash
+					// 就跳到該區塊
+					if (location.hash != "") {
+						var showCnt = location.hash;
+						console.log(showCnt);
+
+						$tabsItem.removeClass(currentSelector);
+						$tabs.find('a').each(function(index, el) {
+							if ($(el).attr('href') == showCnt) {
+								$(this).parent().addClass(currentSelector);
+							}
+						});
+
+						$tabContent.removeClass('js-show');
+						$(showCnt).addClass('js-show');
+						that.toggleContent($(".tabContainer-content:not(.js-show)"), $(showCnt))
+					}
+
+					$tabsItem.click(function(event) {
+						event.preventDefault();
+						console.log($(this).index());
+						var showCnt = $(this).find("a").attr('href');
+						location.hash = showCnt;
+
+						$tabsItem.removeClass(currentSelector);
+						$(this).addClass(currentSelector);
+
+						$tabContent.removeClass('js-show');
+						$(showCnt).addClass('js-show');
+
+
+						that.toggleContent($(".tabContainer-content:not(.js-show)"), $(showCnt))
+					});
+
+				},
+
+				setHeight: function(cur){
+					var cntHeight = $tabContent.eq(cur).outerHeight();
+					console.log(cntHeight);
+
+					$tabContainer.height(cntHeight + padding);
+				},
+
+				toggleContent: function(hideCnt, showCnt){
+					TweenMax.to(hideCnt, 0.1, {
+						opacity: 0,
+						onComplete: function(){
+							TweenMax.to(hideCnt, 0, {
+								css:{zIndex:'-1', display:'none'}
+							})
+							setTimeout(function(){
+								TweenMax.to(showCnt, 0, {
+									css: {
+										display: 'block'
+									},
+									onComplete: function(){
+										TweenMax.to(showCnt, 0.3, {css:{zIndex:'10', opacity: 1}});
+										var cntHeight = this.target.outerHeight();
+										$tabContainer.height(cntHeight + padding);
+									}
+								});
+							}, 300);
+						}
+					});
+				}
+			}
+
+		},
+
 	}
 
 
@@ -609,8 +793,14 @@ var learnDiaryUI = (function(window,jQuery){
 		 */
 		modDropdown: function() {
 			$(".mod-dropdown-ctrl").each(function(index, el) {
+				var defaltTxt = $(el).text();
+				var dropdownType = $(el).parents(".mod-dropdown").data('type');
 				$(el).click(function(event) {
 					event.stopPropagation();
+					if ($(".page_wrap").hasClass('js-show-adv_search')) {
+						$(".page_wrap.js-show-adv_search").removeClass('js-show-adv_search');
+						clarify_content(['.content_main ul']);
+					}
 					$('.js-open .mod-dropdown-ctrl').not(this).each(function () {
 						$(this).parents(".mod-dropdown").removeClass("js-open");
 					});
@@ -619,12 +809,47 @@ var learnDiaryUI = (function(window,jQuery){
 
 				$(el).next(".mod-dropdown-list").find('li').click(function(event) {
 					event.stopPropagation();
+
+				});
+
+				$(el).parents(".mod-dropdown").find("input").click(function(event) {
+					console.log(dropdownType);
+
+					if (dropdownType == "department") {
+						_Department_Value = $(this).parents(".mod-dropdown").find("input:checked").map(function(){
+							return $(this).val();
+						}).get().join();
+
+						if (_Department_Value != "") {
+							$(this).parents(".mod-dropdown").find(".mod-dropdown-ctrl").text(_Department_Value);
+						}
+						else {
+							$(this).parents(".mod-dropdown").find(".mod-dropdown-ctrl").text(defaltTxt);
+						}
+						return _Department_Value;
+					}
+					else {
+						_Diary_State_Value = $(this).parents(".mod-dropdown").find("input:checked").map(function(){
+							return $(this).val();
+						}).get().join();
+
+						if (_Diary_State_Value != "") {
+							$(this).parents(".mod-dropdown").find(".mod-dropdown-ctrl").text(_Diary_State_Value);
+						}
+						else {
+							$(this).parents(".mod-dropdown").find(".mod-dropdown-ctrl").text(defaltTxt);
+						}
+						return _Diary_State_Value;
+					}
+
+
 				});
 
 				$(document).click(function () {
 					$(".mod-dropdown-ctrl").parents(".mod-dropdown").removeClass("js-open");
 				});
 			});
+
 		},
 
 		/**
@@ -636,17 +861,15 @@ var learnDiaryUI = (function(window,jQuery){
 			isClick($(".btn-adv_search"), $(".page_wrap"), "js-show-adv_search");
 			$(".mask_div").click(function(event) {
 				$(".page_wrap.js-show-adv_search").removeClass('js-show-adv_search');
-				clarify_content(['.diary_list']);
-
+				clarify_content(['.content_main ul']);
 			});
-
 
 			$(".btn-adv_search").click(function(event) {
 				if ($(".page_wrap").hasClass('js-show-adv_search')) {
-					blur_content(['.diary_list']);
+					blur_content(['.content_main ul']);
 				}
 				else{
-					clarify_content(['.diary_list']);
+					clarify_content(['.content_main ul']);
 				}
 			});
 		},
@@ -674,6 +897,168 @@ var learnDiaryUI = (function(window,jQuery){
 			else if (action == "close") {
 				$("#"+ thisId).removeClass('js-openReply');
 			}
+		},
+
+		/**
+		 * ---------------------------------------------------------------------------------
+		 * >> learnDiaryUI.feedback  一些動作
+		 */
+		feedback: function(el, action, showId){
+			var $thisParent = $(el).parents(".feedback_content");
+			if ($thisParent.length) {
+				var thisId = $thisParent.data('diaryid');
+			}
+			else {
+				var thisId = showId;
+			}
+			var $btn = $(el);
+
+			console.log(thisId);
+			if (action == "write") {
+				$btn.parent(".want_feedback").toggleClass('js-openFeedback');
+				var tabsCntIndex = $btn.parents(".tabContainer-content").index();
+				// console.log();
+				setTimeout(function(){
+					okadminUI.tabs().setHeight(tabsCntIndex);
+				}, 300)
+			}
+			else if (action == "show_colleagues_diary") {
+				$(".page_wrap").addClass('js-show_feedback_cnt')
+				// $('.feedback_content').data('diaryid', thisId);
+				$(".feedback_content").css('zIndex', '49');
+				TweenMax.fromTo($('.feedback_content-wrap'), 0.5, {
+					right: '-100%',
+				}, {
+					right: 0,
+					onComplete: function(){
+						setTimeout(function(){
+							// TweenMax.to(showCnt, 0.3, {css:{zIndex:'10', opacity: 1}});
+						}, 300);
+					}
+				});
+				TweenMax.fromTo($('.feedback_content-bg'), 0.3, {
+					opacity: 0
+				}, {
+					opacity: 1
+				});
+			}
+			else if (action == "close_colleagues_diary") {
+				var $wrap = $thisParent.children('.feedback_content-wrap');
+				var $bg = $thisParent.children('.feedback_content-bg');
+				$(".page_wrap").removeClass('js-show_feedback_cnt');
+
+				TweenMax.fromTo($wrap, 0.5, {
+					right: 0
+				}, {
+					right: '-100%',
+					onComplete: function(){
+						learnDiaryUI.clearFeedbackText($thisParent);
+						$thisParent.css('zIndex', '-1');
+					}
+				});
+				TweenMax.fromTo($bg, 0.3, {
+					opacity: 1
+				}, {
+					opacity: 0
+				});
+			}
+		},
+
+
+		/**
+		 * ---------------------------------------------------------------------------------
+		 *  learnDiaryUI.feedbackWrapEl  整個回饋內容區塊
+		 */
+		feedbackWrapEl: function(el){
+
+		},
+
+		/**
+		 * ---------------------------------------------------------------------------------
+		 * >> learnDiaryUI.feedbackBlockEl  回饋區塊
+		 */
+		feedbackBlockEl: function(img, name, date, cnt){
+			var el = "";
+			el += "<section class=\"feedback_block\">";
+			el += "  <div class=\"inner\">";
+			el += "    <div class=\"inner-l\">";
+			el += "      <div class=\"pic okuser-photo\"><img src=\""+img+"\" alt=\"\"></div>";
+			el += "      <div class=\"name\">";
+			el += "        <div class=\"okuser-name\">"+name+"</div>";
+			el += "      </div>";
+			el += "    </div>";
+			el += "    <div class=\"inner-r\">";
+			el += "      <div class=\"feedback-date\">"+date+"</div>";
+			el += "      <p class=\"feedback-cnt\">"+cnt+"</p>";
+			el += "    </div>";
+			el += "  </div>";
+			el += "</section>";
+
+			return el;
+		},
+
+		/**
+		 * ---------------------------------------------------------------------------------
+		 * >> learnDiaryUI.feedback  一些動作
+		 */
+		formRemove: function(el){
+			var removeEl = el;
+			var tabsCntIndex = $(el).parents(".tabContainer-content").index();
+			TweenMax.to(removeEl, 0.3, {
+				css: {
+					height: '0',
+					'margin-bottom': '0',
+					'opacity': '0',
+					'overflow': 'hidden'
+				},
+				ease: Power1.easeInOut,
+				onComplete: function(){
+					okadminUI.tabs().setHeight(tabsCntIndex);
+					setTimeout(function(){
+						removeEl.remove();
+					}, 1000)
+				}
+			});
+		},
+
+		/**
+		 * ---------------------------------------------------------------------------------
+		 * >> learnDiaryUI.clearFeedbackText  收合後清空文字
+		 */
+		clearFeedbackText: function(el){
+			var dataid, $colleagues_diary, upper, $feedback_block;
+
+			dataid = $(el).data('diaryid');
+			$colleagues_diary = {
+				photo: $(el).find('.okuser-photo'),
+				name: $(el).find('.okuser-name'),
+				department: $(el).find('.okuser-department'),
+				date: $(el).find('.diary-date'),
+				category: $(el).find('.diary-category'),
+				txt: $(el).find('.diary-txt')
+			};
+			$upper = {
+				cnt: $(el).find('#upperCnt')
+			}
+			$feedback_block = $(".feedback_block");
+
+			$colleagues_diary.photo.text('');
+			$colleagues_diary.name.text('');
+			$colleagues_diary.department.text('');
+			$colleagues_diary.date.text('');
+			$colleagues_diary.category.text('');
+			$colleagues_diary.txt.text('');
+			$upper.cnt.val("");
+
+			$feedback_block.each(function(index, el) {
+				$(el).find('.okuser-photo img').attr('src', '');
+				$(el).find('.okuser-name').text('');
+				$(el).find('.feedback-date').text('');
+				$(el).find('.feedback-cnt').text('');
+			});
+
+			$(el).empty();
+
 		}
 
 
@@ -757,20 +1142,36 @@ $(function() {
 			console.log(o);
 		    setTimeout(function(){
 
-		        $(o.dpDiv).css({'z-index': 10, 'min-width': '250px'});
+		        $(o.dpDiv).css({'z-index': 10, 'min-width': '250px'}).position({
+					my: "bottom",
+					at: "bottom",
+					of: "#"+o.id
+				});
 		    }, 0);
 		},
 		onSelect: function(e, obj){
-			console.log(e);
-			console.log(obj);
+			// console.log(e);
+			// console.log(obj);
 			$("#"+obj.id).parent().addClass('input--filled')
 		}
 	});
 
+	$.ajax({
+		url: 'colleagues_diary.json',
+		// type: 'default GET (Other values: POST)',
+		// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+		// data: {param1: 'value1'},
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function(error) {
+		console.log(error);
+		// JSON.parse(error)
+	});
+	
 
-
-
-
+	// $(".feedback_list ul").
 
 });
 

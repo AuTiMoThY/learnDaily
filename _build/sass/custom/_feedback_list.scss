@@ -1,0 +1,69 @@
+.feedback_list {
+	padding-left: 0.6rem;
+	padding-right: 0.6rem;
+}
+
+.feedback_item {
+	margin-bottom: 2rem;
+
+	&:hover {
+		.inner {
+			z-index: 10;
+			transform: scale(1.05);
+		}
+	}
+
+	.inner {
+		position: relative;
+		padding: 1.2rem;
+		background-color: #fff;
+		box-shadow: $z-depth-1-half;
+
+		transition: all 0.15s $easeInOutCubic3;
+	    align-items: center;
+		&-l {
+			flex: 0 0 100px;
+		}
+		&-r {
+			padding-left: 0.8rem;
+		}
+	}
+
+	.colleagues_info-name {
+		margin-right: 1rem;
+	}
+
+	.okuser-photo {
+		@include circle(80);
+		margin: auto;
+	}
+
+	.diary-date {
+		margin-right: 1rem;
+		// @include remCalc(font-size, 16);
+		color: theme-color("df-grey");
+	}
+
+	.diary-category {
+		color: theme-color("df-grey");
+	}
+
+	.diary-brief {
+		// mih
+		height: calc(1em * 2 * 1.5);
+		@include text_ellipsis(2, 1.5);
+	}
+}
+
+
+.feedback_info {
+	padding-left: 1rem;
+	color: $grey-darken-2;
+	@include remCalc(font-size, 16);
+	font-weight: normal;
+
+	.red-text {
+		@include remCalc(font-size, 21);
+		padding: 0 0.3rem;
+	}
+}

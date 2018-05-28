@@ -76,6 +76,14 @@ block page_script
 		$(function() {
 			okadminUI.formCheck().init();
 
+
+
+			var d = "<option value=''></option>";
+			d += "<option value='12341234'>12341234</option>";
+			$("#diaryCategory").empty().append(d);
+			okadminUI.selectStyled().refresh($("#diaryCategory"));
+
+
 			//- var uploadFileVal = '';
 			// 上傳圖片
 			$("#uploadPic").change(function(event) {
@@ -122,6 +130,19 @@ block page_script
 
 			})
 			.fail(function() {
+				$("#share_target").multipleSelect({
+					isOpen: false,
+					width: "100%",
+				    filter: true,
+				    selectAll: false,
+				    // single: true,
+				    onClick: function(e){
+				    	$("#share_target").multipleSelect({
+				    		isOpen: false,
+				    	});
+				    	console.log(e);
+				    }
+				});
 				console.log("error");
 			})
 			.always(function() {

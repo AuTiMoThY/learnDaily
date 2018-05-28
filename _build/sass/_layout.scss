@@ -12,6 +12,7 @@ html, body {
 .page_wrap {
 	position: relative;
 	min-height: 100%;
+	overflow: hidden;
 
 	&.login_page {
 		background-color: theme-color("primary1");
@@ -81,15 +82,16 @@ html, body {
 
 	transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-	.js-closeAside & {
+	.js-closeAside &, .feedback_index_page & {
 		padding-left: #{$aside_w-close}px;
 	}
+
 }
 
 
 .page_header {
 	@include fixed(0, $L:0);
-	z-index: 11;
+	z-index: 50;
 	width: 100%;
 	height: #{$header_h}px;
 	// padding-left: #{$aside_w+$menu_w}px;
@@ -188,9 +190,10 @@ main {
 	@extend .row;
 
 	.current_page {
+		margin-bottom: 0;
 		color: theme-color(df-grey);
 		@include remCalc(font-size, 18px);
-		line-height: 47px;
+		// line-height: 47px;
 	}
 }
 

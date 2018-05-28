@@ -1,0 +1,122 @@
+
+<div class="feedback_content-bg"></div>
+<div class="feedback_content-wrap">
+  <button class="feedback_content-close"><i class="icon-close"></i></button>
+  <div class="feedback_content-container">
+    <div class="inner mcsb">
+      <article class="colleagues_diary-content">
+        <div class="inner d-flex">
+          <div class="inner-l">
+            <div class="pic okuser-photo"><img src="" alt=""/></div>
+            <div class="name">
+              <div class="okuser-name"> </div>
+              <div class="okuser-department"> </div>
+            </div>
+          </div>
+          <div class="inner-r">
+            <div class="diary-date d-inline-block"> </div>
+            <div class="diary-category d-inline-block"> </div>
+            <p class="diary-txt"></p>
+          </div>
+        </div>
+      </article>
+      <section class="diary_footer mt-5 colleagues_diary-operate">
+        <div class="diary_footer-tab colleagues_diary-operate-tab">
+          <ul class="tabs cf lis-n">
+            <li class="tabs_item diary_footer-tab-item colleagues_diary-operate-tab-item upper"><a href="#upper" class="inner">提報</a></li>
+            <li class="tabs_item diary_footer-tab-item colleagues_diary-operate-tab-item feedback"><a href="#feedback" class="inner">回饋</a></li>
+          </ul>
+        </div>
+        <div class="tabContainer diary_footer-container">
+          <!-- ==================================================================-->
+          <!-- 提報 ＳＴＡＲＴ-->
+          <section id="upper" class="tabContainer-content colleagues_diary-upper">
+            <div class="upper_block">
+              <div class="upper_block-title">提報原因</div>
+              <div class="upper_block-container">
+                <div class="inner">
+                  <div class="inner-l">
+                    <div class="pic okuser-photo">
+                      <!-- 載入自己的照片--><img src="dist/images/photo.jpg" alt=""/>
+                    </div>
+                  </div>
+                  <div class="inner-r">
+                    <div class="upper_block-form">
+                      <form action="" method="POST">
+                        <div class="form-group">
+                          <div class="control-field">
+                            <textarea id="upperCnt" name="upperCnt" required="required" class="form-control"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-btns">
+                            <button type="button" class="btn btn-deep-orange btn-temporary">暫存</button>
+                            <button type="button" class="btn blue btn-submit">送出</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="upper_block-content">
+                      <div class="upper-date"></div>
+                      <p class="upper-cnt"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- 提報 ＥＮＤ  ！！-->
+          <!-- ==================================================================-->
+          <!-- ==================================================================-->
+          <!-- 回饋 ＳＴＡＲＴ-->
+          <section id="feedback" class="tabContainer-content colleagues_diary-feedback">
+            <!-- ==================================================================-->
+            <!-- 我要回饋區塊 -->
+            <!-- 如有回饋過此篇，則不需要加“我要回饋區塊”-->
+            <div class="want_feedback">
+              <div onClick="learnDiaryUI.feedback(this, 'write')" class="want_feedback-ctrl btn">
+                <i class="fas fa-pencil-alt mr-2"></i>
+                我要回饋
+              </div>
+              <div class="want_feedback-form">
+                <form action="" method="POST">
+                  <input type="hidden" id="userPhoto" value=""/>
+                  <input type="hidden" id="userName" value=""/>
+                  <div class="form-group">
+                    <div class="control-field">
+                      <textarea id="feedbackCnt" name="feedbackCnt" required="required" class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-btns">
+                      <button type="button" class="btn btn-deep-orange btn-temporary">暫存</button>
+                      <button type="button" class="btn blue btn-submit">送出</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- ==================================================================-->
+            <!-- 已有資料的回饋區塊（其他人的回饋）-->
+            <section class="feedback_block">
+              <div class="inner">
+                <div class="inner-l">
+                  <div class="pic okuser-photo"><img src="" alt=""/></div>
+                  <div class="name">
+                    <div class="okuser-name"> </div>
+                  </div>
+                </div>
+                <div class="inner-r">
+                  <div class="feedback-date"> </div>
+                  <p class="feedback-cnt"></p>
+                </div>
+              </div>
+            </section>
+          </section>
+          <!-- 回饋 ＥＮＤ  ！！-->
+          <!-- ==================================================================-->
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

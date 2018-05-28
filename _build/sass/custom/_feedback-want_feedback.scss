@@ -1,0 +1,59 @@
+.want_feedback {
+	margin-bottom: 2rem;
+	&-ctrl {
+		position: relative;
+		width: 100%;
+		background-color: theme-color("primary1");
+		padding: 0.8rem;
+		margin: 0;
+		text-align: center;
+		color: #fff;
+		font-size: 1rem;
+
+		svg {
+			// margin-right: 0.5rem;
+		}
+
+		&:after {
+			@include psudoClass;
+			@include absolute(0, 1rem, 0);
+			margin: auto;
+			@include wh(0, 4);
+			background-color: #fff;
+
+			transition: all 0.3s $easeInOutCubic3;
+			.js-openFeedback & {
+				width: 25px;
+			}
+		}
+
+	}
+
+	&-form {
+		max-height: 0;
+		overflow: hidden;
+		border-bottom: 1px solid transparent;
+		transition: all 0.3s ease-in-out;
+
+		.js-openFeedback & {
+			max-height: 500px;
+			border-bottom: 1px solid $grey-lighten-2;
+			// margin-bottom: 0.5rem;
+		}
+
+		form {
+			padding: 3px;
+		}
+		textarea {
+			height: 250px;
+			resize: none;
+		}
+
+		.form-btns {
+			display: table;
+			margin: auto;
+		}
+	}
+}
+
+

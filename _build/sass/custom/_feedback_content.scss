@@ -1,0 +1,61 @@
+.feedback_content {
+	@include absolute(0, 0);
+	// z-index: 49;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	// background-color: #fff;
+	// 
+	.js-show_feedback_cnt & {
+		// z-index: 49;
+	}
+
+	&-bg {
+		position: relative;
+		z-index: 1;
+		@include wh;
+		background-color: rgba(0, 0, 0, 0.5);
+
+		opacity: 0;
+	}
+
+	&-wrap {
+		@include absolute(0, 0);
+		z-index: 2;
+		width: 70%;
+		height: 100%;
+		background-color: #fff;
+		// padding: 3rem;
+
+		right: -1px;
+	}
+
+	&-container {
+		height: 100%;
+		padding: 3rem 0;
+
+		.inner.mcsb {
+			padding-left: 4rem;
+			padding-right: 1rem;
+			height: 100%;
+		}
+	}
+
+	&-close {
+		@include absolute(80px, $L:(100 / 2) * -1px);
+		@include circle(100);
+		background-color: #fff;
+		border: none;
+
+		cursor: pointer;
+
+		.icon-close {
+			@include absolute(0, 0, 0, 0);
+			margin: auto;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+}

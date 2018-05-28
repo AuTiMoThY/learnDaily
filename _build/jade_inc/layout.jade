@@ -2,6 +2,7 @@ doctype html
 html(class="no-js", lang="zh")
 	-var login = 0
 	-var current_active = ""
+	-var show_aside = 1
 	block vars
 	head
 		meta(charset="utf-8")
@@ -25,6 +26,8 @@ html(class="no-js", lang="zh")
 		script(src="dist/fontawesome/js/fontawesome-all.js")
 		// marka css (icon transformation)
 		link(rel="stylesheet", href="dist/plugin/marka/marka.css")
+		// custom scrollbar
+		link(rel="stylesheet", href="dist/plugin/jquery.mCustomScrollbar.css")
 		block pluginStyle
 
 		// style
@@ -50,7 +53,8 @@ html(class="no-js", lang="zh")
 				.page_container
 
 					include ../jade_inc/menu.jade
-					include ../jade_inc/aside.jade
+					if show_aside == 1
+						include ../jade_inc/aside.jade
 					// =========================================================================
 					// 頁面內容  START
 					// =========================================================================

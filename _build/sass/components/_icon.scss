@@ -1,0 +1,25 @@
+.icon {
+	&-close {
+		display: block;
+		position: relative;
+		@include circle(50);
+		background-color: $grey-base;
+
+		&:before {
+			@include psudoClass;
+			@include absolute(48%, 0, $L:0);
+			margin: auto;
+			@include wh(70%, 3px);
+			background-color: #fff;
+			transform: rotate(45deg);
+		}
+		&:after {
+			@include psudoClass;
+			@include absolute(48%, 0, $L:0);
+			margin: auto;
+			@include wh(70%, 3px);
+			background-color: #fff;
+			transform: rotate(-45deg);
+		}
+	}
+}

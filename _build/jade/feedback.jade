@@ -1,0 +1,417 @@
+extends ../jade_inc/layout.jade
+block vars
+	-var page_class = "feedback_index_page"
+	-var current_active = "feedback"
+	-var show_aside = 0
+
+
+block title
+	title 同仁的日誌 | 學習日誌
+
+block content
+	main.content_wrapper
+		.container-fluid
+			header.content_title.justify-content-between.align-items-center
+				h1.current_page 同仁的日誌
+					span.feedback_info.
+						總共<span class='red-text'>10</span>篇，有<span class='red-text'>3</span>篇未讀、<span class='red-text'>1</span>篇已回饋
+				.search.d-flex.align-items-center
+					.quick_search.mr-3
+						.department.mod-dropdown.btn-sm(data-type="department")
+							.mod-dropdown-wrapper.multi
+								.mod-dropdown-ctrl 部門名稱
+								ul.mod-dropdown-list.cf.lis-n
+									li.mod-dropdown-item
+										input#department1(type="checkbox", name="department" value="人力資源部 一組")
+										label(for="department1") 人力資源部 一組
+									li.mod-dropdown-item
+										input#department2(type="checkbox", name="department" value="人力資源部 二組")
+										label(for="department2") 人力資源部 二組
+									li.mod-dropdown-item
+										input#department3(type="checkbox", name="department" value="資訊科技部 資安維運組")
+										label(for="department3") 資訊科技部 資安維運組
+									li.mod-dropdown-item
+										input#department4(type="checkbox", name="department" value="資訊科技部 系統開發組")
+										label(for="department4") 資訊科技部 系統開發組
+									li.mod-dropdown-item
+										input#department5(type="checkbox", name="department" value="資訊科技部 專案管理組")
+										label(for="department5") 資訊科技部 專案管理組
+					.quick_search.mr-3
+						.diaryState.mod-dropdown.btn-sm(data-type="diaryState")
+							.mod-dropdown-wrapper.multi
+								.mod-dropdown-ctrl 日誌狀態
+								ul.mod-dropdown-list.cf.lis-n
+									li.mod-dropdown-item
+										input#diaryState1(type="checkbox", name="diaryState" value="已讀")
+										label(for="diaryState1") 已讀
+									li.mod-dropdown-item
+										input#diaryState2(type="checkbox", name="diaryState" value="未讀")
+										label(for="diaryState2") 未讀
+									li.mod-dropdown-item
+										input#diaryState3(type="checkbox", name="diaryState" value="回饋暫存")
+										label(for="diaryState3") 回饋暫存
+									li.mod-dropdown-item
+										input#diaryState4(type="checkbox", name="diaryState" value="提報暫存")
+										label(for="diaryState4") 提報暫存
+
+					.adv_search
+						button.btn-adv_search
+							| 進階搜尋
+							<i class="fas fa-search"></i>
+			// ==================================================================
+			// 搜尋框  ＳＴＡＲＴ
+			.adv_search-box
+				.adv_search_form
+					form(action="")
+						.form-row
+							.form-group.col
+								span.input.input--yoshiko.control-field
+									| <input class="input__field input__field--yoshiko form-control datepicker" type="text" name="date_start" id="date_start" />
+									| <label class="input__label input__label--yoshiko" for="date_start">
+									| 	<span class="input__label-content input__label-content--yoshiko" data-content="開始日期">開始日期</span>
+									| </label>
+							.form-group.col
+								span.input.input--yoshiko.control-field
+									| <input class="input__field input__field--yoshiko form-control datepicker" type="text" name="date_end" id="date_end" />
+									| <label class="input__label input__label--yoshiko" for="date_end">
+									| 	<span class="input__label-content input__label-content--yoshiko" data-content="結束日期">結束日期</span>
+									| </label>
+						.form-row
+							.form-group.col
+								span.input.input--yoshiko.control-field
+									| <input class="input__field input__field--yoshiko form-control" type="text" name="keyword" id="keyword" />
+									| <label class="input__label input__label--yoshiko" for="keyword">
+									| 	<span class="input__label-content input__label-content--yoshiko" data-content="內容關鍵字">內容關鍵字</span>
+									| </label>
+						.form-row
+							.form-group.col
+								span.input.input--yoshiko.control-field
+									| <select class="input__field input__field--yoshiko form-control" name="departmentName" id="departmentName">
+									|	<option value=""></option>
+									|	<option value="TW000221">1911 柯欣萍</option>
+									|	<option value="TW000222">1912 許瑜娜</option>
+									|	<option value="TW000223">1913 陳姵絜</option>
+									|	<option value="TW000224">1952 邱全億</option>
+									|	<option value="TW000225">1953 曾聖恩</option>
+									| </select>
+									| <label class="input__label input__label--yoshiko" for="departmentName">
+									| 	<span class="input__label-content input__label-content--yoshiko" data-content="分享同仁">分享同仁</span>
+									| </label>
+						.form-row
+							button(type="submit").btn.blue.ml-auto.mr-auto
+								| <i class="fas fa-search"></i> 查詢
+			// 搜尋框  ＥＮＤ  ！！
+			// ==================================================================
+			.mask_div
+			.content_main
+				// ==================================================================
+				// 同仁日誌列表  ＳＴＡＲＴ
+				.feedback_list.pt-4.pb-4
+					ul.cf.lis-n.row
+						// 這裏要塞ID唷！
+						li#diary_tw000223_2018030201.feedback_item.colleagues_diary.col-sm-6
+							a(href="javascript:;").inner.d-flex
+								.inner-l
+									.pic.okuser-photo
+										img(src="dist/images/photo.jpg", alt="")
+								.inner-r
+									.colleagues_info
+										.colleagues_info-name.d-sm-inline-block 潘心心
+										.colleagues_info-department.d-sm-inline-block 資訊科技部-系統開發組
+									.colleagues_diary-cnt
+										.diary-date.d-inline-block 2018-03-02
+										.diary-category.d-inline-block 文化傳承
+										p.diary-brief.
+											阿爾紮諾帝國.這是一個國土位于北塞爾福德大陸西北端,處于有著濕潤冬季以及干燥夏季的海洋性溫帶氣候地域的帝政國家.在這個帝國南部的約克夏地區有一個叫做費吉托的都市.說到費吉托最大且唯一的特征,那就是設立有阿爾紮諾帝國魔法學院,是北塞爾福德大陸屈指可數的究學都市這一點了.和魔法學院一起同時被創建,和魔法學院一起發展起來的,就是這座都市費吉托.排列的建築全都有著以尖銳屋頂為特征的傳統風格,讓整個街景形成一幅莊重且優雅的格局.另一方面,出于魔法學院對魔法素材和物品的龐大需求量,這里和其他地方的交易往來也十分興盛,而且由于人員的出入十分頻繁,這里一直都是走在國內流行的最前端——所以這也是一座同時充斥著新舊事物氣息
+						li#diary_tw000222_2018030201.feedback_item.colleagues_diary.col-sm-6
+							a(href="javascript:;").inner.d-flex
+								.inner-l
+									.pic.okuser-photo
+										img(src="dist/images/photo.jpg", alt="")
+								.inner-r
+									.colleagues_info
+										.colleagues_info-name.d-sm-inline-block 李小宇
+										.colleagues_info-department.d-sm-inline-block 資訊科技部-專案管理組
+									.colleagues_diary-cnt
+										.diary-date.d-inline-block 2018-03-02
+										.diary-category.d-inline-block 文化傳承
+										p.diary-brief.
+											阿爾紮諾帝國.這是一個國土
+						li#diary_tw000221_2018030101.feedback_item.colleagues_diary.col-sm-6
+							a(href="javascript:;").inner.d-flex
+								.inner-l
+									.pic.okuser-photo
+										img(src="dist/images/photo.jpg", alt="")
+								.inner-r
+									.colleagues_info
+										.colleagues_info-name.d-sm-inline-block 張阿豪
+										.colleagues_info-department.d-sm-inline-block 資訊科技部-系統開發組
+									.colleagues_diary-cnt
+										.diary-date.d-inline-block 2018-03-01
+										.diary-category.d-inline-block 文化傳承
+										p.diary-brief.
+											阿爾紮諾帝國.這是一個國土位于北塞爾福德大陸西北端,處于有著濕潤冬季以及干燥夏季的海洋性溫帶氣候地域的帝政國家.在這個帝國南部的約克夏地區有一個叫做費吉托的都市.說到費吉托最大且唯一的特征,那就是設立有阿爾紮諾帝國魔法學院,是北塞爾福德大陸屈指可數的究學都市這一點了.和魔法學院一起同時被創建,和魔法學院一起發展起來的,就是這座都市費吉托.排列的建築全都有著以尖銳屋頂為特征的傳統風格,讓整個街景形成一幅莊重且優雅的格局.另一方面,出于魔法學院對魔法素材和物品的龐大需求量,這里和其他地方的交易往來也十分興盛,而且由于人員的出入十分頻繁,這里一直都是走在國內流行的最前端——所以這也是一座同時充斥著新舊事物氣息
+
+						li#diary_tw000220_2018030101.feedback_item.colleagues_diary.col-sm-6
+							a(href="javascript:;").inner.d-flex
+								.inner-l
+									.pic.okuser-photo
+										img(src="dist/images/photo2.jpg", alt="")
+								.inner-r
+									.colleagues_info
+										.colleagues_info-name.d-sm-inline-block 羅摳摳
+										.colleagues_info-department.d-sm-inline-block 資訊科技部-專案管理組
+									.colleagues_diary-cnt
+										.diary-date.d-inline-block 2018-03-01
+										.diary-category.d-inline-block 文化傳承
+										p.diary-brief.
+											阿爾紮諾帝國.這是一個國土位于北塞爾福德大陸西北端,處于有著濕潤冬季以及干燥夏季的海洋性溫帶氣候地域的帝政國家.在這個帝國南部的約克夏地區有一個叫做費吉托的都市.說到費吉托最大且唯一的特征,那就是設立有阿爾紮諾帝國魔法學院,是北塞爾福德大陸屈指可數的究學都市這一點了.和魔法學院一起同時被創建,和魔法學院一起發展起來的,就是這座都市費吉托.排列的建築全都有著以尖銳屋頂為特征的傳統風格,讓整個街景形成一幅莊重且優雅的格局.另一方面,出于魔法學院對魔法素材和物品的龐大需求量,這里和其他地方的交易往來也十分興盛,而且由于人員的出入十分頻繁,這里一直都是走在國內流行的最前端——所以這也是一座同時充斥著新舊事物氣息
+
+						li#diary_tw000219_2018030101.feedback_item.colleagues_diary.col-sm-6
+							a(href="javascript:;").inner.d-flex
+								.inner-l
+									.pic.okuser-photo
+										img(src="dist/images/photo2.jpg", alt="")
+								.inner-r
+									.colleagues_info
+										.colleagues_info-name.d-sm-inline-block 柯欣欣
+										.colleagues_info-department.d-sm-inline-block 人力資源部-一組
+									.colleagues_diary-cnt
+										.diary-date.d-inline-block 2018-03-01
+										.diary-category.d-inline-block 文化傳承
+										p.diary-brief.
+											阿爾紮諾帝國.這是一個國土位于北塞爾福德大陸西北端,處于有著濕潤冬季以及干燥夏季的海洋性溫帶氣候地域的帝政國家.在這個帝國南部的約克夏地區有一個叫做費吉托的都市.說到費吉托最大且唯一的特征,那就是設立有阿爾紮諾帝國魔法學院,是北塞爾福德大陸屈指可數的究學都市這一點了.和魔法學院一起同時被創建,和魔法學院一起發展起來的,就是這座都市費吉托.排列的建築全都有著以尖銳屋頂為特征的傳統風格,讓整個街景形成一幅莊重且優雅的格局.另一方面,出于魔法學院對魔法素材和物品的龐大需求量,這里和其他地方的交易往來也十分興盛,而且由于人員的出入十分頻繁,這里一直都是走在國內流行的最前端——所以這也是一座同時充斥著新舊事物氣息
+				// 同仁日誌列表  ＥＮＤ  ！！
+				// ==================================================================
+			// ==================================================================
+			// 同仁日誌內容  ＳＴＡＲＴ
+			article.feedback_content(data-diaryid="diary_tw000223_2018030201")
+				include ../jade_inc/feedback_cnt.jade
+			// 同仁日誌內容  ＥＮＤ  ！！
+			// ==================================================================
+
+block page_script
+	// =========================================================================
+	// 頁面單獨ＪＳ  START
+	script.
+		$(function() {
+			// 日誌狀態（篩選下拉選單）
+			// 點擊項目後做動作
+			$("input[name='diaryState']").click(function(event) {
+				console.log(_Diary_State_Value);
+			});
+
+
+			// 部門名稱（篩選下拉選單）
+			// 點擊項目後做動作
+			$("input[name='department']").click(function(event) {
+				console.log(_Department_Value);
+			});
+
+			/**
+			 * 回饋裡，按下“暫存”按鈕
+			 */
+			function feedback_temporary() {
+				// 按下“暫存”按鈕後做動作
+				$("#feedback .btn-temporary").click(function(event) {
+					var feedbackCnt = $("#feedbackCnt").val();
+					console.log(feedbackCnt);
+
+					if ($.trim(feedbackCnt) != "") {
+						// 將內容傳到資料庫
+						$.ajax({
+							// url: '/path/to/file.aspx',
+							type: 'POST',
+							// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+							data: {},
+						})
+						.done(function() {
+							console.log("success");
+							okadminUI.notice("已成功暫存。");
+						})
+						.fail(function() {
+							console.log("error");
+						});
+					}
+					else {
+						okadminUI.notice("尚未填寫");
+					}
+				});
+			}
+
+
+			/**
+			 * 回饋裡，按下“送出”按鈕
+			 */
+			function feedback_submit(){
+				// 按下“送出”按鈕後做動作
+				$("#feedback .btn-submit").click(function(event) {
+					var $this =  $(this);
+					var thisId = $this.parents(".feedback_content").data('diaryid');
+					var form = $this.parents(".want_feedback-form").find('form');
+					// 表單驗證
+					$(form).validate();
+					if ($(form).valid()) {
+						//  提交表單
+						var photo = $("#userPhoto").val();
+						var name = $("#userName").val();
+						var today = new Date();
+						var todayStr = today.getFullYear()+ "-" + (today.getMonth()+1) + "-" + today.getDate();
+						var feedbackCnt = $(form).find('textarea.form-control').val();
+						// 將內容儲存到資料庫
+						$.ajax({
+							// url: '/path/to/file.aspx',
+							type: 'POST',
+							// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+							data: {},
+						})
+						.done(function() {
+							console.log("success");
+
+							// 在下方生成一個回饋區塊
+							// learnDiaryUI.feedbackBlockEl(img, name, date, cnt)
+							// img 使用者的照片
+							// name 使用者名字
+							// date 回饋時的日期
+							// cnt 回饋內容
+							$(learnDiaryUI.feedbackBlockEl(photo, name, todayStr, feedbackCnt)).insertAfter($this.parents(".want_feedback"));
+
+							console.log(thisId);
+
+							// 移除輸入框與按鈕
+							learnDiaryUI.formRemove($this.parents(".want_feedback"));
+
+							okadminUI.notice("已成功送出。");
+						})
+						.fail(function() {
+							console.log("error");
+						});
+						// form.submit();
+					}
+				});
+			}
+
+			/**
+			 * 提報裡，按下“暫存”按鈕
+			 */
+			function upper_temporary() {
+				// 按下“暫存”按鈕後做動作
+				$("#upper .btn-temporary").click(function(event) {
+					var upperCnt = $("#upperCnt").val();
+					console.log(upperCnt);
+
+					if ($.trim(upperCnt) != "") {
+						// 將內容儲存到資料庫
+						$.ajax({
+							// url: '/path/to/file.aspx',
+							type: 'POST',
+							// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+							data: {},
+						})
+						.done(function() {
+							console.log("success");
+							okadminUI.notice("已成功暫存。");
+						})
+						.fail(function() {
+							console.log("error");
+						});
+					}
+					else {
+						okadminUI.notice("尚未填寫");
+					}
+				});
+			}
+
+			/**
+			 * 提報裡，按下“送出”按鈕
+			 */
+			function upper_submit() {
+				// 按下“送出”按鈕後做動作
+				$("#upper .btn-submit").click(function(event) {
+					var $this =  $(this);
+					var thisId = $this.parents(".feedback_content").data('diaryid');
+					var form = $this.parents(".upper_block-form").find('form');
+					// 表單驗證
+					$(form).validate();
+					if ($(form).valid()) {
+						//  提交表單
+						var photo = $("#userPhoto").val();
+						var name = $("#userName").val();
+						var today = new Date();
+						var todayStr = today.getFullYear()+ "-" + (today.getMonth()+1) + "-" + today.getDate();
+						var upperCnt = $('#upperCnt').val();
+						// 將內容儲存到資料庫
+						$.ajax({
+							// url: '/path/to/file.aspx',
+							type: 'POST',
+							// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+							data: {},
+						})
+						.done(function(result) {
+							console.log("success");
+							// 移除輸入框與按鈕
+							learnDiaryUI.formRemove($this.parents(".upper_block-form"));
+
+							setTimeout(function(){
+								$("#upper .upper-date").text(todayStr);
+								$("#upper .upper-cnt").text(upperCnt);
+								okadminUI.notice("已成功送出。");
+							}, 500);
+						})
+						.fail(function() {
+							console.log("error");
+						});
+						// form.submit();
+					}
+				});
+			}
+
+
+			// 點擊同仁的日誌後
+			$(".feedback_item").click(function(event) {
+				var thisId = $(this).attr('id');
+				console.log(thisId);
+
+				// 傳 thisId 的值到 aspx 裡
+				// aspx 撈資料，組成HTML後回傳
+				$.ajax({
+					url: 'colleagues_diary.html',
+					// url: '/path/to/file.aspx',
+					// type: 'POST',
+					dataType: 'html',
+					data: {diary_id: thisId},
+				})
+				.done(function(data) {
+					// 在回饋區塊（滑出的那一塊）加上識別ＩＤ
+					// 將aspx回傳的HTML 放進來
+					$(".feedback_content").attr('data-diaryid', thisId);
+					$(".feedback_content").html(data)
+
+					// 頁籤初始化
+					okadminUI.tabs().init(1);
+					// 自定義的scrollbar
+					$(".feedback_content-container .mcsb").mCustomScrollbar({theme:"dark-3"});
+
+					feedback_temporary();
+					feedback_submit();
+					upper_temporary();
+					upper_submit();
+
+					// 使回饋區塊可見
+					learnDiaryUI.feedback($("#"+thisId), 'show_colleagues_diary', thisId);
+
+					// 關閉回饋區塊
+					$(".feedback_content-close").click(function(event) {
+						learnDiaryUI.feedback($(this), 'close_colleagues_diary');
+					});
+				})
+				.fail(function(error) {
+					console.log(error);
+				});
+			});
+
+
+
+		});
+	// =========================================================================
+

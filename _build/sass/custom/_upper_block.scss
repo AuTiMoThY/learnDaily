@@ -1,0 +1,64 @@
+.upper_block {
+	box-shadow: $z-depth-1;
+
+	&:not(:first-of-type) {
+		margin-top: 1.8rem;
+	}
+ 	.inner {
+		display: flex;
+		align-items: flex-start;
+		&-l {
+			flex: 0 0 70px;
+			display: flex;
+			align-items: center;
+		}
+		&-r {
+			flex: auto;
+		}
+	}
+
+	.okuser-photo {
+		@include circle(50);
+
+	}
+
+	&-title {
+		width: 100%;
+		background-color: $pink-lighten-1;
+		padding: 0.8rem;
+		margin: 0;
+		color: #fff;
+		font-size: 1rem;
+	}
+
+	&-container {
+		padding: 1.5rem;
+	}
+
+	&-form {
+		// max-height: 0;
+		overflow: hidden;
+		border-bottom: 1px solid transparent;
+		transition: all 0.3s ease-in-out;
+
+		.js-openFeedback & {
+			max-height: 500px;
+			border-bottom: 1px solid $grey-lighten-2;
+			// margin-bottom: 0.5rem;
+		}
+
+		form {
+			padding: 3px;
+		}
+		textarea {
+			height: 250px;
+			resize: none;
+		}
+
+		.form-btns {
+			// display: table;
+			// margin: auto;
+		}
+	}
+
+}

@@ -1,0 +1,88 @@
+.feedback_content-bg
+.feedback_content-wrap
+	button.feedback_content-close
+		<i class="icon-close"></i>
+	.feedback_content-container
+		.inner.mcsb
+			article.colleagues_diary-content
+				.inner.d-flex
+					.inner-l
+						.pic.okuser-photo
+							img(src="", alt="")
+						.name
+							.okuser-name 
+							.okuser-department 
+					.inner-r
+						.diary-date.d-inline-block 
+						.diary-category.d-inline-block 
+						p.diary-txt
+			section.diary_footer.mt-5.colleagues_diary-operate
+				.diary_footer-tab.colleagues_diary-operate-tab
+					ul.tabs.cf.lis-n
+						li.tabs_item.diary_footer-tab-item.colleagues_diary-operate-tab-item.upper
+							a(href="#upper").inner 提報
+						li.tabs_item.diary_footer-tab-item.colleagues_diary-operate-tab-item.feedback
+							a(href="#feedback").inner 回饋
+				.tabContainer.diary_footer-container
+					// ==================================================================
+					// 提報 ＳＴＡＲＴ
+					section#upper.tabContainer-content.colleagues_diary-upper
+						.upper_block
+							.upper_block-title 提報原因
+							.upper_block-container
+								.inner
+									.inner-l
+										.pic.okuser-photo
+											// 載入自己的照片
+											img(src="dist/images/photo.jpg", alt="")
+									.inner-r
+										.upper_block-form
+											form(action="", method="POST")
+												.form-group
+													.control-field
+														textarea#upperCnt.form-control(name="upperCnt", required)
+												.form-group
+													.form-btns
+														button.btn.btn-deep-orange.btn-temporary(type="button") 暫存
+														button.btn.blue.btn-submit(type="button") 送出
+										.upper_block-content
+											.upper-date
+											p.upper-cnt
+					// 提報 ＥＮＤ  ！！
+					// ==================================================================
+
+					// ==================================================================
+					// 回饋 ＳＴＡＲＴ
+					section#feedback.tabContainer-content.colleagues_diary-feedback
+						// ==================================================================
+						// 我要回饋區塊 
+						// 如有回饋過此篇，則不需要加“我要回饋區塊”
+						.want_feedback
+							.want_feedback-ctrl.btn(onClick="learnDiaryUI.feedback(this, 'write')")
+								<i class="fas fa-pencil-alt mr-2"></i>
+								| 我要回饋
+							.want_feedback-form
+								form(action="", method="POST")
+									input(type="hidden", id="userPhoto", value="")
+									input(type="hidden", id="userName", value="")
+									.form-group
+										.control-field
+											textarea#feedbackCnt.form-control(name="feedbackCnt", required)
+									.form-group
+										.form-btns
+											button.btn.btn-deep-orange.btn-temporary(type="button") 暫存
+											button.btn.blue.btn-submit(type="button") 送出
+						// ==================================================================
+						// 已有資料的回饋區塊（其他人的回饋）
+						section.feedback_block
+							.inner
+								.inner-l
+									.pic.okuser-photo
+										img(src="", alt="")
+									.name
+										.okuser-name 
+								.inner-r
+									.feedback-date 
+									p.feedback-cnt
+					// 回饋 ＥＮＤ  ！！
+					// ==================================================================

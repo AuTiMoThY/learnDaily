@@ -11,6 +11,7 @@
 			position: relative;
 
 			color: theme-color("df-grey");
+			cursor: pointer;
 			&:after {
 				@include psudoClass;
 				@include absolute($B:0, $L:0);
@@ -22,17 +23,30 @@
 
 			}
 
-			&.active {
+			&.js-active {
 				color: #fff;
 
 				&:after {
-					height: 50px;
+					height: 45px;
+					bottom: -1px;
 				}
 			}
 
-			&.feedback.active {
+			&:hover {
+				&:after {
+					height: 45px;
+				}
+			}
+
+			&.feedback.js-active {
 				&:after {
 					background-color: theme-color("primary1");
+				}
+			}
+
+			&.upper.js-active {
+				&:after {
+					background-color: $pink-lighten-1;
 				}
 			}
 
@@ -43,6 +57,7 @@
 				height: 40px;
 				line-height: 40px;
 				padding: 0 2rem;
+				color: currentColor;
 			}
 		}
 	}
