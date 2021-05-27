@@ -1,1 +1,10 @@
-20180319_learndiary
+
+# 安裝
+
+` npm install `
+
+# 執行gulp
+
+` gulp `
+
+

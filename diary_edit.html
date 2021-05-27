@@ -55,195 +55,211 @@
     </div>
     <!-- SVG sprites  END  !!-->
     <!-- =========================================================================-->
+    <div id="m_nav" class="m_nav"></div>
+    <!-- =========================================================================-->
+    <!-- 手機版個人資訊  START-->
+    <div id="m_user_info" class="m_user_info"></div>
+    <!-- 手機版個人資訊  END  !!-->
+    <!-- =========================================================================-->
     <div data-current="diary" class="page_wrap cf index_page">
-      <header class="page_header"><a href="./" class="logo">
-          <div class="logo-lg pic"><img src="dist/images/logo.png" alt=""></div></a>
-        <div class="page_header-container cf">
-          <div class="okmenu float-right">
-            <ul class="okmenu-list cf">
-              <li class="okmenu-item">
-                <div class="notice"><i class="fas fa-bell fa-lg fa-w-16"></i></div>
-              </li>
-              <li class="okmenu-item okdropdown okuser">
-                <div class="okdropdown-ctrl">
-                  <div class="okuser-photo"><img src="dist/images/temp/user_photo-s.jpg" alt=""></div>
-                  <div class="okuser-name white-text">TW000223 紅心</div>
-                </div>
-                <div class="okdropdown-menu">
-                  <ul class="cf okmenu-list">
-                    <li class="okdropdown-menu-item"><a href="">更改密碼</a></li>
-                    <li class="okdropdown-menu-item"><a href="">登出</a></li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </header>
-      <div class="page_container">
-        <nav class="page_menu">
-          <ul class="cf lis-n">
-            <li data-menu="index" class="page_menu-item"><a href="./">
-                <div class="icon"><i class="fas fa-home"></i></div>
-                <div class="txt">首頁</div></a></li>
-            <li data-menu="diary" class="page_menu-item"><a href="diary_add.html">
-                <div class="icon"><i class="fas fa-file-alt"></i></div>
-                <div class="txt">日誌</div></a></li>
-            <li data-menu="feedback" class="page_menu-item"><a href="feedback.html">
-                <div class="icon">
-                  <svg class="icons-feelback">
-                    <use xlink:href="#svg-feelback"></use>
-                  </svg>
-                </div>
-                <div class="txt">回饋</div></a></li>
-            <li data-menu="vote" class="page_menu-item"><a href="vote.html">
-                <div class="icon">
-                  <svg class="icons-vote">
-                    <use xlink:href="#svg-vote"></use>
-                  </svg>
-                </div>
-                <div class="txt">票選</div></a></li>
-            <li data-menu="config" class="page_menu-item"><a href="config.html">
-                <div class="icon"><i class="fas fa-cog"></i></div>
-                <div class="txt">管理</div></a></li>
-          </ul>
-        </nav>
-        <aside class="page_sidebar">
-          <div class="page_sidebar-bd">
-            <div class="user_info">
-              <div class="user_info-hd">
-                <div class="user_info-top d-flex align-items-center">
-                  <div class="user_info-photo">
-                    <div class="pic okuser-photo"><img src="dist/images/temp/user_photo-s.jpg" alt=""></div>
+      <div class="inner">
+        <header class="page_header">
+          <div id="m_menu" class="m_menu">
+            <div class="group">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+              <div class="line4"></div>
+            </div>
+          </div><a href="./" class="logo">
+            <div class="logo-lg pic"><img src="dist/images/logo.png" alt=""></div></a>
+          <div class="page_header-container cf">
+            <div class="okmenu float-right">
+              <ul class="okmenu-list cf">
+                <li class="okmenu-item">
+                  <div class="notice"><i class="fas fa-bell fa-lg fa-w-16"></i></div>
+                </li>
+                <li class="okmenu-item okdropdown okuser">
+                  <div class="okdropdown-ctrl">
+                    <div class="okuser-photo"><img src="dist/images/temp/user_photo-s.jpg" alt=""></div>
+                    <div class="okuser-name white-text">TW000223 紅心</div>
                   </div>
-                  <div class="user_info-name">潘心心</div>
-                </div>
-                <div class="user_info-base">
-                  <div class="user_info-job user_info-txt">部門：資訊科技部-系統開發組</div>
-                  <div class="user_info-seniority user_info-txt">年資：10年5個月</div>
-                </div>
-              </div>
-              <div class="user_info-bd user_statistics">
-                <div class="row no-gutters">
-                  <p id="monthWirte" class="month">當月寫了多少篇：<span class="number"><span class="big js-number"></span>/6</span></p>
-                  <div data-number="2" class="month-bar">
-                    <div id="progressBar" class="js-progressBar"></div>
+                  <div class="okdropdown-menu">
+                    <ul class="cf okmenu-list">
+                      <li class="okdropdown-menu-item"><a href="">更改密碼</a></li>
+                      <li class="okdropdown-menu-item"><a href="">登出</a></li>
+                    </ul>
                   </div>
-                </div>
-                <div class="row no-gutters">
-                  <p class="total">總計共寫了<span class="big">90</span>篇</p>
-                </div>
-                <div class="row no-gutters">
-                  <p class="share">分享篇數<span class="big">10</span>篇</p>
-                </div>
-              </div>
-              <div class="calendar_wrap">
-                <div id="calendar"></div>
-                <button class="btn btn-tb btn-primary m-auto today">返回今日</button>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
-        </aside>
-        <!-- =========================================================================-->
-        <!-- 頁面內容  START-->
-        <!-- =========================================================================-->
-        <main class="content_wrapper">
-          <div class="container-fluid">
-            <header class="content_title justify-content-between"><span class="current_page">新增日誌</span>
-              <div class="helpers"><a href="./" class="btn btn-tb btn-goback align-self-end">
-                  <div class="btn-icon d-inline-block"><i class="fas fa-arrow-left"></i></div>返回列表</a></div>
-            </header>
-            <div class="content_container">
-              <div class="diary_cnt_wrap p-5">
-                <div class="diary_form">
-                  <form id="diaryForm" action="">
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <div class="row">
-                          <label for="diaryDate" class="col-md-auto col-form-label">選擇日期</label>
-                          <div class="col-6 control-field">
-                            <input type="text" name="diaryDate" id="diaryDate" required value="2018-05-22" class="form-control datepicker">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group col">
-                        <div class="row">
-                          <label for="diaryCategory" class="col-md-auto col-form-label">選擇類別</label>
-                          <div class="col-6 control-field">
-                            <select class="form-control" name="diaryCategory" id="diaryCategory" required>
-                            	<option value="">請選擇類別</option>
-                            	<option value="1" selected="selected">生活學習</option>
-                            	<option value="2">人際關係</option>
-                            	<option value="3">類別三</option>
-                            	<option value="4">類別四</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
+        </header>
+        <div class="page_container">
+          <nav class="page_menu">
+            <ul class="cf lis-n">
+              <li data-menu="index" class="page_menu-item"><a href="./">
+                  <div class="icon"><i class="fas fa-home"></i></div>
+                  <div class="txt">首頁</div></a></li>
+              <li data-menu="diary" class="page_menu-item"><a href="diary_add.html">
+                  <div class="icon"><i class="fas fa-file-alt"></i></div>
+                  <div class="txt">日誌</div></a></li>
+              <li data-menu="feedback" class="page_menu-item"><a href="feedback.html">
+                  <div class="icon">
+                    <svg class="icons-feelback">
+                      <use xlink:href="#svg-feelback"></use>
+                    </svg>
+                  </div>
+                  <div class="txt">回饋</div></a></li>
+              <li data-menu="vote" class="page_menu-item"><a href="vote.html">
+                  <div class="icon">
+                    <svg class="icons-vote">
+                      <use xlink:href="#svg-vote"></use>
+                    </svg>
+                  </div>
+                  <div class="txt">票選</div></a></li>
+              <li data-menu="config" class="page_menu-item"><a href="config.html">
+                  <div class="icon"><i class="fas fa-cog"></i></div>
+                  <div class="txt">管理</div></a></li>
+            </ul>
+          </nav>
+          <aside class="page_sidebar">
+            <div class="page_sidebar-bd">
+              <div class="user_info">
+                <div class="user_info-hd">
+                  <div class="user_info-top d-flex align-items-center">
+                    <div class="user_info-photo">
+                      <div class="pic okuser-photo"><img src="dist/images/temp/user_photo-s.jpg" alt=""></div>
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <div class="row">
-                          <label for="diaryContent" class="col-12 col-form-label">日誌內容</label>
-                          <div class="col-12 control-field">
-                            <textarea id="diaryContent" name="diaryContent" required class="form-control">
-                              滾滾長江東逝水，浪花淘盡英雄。ㄒ
-                              是非成敗轉頭空。
-                              青山依舊在，幾度夕陽紅。
-                              白髮漁樵江渚上，慣看秋月春風。
-                              一壺濁酒喜相逢。
-                              古今多少事，都付笑談中。
-                            </textarea>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="user_info-name">潘心心</div>
+                  </div>
+                  <div class="user_info-base">
+                    <div class="user_info-job user_info-txt">部門：資訊科技部-系統開發組</div>
+                    <div class="user_info-seniority user_info-txt">年資：10年5個月</div>
+                  </div>
+                </div>
+                <div class="user_info-bd user_statistics">
+                  <div class="row no-gutters">
+                    <p id="monthWirte" class="month">當月寫了多少篇：<span class="number"><span class="big js-number"></span>/6</span></p>
+                    <div data-number="2" class="month-bar">
+                      <div id="progressBar" class="js-progressBar"></div>
                     </div>
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <div class="row">
-                          <label class="col-md-auto col-form-label">上傳圖片</label>
-                          <div class="col-md control-field file_upload">
-                            <label for="uploadPic" class="form-control file_upload-label"><i class="fas fa-upload"></i>選擇檔案</label>
-                            <input type="file" name="" id="uploadPic" class="form-control file_upload-input">
-                            <div class="file_upload-preview pic mt-2 text-center"></div>
+                  </div>
+                  <div class="row no-gutters">
+                    <p class="total">總計共寫了<span class="big">90</span>篇</p>
+                  </div>
+                  <div class="row no-gutters">
+                    <p class="share">分享篇數<span class="big">10</span>篇</p>
+                  </div>
+                </div>
+                <div class="calendar_wrap">
+                  <div id="calendar"></div>
+                  <button class="btn btn-tb btn-primary m-auto today">返回今日</button>
+                </div>
+              </div>
+            </div>
+          </aside>
+          <!-- =========================================================================-->
+          <!-- 頁面內容  START-->
+          <!-- =========================================================================-->
+          <main class="content_wrapper">
+            <div class="container-fluid">
+              <header class="content_title justify-content-between"><span class="current_page">新增日誌</span>
+                <div class="helpers"><a href="./" class="btn btn-tb btn-goback align-self-end">
+                    <div class="btn-icon d-inline-block"><i class="fas fa-arrow-left"></i></div>返回列表</a></div>
+              </header>
+              <div class="content_container">
+                <div class="diary_cnt_wrap p-4 p-sm-5">
+                  <div class="diary_form">
+                    <form id="diaryForm" action="">
+                      <div class="form-row">
+                        <div class="form-group col-sm-6">
+                          <div class="row">
+                            <label for="diaryDate" class="col-md-auto col-form-label">選擇日期</label>
+                            <div class="col-sm-6 control-field">
+                              <input type="text" name="diaryDate" id="diaryDate" required value="2018-05-22" class="form-control datepicker">
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="form-group col">
-                        <div class="row">
-                          <label for="share_target" class="col-md-auto col-form-label">分享對象</label>
-                          <div class="col-md">
-                            <div class="control-field">
-                              <select id="share_target" name="" multiple="multiple" class="form-control not-styled">
-                                <option value="0" selected="selected" data-photo="dist/images/photo.jpg" class="not-show">主管</option>
+                        <div class="form-group col-sm-6">
+                          <div class="row">
+                            <label for="diaryCategory" class="col-md-auto col-form-label">選擇類別</label>
+                            <div class="col-sm-6 control-field">
+                              <select class="form-control" name="diaryCategory" id="diaryCategory" required>
+                              	<option value="">請選擇類別</option>
+                              	<option value="1" selected="selected">生活學習</option>
+                              	<option value="2">人際關係</option>
+                              	<option value="3">類別三</option>
+                              	<option value="4">類別四</option>
                               </select>
                             </div>
-                            <div class="share_target-list">
-                              <ul class="cf lis-n"></ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col">
+                          <div class="row">
+                            <label for="diaryContent" class="col-12 col-form-label">日誌內容</label>
+                            <div class="col-12 control-field">
+                              <textarea id="diaryContent" name="diaryContent" required class="form-control">
+                                滾滾長江東逝水，浪花淘盡英雄。ㄒ
+                                是非成敗轉頭空。
+                                青山依舊在，幾度夕陽紅。
+                                白髮漁樵江渚上，慣看秋月春風。
+                                一壺濁酒喜相逢。
+                                古今多少事，都付笑談中。
+                              </textarea>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col">
-                        <div class="row">
-                          <div class="form-btns">
-                            <button id="temporaryBtn" type="button" class="btn btn-success">儲存</button>
-                            <button id="submitBtn" type="submit" class="btn blue">送出</button>
+                      <div class="form-row">
+                        <div class="form-group col-sm-6">
+                          <div class="row">
+                            <label class="col-md-auto col-form-label">上傳圖片</label>
+                            <div class="col-md control-field file_upload">
+                              <label for="uploadPic" class="form-control file_upload-label"><i class="fas fa-upload"></i>選擇檔案</label>
+                              <input type="file" name="" id="uploadPic" class="form-control file_upload-input">
+                              <div class="file_upload-preview pic mt-2 text-center"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <div class="row">
+                            <label for="share_target" class="col-md-auto col-form-label">分享對象</label>
+                            <div class="col-md">
+                              <div class="control-field">
+                                <select id="share_target" name="" multiple="multiple" class="form-control not-styled">
+                                  <option value="0" selected="selected" data-photo="dist/images/photo.jpg" class="not-show">主管</option>
+                                </select>
+                              </div>
+                              <div class="share_target-list">
+                                <ul class="cf lis-n"></ul>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </form>
+                      <div class="form-row">
+                        <div class="form-group col">
+                          <div class="row">
+                            <div class="form-btns">
+                              <button id="temporaryBtn" type="button" class="btn btn-success">儲存</button>
+                              <button id="submitBtn" type="submit" class="btn blue">送出</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </main>
-        <!-- =========================================================================-->
-        <!-- 頁面內容  END  !!-->
-        <!-- =========================================================================-->
+          </main>
+          <!-- =========================================================================-->
+          <!-- 頁面內容  END  !!-->
+          <!-- =========================================================================-->
+        </div>
       </div>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

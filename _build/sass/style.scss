@@ -139,6 +139,8 @@
 @import "components/_multiple_select";
 @import "components/_notice";
 @import "components/_mCSB";
+@import "components/_m_menu";
+@import "components/_m_nav";
 
 /*------------------------------------------------------------------------*\
 /*------------------------------------------------------------------------*\
@@ -164,3 +166,16 @@
 		>	custom
 \*========================================================================*/
 @import "custom/**/*.scss";
+
+
+@include keyframes(openNavEffect){
+	from {
+		right: 0;
+		// transform: scale(1);
+	}
+	to {
+		right: -75vw;
+		// transform: scale(0.8);
+
+	}
+};

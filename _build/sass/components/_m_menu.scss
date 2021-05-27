@@ -1,0 +1,64 @@
+.m_menu {
+	display: none;
+	@include media-breakpoint-down(xs){
+		display: block;
+		@include absolute(0, $B:0, $L:1rem);//==
+		margin: auto;
+		@include wh(30, 25);
+		z-index: 101;
+
+		transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+		cursor: pointer;
+
+		.group {
+			position: relative;
+			@include wh;
+			transition: all 0.5s ease;
+
+			div {
+				@include absolute;
+				@include wh(100%, 5);
+				background-color: #fff;
+				border-radius: 3px;
+
+				transition: all 0.5s ease;
+			}
+
+			.line1 {
+				top: 0;
+			}
+
+			.line2, .line3 {
+				top: 50%;
+				transform: translateY(-50%);
+			}
+
+			.line4 {
+				bottom: 0;
+			}
+
+		}
+
+		&.js-open {
+
+			.group {
+				top: -2px;
+				transform: rotate(360deg);
+
+				.line1, .line4 {
+					top: 0;
+			        opacity: 0;
+				}
+
+				.line2 {
+					transform: rotate(45deg);
+				}
+
+				.line3 {
+					transform: rotate(-45deg);
+				}
+			}
+		}
+	};
+
+}

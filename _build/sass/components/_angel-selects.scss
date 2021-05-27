@@ -134,6 +134,9 @@ select.dummy {
 
 .extra-wrapper {
 	position: relative;
+	.angel-selects-styled:empty {
+		display: none;
+	}
 
 	&:after {
 		@include psudoClass;

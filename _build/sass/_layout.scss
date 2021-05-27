@@ -13,9 +13,25 @@ html, body {
 	position: relative;
 	min-height: 100%;
 	overflow: hidden;
+	transform: inherit;
 
 	&.login_page {
 		background-color: theme-color("primary1");
+	}
+
+	> .inner {
+		position: relative;
+		left: 0;
+		transition: all 0.5s ease(in-out-quad);
+	}
+
+	&.js-open_m_nav {
+		> .inner {
+			left: 80vw;
+		}
+		.page_header {
+			left: 80vw;
+		}
 	}
 }
 
@@ -36,6 +52,10 @@ html, body {
 	.js-closeAside & {
 		width: #{$aside_w-close}px;
 	}
+
+	@include media-breakpoint-down(xs){
+		display: none;
+	};
 
 	&-hd {
 		// min-height: #{$header_h}px;
@@ -59,8 +79,11 @@ html, body {
 	background-color: theme-color("primary1");
 	box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
 
-	@include media-breakpoint-down(sm){
+	@include media-breakpoint-down(xs){
+		z-index: 20;
 		width: 100%;
+
+		display: none;
 	};
 
 	&-item {
@@ -86,6 +109,10 @@ html, body {
 		padding-left: #{$aside_w-close}px;
 	}
 
+	@include media-breakpoint-down(xs){
+		padding-left: 0;
+	};
+
 }
 
 
@@ -101,6 +128,8 @@ html, body {
 
 	display: flex;
 
+	transition: all 0.5s ease(in-out-quad);
+
 	&-container {
 		position: relative;
 		height: 100%;
@@ -110,6 +139,7 @@ html, body {
 
 	.logo {
 		position: relative;
+		z-index: 2;
 		display: block;
 		// @include absolute(0, $L:0);
 		// width: #{$aside_w+$menu_w}px;
@@ -121,6 +151,13 @@ html, body {
 
 		flex: 0 0 #{$aside_w+$menu_w}px;
 
+		@include media-breakpoint-down(xs){
+			flex: none;
+			width: 143px;
+
+			@include absolute($L:4.2rem);
+		};
+
 		&:hover {
 			// @include background-image(linear-gradient(darken(theme-color("primary1"), 5%), darken(theme-color("primary2"), 5%)));
 			background-color: theme-color("primary-dark");
@@ -130,6 +167,10 @@ html, body {
 			@include absolute(0, 0, 0, 0);
 			margin: auto;
 			@include wh(145, 25);
+
+			@include media-breakpoint-down(xs){
+				@include bgRWD(null, 293, 51);
+			};
 		}
 	}
 
@@ -188,6 +229,11 @@ main {
 	// margin-left: ($grid-gutter-width / -2);
 	// margin-right: ($grid-gutter-width / -2);
 	@extend .row;
+	align-items: center;
+
+	@include media-breakpoint-down(xs){
+		display: none;
+	};
 
 	.current_page {
 		margin-bottom: 0;

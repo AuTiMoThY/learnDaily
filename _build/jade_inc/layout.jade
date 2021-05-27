@@ -45,23 +45,31 @@ html(class="no-js", lang="zh")
 			include ../symbol/svg/symbols.svg
 		// SVG sprites  END  !!
 		// =========================================================================
-		.page_wrap.cf(class="#{page_class}", data-current="#{current_active}")
-			if login == 1
-				block content
-			if login == 0
-				include ../jade_inc/header.jade
-				.page_container
+		#m_nav.m_nav
+		// =========================================================================
+		// 手機版個人資訊  START
+		#m_user_info.m_user_info
+		// 手機版個人資訊  END  !!
+		// =========================================================================
 
-					include ../jade_inc/menu.jade
-					if show_aside == 1
-						include ../jade_inc/aside.jade
-					// =========================================================================
-					// 頁面內容  START
-					// =========================================================================
+		.page_wrap.cf(class="#{page_class}", data-current="#{current_active}")
+			.inner
+				if login == 1
 					block content
-					// =========================================================================
-					// 頁面內容  END  !!
-					// =========================================================================
-				include ../jade_inc/footer.jade
+				if login == 0
+					include ../jade_inc/header.jade
+					.page_container
+
+						include ../jade_inc/menu.jade
+						if show_aside == 1
+							include ../jade_inc/aside.jade
+						// =========================================================================
+						// 頁面內容  START
+						// =========================================================================
+						block content
+						// =========================================================================
+						// 頁面內容  END  !!
+						// =========================================================================
+					include ../jade_inc/footer.jade
 		include ../jade_inc/scriptfoot.jade
 		block page_script

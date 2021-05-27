@@ -14,5 +14,12 @@
 
 	&-name {
 		padding-left: 0.8em;
+
+		@include media-breakpoint-down(xs){
+			.okmenu-list & {
+				display: none;
+			}
+
+		};
 	}
 }

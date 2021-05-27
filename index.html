@@ -55,374 +55,390 @@
     </div>
     <!-- SVG sprites  END  !!-->
     <!-- =========================================================================-->
+    <div id="m_nav" class="m_nav"></div>
+    <!-- =========================================================================-->
+    <!-- 手機版個人資訊  START-->
+    <div id="m_user_info" class="m_user_info"></div>
+    <!-- 手機版個人資訊  END  !!-->
+    <!-- =========================================================================-->
     <div data-current="index" class="page_wrap cf index_page">
-      <header class="page_header"><a href="./" class="logo">
-          <div class="logo-lg pic"><img src="dist/images/logo.png" alt=""></div></a>
-        <div class="page_header-container cf">
-          <div class="okmenu float-right">
-            <ul class="okmenu-list cf">
-              <li class="okmenu-item">
-                <div class="notice"><i class="fas fa-bell fa-lg fa-w-16"></i></div>
-              </li>
-              <li class="okmenu-item okdropdown okuser">
-                <div class="okdropdown-ctrl">
-                  <div class="okuser-photo"><img src="dist/images/temp/user_photo-s.jpg" alt=""></div>
-                  <div class="okuser-name white-text">TW000223 紅心</div>
-                </div>
-                <div class="okdropdown-menu">
-                  <ul class="cf okmenu-list">
-                    <li class="okdropdown-menu-item"><a href="">更改密碼</a></li>
-                    <li class="okdropdown-menu-item"><a href="">登出</a></li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </header>
-      <div class="page_container">
-        <nav class="page_menu">
-          <ul class="cf lis-n">
-            <li data-menu="index" class="page_menu-item"><a href="./">
-                <div class="icon"><i class="fas fa-home"></i></div>
-                <div class="txt">首頁</div></a></li>
-            <li data-menu="diary" class="page_menu-item"><a href="diary_add.html">
-                <div class="icon"><i class="fas fa-file-alt"></i></div>
-                <div class="txt">日誌</div></a></li>
-            <li data-menu="feedback" class="page_menu-item"><a href="feedback.html">
-                <div class="icon">
-                  <svg class="icons-feelback">
-                    <use xlink:href="#svg-feelback"></use>
-                  </svg>
-                </div>
-                <div class="txt">回饋</div></a></li>
-            <li data-menu="vote" class="page_menu-item"><a href="vote.html">
-                <div class="icon">
-                  <svg class="icons-vote">
-                    <use xlink:href="#svg-vote"></use>
-                  </svg>
-                </div>
-                <div class="txt">票選</div></a></li>
-            <li data-menu="config" class="page_menu-item"><a href="config.html">
-                <div class="icon"><i class="fas fa-cog"></i></div>
-                <div class="txt">管理</div></a></li>
-          </ul>
-        </nav>
-        <aside class="page_sidebar">
-          <div class="page_sidebar-bd">
-            <div class="user_info">
-              <div class="user_info-hd">
-                <div class="user_info-top d-flex align-items-center">
-                  <div class="user_info-photo">
-                    <div class="pic okuser-photo"><img src="dist/images/temp/user_photo-s.jpg" alt=""></div>
+      <div class="inner">
+        <header class="page_header">
+          <div id="m_menu" class="m_menu">
+            <div class="group">
+              <div class="line1"></div>
+              <div class="line2"></div>
+              <div class="line3"></div>
+              <div class="line4"></div>
+            </div>
+          </div><a href="./" class="logo">
+            <div class="logo-lg pic"><img src="dist/images/logo.png" alt=""></div></a>
+          <div class="page_header-container cf">
+            <div class="okmenu float-right">
+              <ul class="okmenu-list cf">
+                <li class="okmenu-item">
+                  <div class="notice"><i class="fas fa-bell fa-lg fa-w-16"></i></div>
+                </li>
+                <li class="okmenu-item okdropdown okuser">
+                  <div class="okdropdown-ctrl">
+                    <div class="okuser-photo"><img src="dist/images/temp/user_photo-s.jpg" alt=""></div>
+                    <div class="okuser-name white-text">TW000223 紅心</div>
                   </div>
-                  <div class="user_info-name">潘心心</div>
-                </div>
-                <div class="user_info-base">
-                  <div class="user_info-job user_info-txt">部門：資訊科技部-系統開發組</div>
-                  <div class="user_info-seniority user_info-txt">年資：10年5個月</div>
-                </div>
-              </div>
-              <div class="user_info-bd user_statistics">
-                <div class="row no-gutters">
-                  <p id="monthWirte" class="month">當月寫了多少篇：<span class="number"><span class="big js-number"></span>/6</span></p>
-                  <div data-number="2" class="month-bar">
-                    <div id="progressBar" class="js-progressBar"></div>
+                  <div class="okdropdown-menu">
+                    <ul class="cf okmenu-list">
+                      <li class="okdropdown-menu-item"><a href="">更改密碼</a></li>
+                      <li class="okdropdown-menu-item"><a href="">登出</a></li>
+                    </ul>
                   </div>
-                </div>
-                <div class="row no-gutters">
-                  <p class="total">總計共寫了<span class="big">90</span>篇</p>
-                </div>
-                <div class="row no-gutters">
-                  <p class="share">分享篇數<span class="big">10</span>篇</p>
-                </div>
-              </div>
-              <div class="calendar_wrap">
-                <div id="calendar"></div>
-                <button class="btn btn-tb btn-primary m-auto today">返回今日</button>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
-        </aside>
-        <!-- =========================================================================-->
-        <!-- 頁面內容  START-->
-        <!-- =========================================================================-->
-        <main class="content_wrapper">
-          <div class="container-fluid">
-            <header class="content_title justify-content-between align-items-center"><a href="diary_add.html" class="btn btn-add btn-sm">
-                <div class="btn-icon d-inline-block"><i class="fas fa-pencil-alt"></i></div>新增日誌</a>
-              <div class="search d-flex align-items-center">
-                <div class="quick_search mr-3">
-                  <div class="diaryState mod-dropdown btn-sm">
-                    <div class="mod-dropdown-wrapper">
-                      <div class="mod-dropdown-ctrl">日誌狀態</div>
-                      <ul class="mod-dropdown-list cf lis-n">
-                        <li class="mod-dropdown-item">
-                          <input id="diaryState1" type="radio" name="diaryState" value="暫存中">
-                          <label for="diaryState1">暫存中</label>
-                        </li>
-                        <li class="mod-dropdown-item">
-                          <input id="diaryState2" type="radio" name="diaryState" value="已送出">
-                          <label for="diaryState2">已送出</label>
-                        </li>
-                        <li class="mod-dropdown-item">
-                          <input id="diaryState3" type="radio" name="diaryState" value="有回饋">
-                          <label for="diaryState3">有回饋</label>
-                        </li>
-                        <li class="mod-dropdown-item">
-                          <input id="diaryState4" type="radio" name="diaryState" value="被分享">
-                          <label for="diaryState4">被分享</label>
-                        </li>
-                      </ul>
+        </header>
+        <div class="page_container">
+          <nav class="page_menu">
+            <ul class="cf lis-n">
+              <li data-menu="index" class="page_menu-item"><a href="./">
+                  <div class="icon"><i class="fas fa-home"></i></div>
+                  <div class="txt">首頁</div></a></li>
+              <li data-menu="diary" class="page_menu-item"><a href="diary_add.html">
+                  <div class="icon"><i class="fas fa-file-alt"></i></div>
+                  <div class="txt">日誌</div></a></li>
+              <li data-menu="feedback" class="page_menu-item"><a href="feedback.html">
+                  <div class="icon">
+                    <svg class="icons-feelback">
+                      <use xlink:href="#svg-feelback"></use>
+                    </svg>
+                  </div>
+                  <div class="txt">回饋</div></a></li>
+              <li data-menu="vote" class="page_menu-item"><a href="vote.html">
+                  <div class="icon">
+                    <svg class="icons-vote">
+                      <use xlink:href="#svg-vote"></use>
+                    </svg>
+                  </div>
+                  <div class="txt">票選</div></a></li>
+              <li data-menu="config" class="page_menu-item"><a href="config.html">
+                  <div class="icon"><i class="fas fa-cog"></i></div>
+                  <div class="txt">管理</div></a></li>
+            </ul>
+          </nav>
+          <aside class="page_sidebar">
+            <div class="page_sidebar-bd">
+              <div class="user_info">
+                <div class="user_info-hd">
+                  <div class="user_info-top d-flex align-items-center">
+                    <div class="user_info-photo">
+                      <div class="pic okuser-photo"><img src="dist/images/temp/user_photo-s.jpg" alt=""></div>
+                    </div>
+                    <div class="user_info-name">潘心心</div>
+                  </div>
+                  <div class="user_info-base">
+                    <div class="user_info-job user_info-txt">部門：資訊科技部-系統開發組</div>
+                    <div class="user_info-seniority user_info-txt">年資：10年5個月</div>
+                  </div>
+                </div>
+                <div class="user_info-bd user_statistics">
+                  <div class="row no-gutters">
+                    <p id="monthWirte" class="month">當月寫了多少篇：<span class="number"><span class="big js-number"></span>/6</span></p>
+                    <div data-number="2" class="month-bar">
+                      <div id="progressBar" class="js-progressBar"></div>
                     </div>
                   </div>
+                  <div class="row no-gutters">
+                    <p class="total">總計共寫了<span class="big">90</span>篇</p>
+                  </div>
+                  <div class="row no-gutters">
+                    <p class="share">分享篇數<span class="big">10</span>篇</p>
+                  </div>
                 </div>
-                <div class="adv_search">
-                  <button class="btn-adv_search">
-                    進階搜尋
-                    <i class="fas fa-search"></i>
-                  </button>
+                <div class="calendar_wrap">
+                  <div id="calendar"></div>
+                  <button class="btn btn-tb btn-primary m-auto today">返回今日</button>
                 </div>
-              </div>
-            </header>
-            <!-- ==================================================================-->
-            <!-- 搜尋框  ＳＴＡＲＴ-->
-            <div class="adv_search-box">
-              <div class="adv_search_form">
-                <form action="">
-                  <div class="form-row">
-                    <div class="form-group col"><span class="input input--yoshiko control-field">
-                        <input class="input__field input__field--yoshiko form-control datepicker" type="text" name="date_start" id="date_start" />
-                        <label class="input__label input__label--yoshiko" for="date_start">
-                        	<span class="input__label-content input__label-content--yoshiko" data-content="開始日期">開始日期</span>
-                        </label></span></div>
-                    <div class="form-group col"><span class="input input--yoshiko control-field">
-                        <input class="input__field input__field--yoshiko form-control datepicker" type="text" name="date_end" id="date_end" />
-                        <label class="input__label input__label--yoshiko" for="date_end">
-                        	<span class="input__label-content input__label-content--yoshiko" data-content="結束日期">結束日期</span>
-                        </label></span></div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col"><span class="input input--yoshiko control-field">
-                        <select class="input__field input__field--yoshiko form-control" name="diary_category" id="diary_category">
-                        	<option value=""></option>
-                        	<option value="1">生活學習</option>
-                        	<option value="2">人際關係</option>
-                        	<option value="3">類別三</option>
-                        	<option value="4">類別四</option>
-                        </select>
-                        <label class="input__label input__label--yoshiko" for="diary_category">
-                        	<span class="input__label-content input__label-content--yoshiko" data-content="日誌類別">日誌類別</span>
-                        </label></span></div>
-                    <div class="form-group col"><span class="input input--yoshiko control-field">
-                        <input class="input__field input__field--yoshiko form-control" type="text" name="who_feedback" id="who_feedback" />
-                        <label class="input__label input__label--yoshiko" for="who_feedback">
-                        	<span class="input__label-content input__label-content--yoshiko" data-content="誰回饋...">誰回饋...</span>
-                        </label></span></div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col"><span class="input input--yoshiko control-field">
-                        <input class="input__field input__field--yoshiko form-control" type="text" name="keyword" id="keyword" />
-                        <label class="input__label input__label--yoshiko" for="keyword">
-                        	<span class="input__label-content input__label-content--yoshiko" data-content="內容關鍵字">內容關鍵字</span>
-                        </label></span></div>
-                  </div>
-                  <div class="form-row">
-                    <button type="submit" class="btn blue ml-auto mr-auto"><i class="fas fa-search"></i> 查詢</button>
-                  </div>
-                </form>
               </div>
             </div>
-            <!-- 搜尋框  ＥＮＤ  ！！-->
-            <!-- ==================================================================-->
-            <div class="mask_div"></div>
-            <div class="content_main">
-              <div class="diary_list pt-4 pb-4">
-                <div class="diary_list-timeline"></div>
-                <ul class="cf lis-n">
-                  <!-- ==================================================================-->
-                  <!-- 示意-->
-                  <!-- 文章暫存-->
-                  <!-- data-state="temporary"-->
-                  <!-- 有圖片-->
-                  <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="diary_edit.html" class="inner d-flex">
-                      <div class="inner-s">
-                        <div class="diary-date">2018-05-11</div>
-                        <div class="diary-state"></div>
+          </aside>
+          <!-- =========================================================================-->
+          <!-- 頁面內容  START-->
+          <!-- =========================================================================-->
+          <main class="content_wrapper">
+            <div class="container-fluid">
+              <header class="content_title justify-content-between align-items-center"><a href="diary_add.html" class="btn btn-add btn-sm">
+                  <div class="btn-icon d-inline-block"><i class="fas fa-pencil-alt"></i></div>新增日誌</a>
+                <div class="search d-flex align-items-center">
+                  <div class="quick_search mr-3">
+                    <div class="diaryState mod-dropdown btn-sm">
+                      <div class="mod-dropdown-wrapper">
+                        <div class="mod-dropdown-ctrl">日誌狀態</div>
+                        <ul class="mod-dropdown-list cf lis-n">
+                          <li class="mod-dropdown-item">
+                            <input id="diaryState1" type="radio" name="diaryState" value="暫存中">
+                            <label for="diaryState1">暫存中</label>
+                          </li>
+                          <li class="mod-dropdown-item">
+                            <input id="diaryState2" type="radio" name="diaryState" value="已送出">
+                            <label for="diaryState2">已送出</label>
+                          </li>
+                          <li class="mod-dropdown-item">
+                            <input id="diaryState3" type="radio" name="diaryState" value="有回饋">
+                            <label for="diaryState3">有回饋</label>
+                          </li>
+                          <li class="mod-dropdown-item">
+                            <input id="diaryState4" type="radio" name="diaryState" value="被分享">
+                            <label for="diaryState4">被分享</label>
+                          </li>
+                        </ul>
                       </div>
-                      <div class="inner-l">
-                        <div class="diary_item_block p-2 pl-3 d-flex">
-                          <div class="diary-txt pr-2">
-                            <div class="diary-category mb-1">生活學習</div>
-                            <div class="diary-brief">
-                              <!-- 文章，取前150個字元-->滾滾長江東逝水
+                    </div>
+                  </div>
+                  <div class="adv_search">
+                    <button class="btn-adv_search">
+                      進階搜尋
+                      <i class="fas fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </header>
+              <!-- ==================================================================-->
+              <!-- 搜尋框  ＳＴＡＲＴ-->
+              <div class="adv_search-box">
+                <div class="adv_search_form">
+                  <form action="">
+                    <div class="form-row">
+                      <div class="form-group col"><span class="input input--yoshiko control-field">
+                          <input class="input__field input__field--yoshiko form-control datepicker" type="text" name="date_start" id="date_start" />
+                          <label class="input__label input__label--yoshiko" for="date_start">
+                          	<span class="input__label-content input__label-content--yoshiko" data-content="開始日期">開始日期</span>
+                          </label></span></div>
+                      <div class="form-group col"><span class="input input--yoshiko control-field">
+                          <input class="input__field input__field--yoshiko form-control datepicker" type="text" name="date_end" id="date_end" />
+                          <label class="input__label input__label--yoshiko" for="date_end">
+                          	<span class="input__label-content input__label-content--yoshiko" data-content="結束日期">結束日期</span>
+                          </label></span></div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col"><span class="input input--yoshiko control-field">
+                          <select class="input__field input__field--yoshiko form-control" name="diary_category" id="diary_category">
+                          	<option value=""></option>
+                          	<option value="1">生活學習</option>
+                          	<option value="2">人際關係</option>
+                          	<option value="3">類別三</option>
+                          	<option value="4">類別四</option>
+                          </select>
+                          <label class="input__label input__label--yoshiko" for="diary_category">
+                          	<span class="input__label-content input__label-content--yoshiko" data-content="日誌類別">日誌類別</span>
+                          </label></span></div>
+                      <div class="form-group col"><span class="input input--yoshiko control-field">
+                          <input class="input__field input__field--yoshiko form-control" type="text" name="who_feedback" id="who_feedback" />
+                          <label class="input__label input__label--yoshiko" for="who_feedback">
+                          	<span class="input__label-content input__label-content--yoshiko" data-content="誰回饋...">誰回饋...</span>
+                          </label></span></div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col"><span class="input input--yoshiko control-field">
+                          <input class="input__field input__field--yoshiko form-control" type="text" name="keyword" id="keyword" />
+                          <label class="input__label input__label--yoshiko" for="keyword">
+                          	<span class="input__label-content input__label-content--yoshiko" data-content="內容關鍵字">內容關鍵字</span>
+                          </label></span></div>
+                    </div>
+                    <div class="form-row">
+                      <button type="submit" class="btn blue ml-auto mr-auto"><i class="fas fa-search"></i> 查詢</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- 搜尋框  ＥＮＤ  ！！-->
+              <!-- ==================================================================-->
+              <div class="mask_div"></div>
+              <div class="content_main">
+                <div class="diary_list pt-4 pb-4">
+                  <div class="diary_list-timeline"></div>
+                  <ul class="cf lis-n">
+                    <!-- ==================================================================-->
+                    <!-- 示意-->
+                    <!-- 文章暫存-->
+                    <!-- data-state="temporary"-->
+                    <!-- 有圖片-->
+                    <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="diary_edit.html" class="inner d-flex">
+                        <div class="inner-s">
+                          <div class="diary-date">2018-05-11</div>
+                          <div class="diary-state"></div>
+                        </div>
+                        <div class="inner-l">
+                          <div class="diary_item_block p-2 pl-3 d-flex">
+                            <div class="diary-txt pr-2">
+                              <div class="diary-category mb-1">生活學習</div>
+                              <div class="diary-brief">
+                                <!-- 文章，取前150個字元-->滾滾長江東逝水
+                              </div>
+                            </div>
+                            <div class="diary-pic">
+                              <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
                             </div>
                           </div>
-                          <div class="diary-pic">
-                            <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
-                          </div>
+                        </div></a></li>
+                    <!-- ==================================================================-->
+                    <!-- 示意-->
+                    <!-- 文章送出（無回饋、無提報通過）-->
+                    <!-- data-state=""-->
+                    <!-- 沒有圖片-->
+                    <li id="diary_tw000223_2018051001" data-state="" class="diary_item"><a href="diary_content.html" class="inner d-flex">
+                        <div class="inner-s">
+                          <div class="diary-date">2018-05-11</div>
+                          <div class="diary-state"></div>
                         </div>
-                      </div></a></li>
-                  <!-- ==================================================================-->
-                  <!-- 示意-->
-                  <!-- 文章送出（無回饋、無提報通過）-->
-                  <!-- data-state=""-->
-                  <!-- 沒有圖片-->
-                  <li id="diary_tw000223_2018051001" data-state="" class="diary_item"><a href="diary_content.html" class="inner d-flex">
-                      <div class="inner-s">
-                        <div class="diary-date">2018-05-11</div>
-                        <div class="diary-state"></div>
-                      </div>
-                      <div class="inner-l">
-                        <div class="diary_item_block p-2 pl-3 d-flex">
-                          <div class="diary-txt pr-2">
-                            <div class="diary-category mb-1">生活學習</div>
-                            <div class="diary-brief">
-                              滾滾長江東逝水，浪花淘盡英雄。ㄒ
-                              是非成敗轉頭空。
-                              青山依舊在，幾度夕陽紅。
-                              白髮漁樵江渚上，慣看秋月春風。
-                              一壺濁酒喜相逢。
-                              古今多少事，都付笑談中。
+                        <div class="inner-l">
+                          <div class="diary_item_block p-2 pl-3 d-flex">
+                            <div class="diary-txt pr-2">
+                              <div class="diary-category mb-1">生活學習</div>
+                              <div class="diary-brief">
+                                滾滾長江東逝水，浪花淘盡英雄。ㄒ
+                                是非成敗轉頭空。
+                                青山依舊在，幾度夕陽紅。
+                                白髮漁樵江渚上，慣看秋月春風。
+                                一壺濁酒喜相逢。
+                                古今多少事，都付笑談中。
+                              </div>
                             </div>
                           </div>
+                        </div></a></li>
+                    <!-- ==================================================================-->
+                    <!-- 示意-->
+                    <!-- 文章送出（有回饋、有提報通過）-->
+                    <!-- data-state="feedback,heart"-->
+                    <!-- 沒有圖片-->
+                    <li id="diary_tw000223_2018051101" data-state="feedback,heart" class="diary_item"><a href="diary_content.html" class="inner d-flex">
+                        <div class="inner-s">
+                          <div class="diary-date">2018-05-11</div>
+                          <div class="diary-state"></div>
                         </div>
-                      </div></a></li>
-                  <!-- ==================================================================-->
-                  <!-- 示意-->
-                  <!-- 文章送出（有回饋、有提報通過）-->
-                  <!-- data-state="feedback,heart"-->
-                  <!-- 沒有圖片-->
-                  <li id="diary_tw000223_2018051101" data-state="feedback,heart" class="diary_item"><a href="diary_content.html" class="inner d-flex">
-                      <div class="inner-s">
-                        <div class="diary-date">2018-05-11</div>
-                        <div class="diary-state"></div>
-                      </div>
-                      <div class="inner-l">
-                        <div class="diary_item_block p-2 pl-3 d-flex">
-                          <div class="diary-txt pr-2">
-                            <div class="diary-category mb-1">生活學習</div>
-                            <div class="diary-brief">
-                              滾滾長江東逝水，浪花淘盡英雄。ㄒ
-                              是非成敗轉頭空。
-                              青山依舊在，幾度夕陽紅。
-                              白髮漁樵江渚上，慣看秋月春風。
-                              一壺濁酒喜相逢。
-                              古今多少事，都付笑談中。
+                        <div class="inner-l">
+                          <div class="diary_item_block p-2 pl-3 d-flex">
+                            <div class="diary-txt pr-2">
+                              <div class="diary-category mb-1">生活學習</div>
+                              <div class="diary-brief">
+                                滾滾長江東逝水，浪花淘盡英雄。ㄒ
+                                是非成敗轉頭空。
+                                青山依舊在，幾度夕陽紅。
+                                白髮漁樵江渚上，慣看秋月春風。
+                                一壺濁酒喜相逢。
+                                古今多少事，都付笑談中。
+                              </div>
                             </div>
                           </div>
+                        </div></a></li>
+                    <!-- ==================================================================-->
+                    <!-- 示意-->
+                    <!-- 文章送出（有回饋、有提報通過）-->
+                    <!-- data-state="feedback,heart"-->
+                    <!-- 有圖片-->
+                    <li id="diary_tw000223_2018051101" data-state="feedback,heart" class="diary_item"><a href="diary_content.html" class="inner d-flex">
+                        <div class="inner-s">
+                          <div class="diary-date">2018-05-11</div>
+                          <div class="diary-state"></div>
                         </div>
-                      </div></a></li>
-                  <!-- ==================================================================-->
-                  <!-- 示意-->
-                  <!-- 文章送出（有回饋、有提報通過）-->
-                  <!-- data-state="feedback,heart"-->
-                  <!-- 有圖片-->
-                  <li id="diary_tw000223_2018051101" data-state="feedback,heart" class="diary_item"><a href="diary_content.html" class="inner d-flex">
-                      <div class="inner-s">
-                        <div class="diary-date">2018-05-11</div>
-                        <div class="diary-state"></div>
-                      </div>
-                      <div class="inner-l">
-                        <div class="diary_item_block p-2 pl-3 d-flex">
-                          <div class="diary-txt pr-2">
-                            <div class="diary-category mb-1">生活學習</div>
-                            <div class="diary-brief">
-                              滾滾長江東逝水，浪花淘盡英雄。ㄒ
-                              是非成敗轉頭空。
-                              青山依舊在，幾度夕陽紅。
-                              白髮漁樵江渚上，慣看秋月春風。
-                              一壺濁酒喜相逢。
-                              古今多少事，都付笑談中。
+                        <div class="inner-l">
+                          <div class="diary_item_block p-2 pl-3 d-flex">
+                            <div class="diary-txt pr-2">
+                              <div class="diary-category mb-1">生活學習</div>
+                              <div class="diary-brief">
+                                滾滾長江東逝水，浪花淘盡英雄。ㄒ
+                                是非成敗轉頭空。
+                                青山依舊在，幾度夕陽紅。
+                                白髮漁樵江渚上，慣看秋月春風。
+                                一壺濁酒喜相逢。
+                                古今多少事，都付笑談中。
+                              </div>
+                            </div>
+                            <div class="diary-pic">
+                              <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
                             </div>
                           </div>
-                          <div class="diary-pic">
-                            <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
-                          </div>
+                        </div></a></li>
+                    <!-- ==================================================================-->
+                    <!-- 示意-->
+                    <!-- 文章送出（有回饋、無提報通過）-->
+                    <!-- data-state="feedback"-->
+                    <!-- 有圖片-->
+                    <li id="diary_tw000223_2018051101" data-state="feedback" class="diary_item"><a href="diary_content.html" class="inner d-flex">
+                        <div class="inner-s">
+                          <div class="diary-date">2018-05-11</div>
+                          <div class="diary-state"></div>
                         </div>
-                      </div></a></li>
-                  <!-- ==================================================================-->
-                  <!-- 示意-->
-                  <!-- 文章送出（有回饋、無提報通過）-->
-                  <!-- data-state="feedback"-->
-                  <!-- 有圖片-->
-                  <li id="diary_tw000223_2018051101" data-state="feedback" class="diary_item"><a href="diary_content.html" class="inner d-flex">
-                      <div class="inner-s">
-                        <div class="diary-date">2018-05-11</div>
-                        <div class="diary-state"></div>
-                      </div>
-                      <div class="inner-l">
-                        <div class="diary_item_block p-2 pl-3 d-flex">
-                          <div class="diary-txt pr-2">
-                            <div class="diary-category mb-1">生活學習</div>
-                            <div class="diary-brief">
-                              滾滾長江東逝水，浪花淘盡英雄。ㄒ
-                              是非成敗轉頭空。
-                              青山依舊在，幾度夕陽紅。
-                              白髮漁樵江渚上，慣看秋月春風。
-                              一壺濁酒喜相逢。
-                              古今多少事，都付笑談中。
+                        <div class="inner-l">
+                          <div class="diary_item_block p-2 pl-3 d-flex">
+                            <div class="diary-txt pr-2">
+                              <div class="diary-category mb-1">生活學習</div>
+                              <div class="diary-brief">
+                                滾滾長江東逝水，浪花淘盡英雄。ㄒ
+                                是非成敗轉頭空。
+                                青山依舊在，幾度夕陽紅。
+                                白髮漁樵江渚上，慣看秋月春風。
+                                一壺濁酒喜相逢。
+                                古今多少事，都付笑談中。
+                              </div>
+                            </div>
+                            <div class="diary-pic">
+                              <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
                             </div>
                           </div>
-                          <div class="diary-pic">
-                            <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
-                          </div>
+                        </div></a></li>
+                    <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="diary_edit.html" class="inner d-flex">
+                        <div class="inner-s">
+                          <div class="diary-date">2018-05-11</div>
+                          <div class="diary-state"></div>
                         </div>
-                      </div></a></li>
-                  <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="diary_edit.html" class="inner d-flex">
-                      <div class="inner-s">
-                        <div class="diary-date">2018-05-11</div>
-                        <div class="diary-state"></div>
-                      </div>
-                      <div class="inner-l">
-                        <div class="diary_item_block p-2 pl-3 d-flex">
-                          <div class="diary-txt pr-2">
-                            <div class="diary-category mb-1">生活學習</div>
-                            <div class="diary-brief">
-                              滾滾長江東逝水，浪花淘盡英雄。ㄒ
-                              是非成敗轉頭空。
-                              青山依舊在，幾度夕陽紅。
-                              白髮漁樵江渚上，慣看秋月春風。
-                              一壺濁酒喜相逢。
-                              古今多少事，都付笑談中。
+                        <div class="inner-l">
+                          <div class="diary_item_block p-2 pl-3 d-flex">
+                            <div class="diary-txt pr-2">
+                              <div class="diary-category mb-1">生活學習</div>
+                              <div class="diary-brief">
+                                滾滾長江東逝水，浪花淘盡英雄。ㄒ
+                                是非成敗轉頭空。
+                                青山依舊在，幾度夕陽紅。
+                                白髮漁樵江渚上，慣看秋月春風。
+                                一壺濁酒喜相逢。
+                                古今多少事，都付笑談中。
+                              </div>
+                            </div>
+                            <div class="diary-pic">
+                              <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
                             </div>
                           </div>
-                          <div class="diary-pic">
-                            <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
-                          </div>
+                        </div></a></li>
+                    <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="diary_edit.html" class="inner d-flex">
+                        <div class="inner-s">
+                          <div class="diary-date">2018-05-11</div>
+                          <div class="diary-state"></div>
                         </div>
-                      </div></a></li>
-                  <li id="diary_tw000223_2018051101" data-state="temporary" class="diary_item"><a href="diary_edit.html" class="inner d-flex">
-                      <div class="inner-s">
-                        <div class="diary-date">2018-05-11</div>
-                        <div class="diary-state"></div>
-                      </div>
-                      <div class="inner-l">
-                        <div class="diary_item_block p-2 pl-3 d-flex">
-                          <div class="diary-txt pr-2">
-                            <div class="diary-category mb-1">生活學習</div>
-                            <div class="diary-brief">
-                              滾滾長江東逝水，浪花淘盡英雄。ㄒ
-                              是非成敗轉頭空。
-                              青山依舊在，幾度夕陽紅。
-                              白髮漁樵江渚上，慣看秋月春風。
-                              一壺濁酒喜相逢。
-                              古今多少事，都付笑談中。
+                        <div class="inner-l">
+                          <div class="diary_item_block p-2 pl-3 d-flex">
+                            <div class="diary-txt pr-2">
+                              <div class="diary-category mb-1">生活學習</div>
+                              <div class="diary-brief">
+                                滾滾長江東逝水，浪花淘盡英雄。ㄒ
+                                是非成敗轉頭空。
+                                青山依舊在，幾度夕陽紅。
+                                白髮漁樵江渚上，慣看秋月春風。
+                                一壺濁酒喜相逢。
+                                古今多少事，都付笑談中。
+                              </div>
+                            </div>
+                            <div class="diary-pic">
+                              <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
                             </div>
                           </div>
-                          <div class="diary-pic">
-                            <div class="pic"><img src="dist/images/temp/pic1.jpg" alt=""></div>
-                          </div>
-                        </div>
-                      </div></a></li>
-                </ul>
+                        </div></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        </main>
-        <!-- =========================================================================-->
-        <!-- 頁面內容  END  !!-->
-        <!-- =========================================================================-->
+          </main>
+          <!-- =========================================================================-->
+          <!-- 頁面內容  END  !!-->
+          <!-- =========================================================================-->
+        </div>
       </div>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

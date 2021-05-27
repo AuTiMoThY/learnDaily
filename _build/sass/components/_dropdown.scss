@@ -69,6 +69,10 @@
 		max-width: 200%;
 		// padding-top: 0.4rem;
 
+		@include media-breakpoint-down(xs){
+			left: inherit;
+			right: 0;
+		};
 
 
 		ul {

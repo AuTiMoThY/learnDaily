@@ -18,19 +18,19 @@ block content
 						| 返回列表
 
 			.content_container
-				.diary_cnt_wrap.p-5
+				.diary_cnt_wrap.p-4.p-sm-5
 					.diary_form
 						form#diaryForm(action="")
 							.form-row
-								.form-group.col
+								.form-group.col-sm-6
 									.row
 										label.col-md-auto.col-form-label(for="diaryDate") 選擇日期
-										.col-6.control-field
+										.col-sm-6.control-field
 											input.form-control.datepicker(type="text", name="diaryDate", id="diaryDate", required, value="2018-05-22")
-								.form-group.col
+								.form-group.col-sm-6
 									.row
 										label.col-md-auto.col-form-label(for="diaryCategory") 選擇類別
-										.col-6.control-field
+										.col-sm-6.control-field
 											| <select class="form-control" name="diaryCategory" id="diaryCategory" required>
 											|	<option value="">請選擇類別</option>
 											|	<option value="1" selected="selected">生活學習</option>
@@ -51,14 +51,14 @@ block content
 												一壺濁酒喜相逢。
 												古今多少事，都付笑談中。
 							.form-row
-								.form-group.col
+								.form-group.col-sm-6
 									.row
 										label.col-md-auto.col-form-label 上傳圖片
 										.col-md.control-field.file_upload
 											label.form-control.file_upload-label(for="uploadPic") <i class="fas fa-upload"></i>選擇檔案
 											input.form-control.file_upload-input(type="file", name="", id="uploadPic")
 											.file_upload-preview.pic.mt-2.text-center
-								.form-group.col
+								.form-group.col-sm-6
 									.row
 										label.col-md-auto.col-form-label(for="share_target") 分享對象
 										.col-md
