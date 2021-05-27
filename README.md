@@ -9,7 +9,8 @@
 
 # 注意
 
-- 需與XAMPP之類的開啟本機端的http，否則光用Gulp-connect 是無法看到畫面的
+- 需先開啟XAMPP之類的本機端的Apache，否則run `gulp` 是無法看到畫面的
+- 在網址列輸入: http://localhost:8081
 
 
 # log
